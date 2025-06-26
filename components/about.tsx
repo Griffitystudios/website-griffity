@@ -160,10 +160,11 @@ export default function About() {
     "We craft with bold intention and precise care, honoring the trust you place in us. Every brand we touch becomes a part of our journey—your story becomes ours. Together, we create designs that reflect hope, resilience, and uncompromising beauty rooted in visionary storytelling.";
 
   return (
-    <div
-      className={`min-h-screen  text-white `}
-      ref={containerRef}
+    <section
       id="about-us"
+      aria-labelledby="about-heading"
+      className="min-h-screen text-white"
+      ref={containerRef}
     >
       <div
         className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16 xl:py-20 max-w-screen-3xl"
@@ -180,6 +181,7 @@ export default function About() {
             [ ABOUT US ]
           </motion.p>
           <motion.h1
+            id="about-heading"
             className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-4 sm:mb-10"
             initial={{ opacity: 0, y: -20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -213,7 +215,6 @@ export default function About() {
             </motion.span>
           </motion.p>
         </div>
-
         {/* Main Content */}
         <motion.div className="text-justify mb-12 sm:mb-16 lg:mb-20 leading-relaxed lg:max-w-7xl  mx-auto text-gray-300">
           <p className="mb-3 sm:mb-16 sm:text-xl lg:text-3xl font-extralight">
@@ -231,33 +232,74 @@ export default function About() {
             ))}
           </p>
         </motion.div>
-
         {/* Statistics Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 xl:gap-10 mb-12 sm:mb-16 lg:mb-20">
-          <AnimatedCounter
-            end={4}
-            label="years of experience"
-            accent="experience"
-          />
-          <AnimatedCounter
-            end={21}
-            label="brands collaborated"
-            accent="collaborated"
-          />
-          <AnimatedCounter
-            end={31}
-            label="projects completed"
-            accent="completed"
-          />
-          <AnimatedCounter end={5} label="industry awards" accent="awards" />
-          <AnimatedCounter end={11} label="events managed" accent="managed" />
-          <AnimatedCounter
-            end={20000}
-            label="regulated hours of operation"
-            accent="operation"
-          />
-        </div>
+        <dl className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 xl:gap-10 mb-12 sm:mb-16 lg:mb-20">
+          <div>
+            <dt className="sr-only">Years of experience</dt>
+            <dd>
+              <AnimatedCounter
+                end={4}
+                label="years of experience"
+                accent="experience"
+              />
+            </dd>
+          </div>
 
+          <div>
+            <dt className="sr-only">Brands collaborated</dt>
+            <dd>
+              <AnimatedCounter
+                end={21}
+                label="brands collaborated"
+                accent="collaborated"
+              />
+            </dd>
+          </div>
+
+          <div>
+            <dt className="sr-only">Projects completed</dt>
+            <dd>
+              <AnimatedCounter
+                end={31}
+                label="projects completed"
+                accent="completed"
+              />
+            </dd>
+          </div>
+
+          <div>
+            <dt className="sr-only">Industry awards</dt>
+            <dd>
+              <AnimatedCounter
+                end={5}
+                label="industry awards"
+                accent="awards"
+              />
+            </dd>
+          </div>
+
+          <div>
+            <dt className="sr-only">Events managed</dt>
+            <dd>
+              <AnimatedCounter
+                end={11}
+                label="events managed"
+                accent="managed"
+              />
+            </dd>
+          </div>
+
+          <div>
+            <dt className="sr-only">Regulated hours of operation</dt>
+            <dd>
+              <AnimatedCounter
+                end={20000}
+                label="regulated hours of operation"
+                accent="operation"
+              />
+            </dd>
+          </div>
+        </dl>
         {/* Bottom Action Words */}
         <motion.div
           className="flex w-full md:mt-36 justify-between md:px-16 mx-auto font-extralight xl:heading-h5 text-[0.8rem]  xs:text-lg md:text-3xl"
@@ -303,6 +345,6 @@ export default function About() {
           </motion.span>
         </motion.div>
       </div>
-    </div>
+    </section>
   );
 }

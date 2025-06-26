@@ -28,15 +28,17 @@ const Hero = () => {
   };
 
   return (
-    <div className="relative h-screen w-full overflow-hidden">
+    <header className="relative h-screen w-full overflow-hidden">
       {/* Background video moved up by 20px */}
       <video
-        className="absolute top-0 left-0 w-full h-full object-cover z-10 transform -translate-y-5 "
+        className="absolute top-0 left-0 w-full h-full object-cover z-10 transform -translate-y-5"
         src="/reelsmedia/bg.mp4"
         autoPlay
         loop
         muted
         playsInline
+        title="Background video of Griffity brand elements"
+        aria-hidden="true"
       />
 
       {/* Animated gradient overlay at bottom */}
@@ -60,7 +62,7 @@ const Hero = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, ease: "easeOut", delay: 3.8 }}
             src="/logos/griffity.png"
-            alt="Logo"
+            alt="Griffity Studios logo"
             className="w-6 sm:w-7 md:w-8 h-auto ml-5 z-30"
           />
 
@@ -102,9 +104,9 @@ const Hero = () => {
         <div className="flex items-center gap-10 h-full max-w-screen-3xl mx-auto">
           <div className="z-30 flex-1">
             <div className="flex flex-col items-start lg:translate-x-[-5%]">
-              <p className="text-2xl xs:text-3xl sm:text-6xl md:text-[4.2rem] xl:text-8xl 2xl:text-h2 font-medium leading-tight">
+              <h1 className="text-2xl xs:text-3xl sm:text-6xl md:text-[4.2rem] xl:text-8xl 2xl:text-h2 font-medium leading-tight">
                 welcome to <span className="font-bold">griffity</span>
-              </p>
+              </h1>
               <motion.p
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -117,7 +119,7 @@ const Hero = () => {
           </div>
 
           {/* Desktop Navigation Items - Hidden on mobile/tablet */}
-          <div className="hidden lg:flex lg:translate-y-8 flex-col gap-8 z-50">
+          <nav className="hidden lg:flex lg:translate-y-8 flex-col gap-8 z-50">
             {navItems.map((item, index) => (
               <a
                 key={index}
@@ -131,14 +133,15 @@ const Hero = () => {
                 {item}
               </a>
             ))}
-          </div>
+          </nav>
         </div>
       </div>
 
       {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {isMobileMenuOpen && (
-          <motion.div
+          <motion.nav
+            aria-label="Mobile Menu"
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
@@ -170,7 +173,7 @@ const Hero = () => {
                 </motion.a>
               ))}
             </div>
-          </motion.div>
+          </motion.nav>
         )}
       </AnimatePresence>
 
@@ -187,7 +190,7 @@ const Hero = () => {
           />
         )}
       </AnimatePresence>
-    </div>
+    </header>
   );
 };
 
