@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #081c26;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+@layer components {
+  .heading-h1 {
+    @apply text-[2.8rem]/none xs:text-[3.2rem] xsm:text-[4rem] sm:text-[4.375rem]/none md:text-[5.5rem]/none xl:text-h1/none;
+    /* 40px → 2.5rem, 70px → 4.375rem, 110px → 6.875rem, 157px = h1 */
+  }
+
+  .heading-h2 {
+    @apply text-[1.5rem] xs:text-[2.1rem]  sm:text-[3.125rem] md:text-[4rem] xl:text-h2;
+    /* 30px → 1.875rem, 50px → 3.125rem, 80px → 5rem, 110px = h2 */
+  }
+
+  .heading-h3 {
+    @apply text-[1.5rem] sm:text-[2.5rem] md:text-[3.4375rem] lg:text-h3;
+    /* 24px → 1.5rem, 40px → 2.5rem, 55px → 3.4375rem, 60px = h3 */
+  }
+
+  .heading-h4 {
+    @apply text-[0.6rem] xs:text-[1.3rem] sm:text-[1.75rem] md:text-[2.4rem] lg:text-h4;
+    /* 20px → 1.25rem, 30px → 1.875rem, 40px → 2.5rem, 45px = h4 */
+  }
+
+  .heading-h5 {
+    @apply text-[1.125rem] sm:text-[1.5rem] md:text-[1.75rem] lg:text-h5;
+    /* 18px → 1.125rem, 24px → 1.5rem, 28px → 1.75rem, 30px = h5 */
+  }
+  .custom-c1 {
+    @apply text-[3rem]/none xs:text-[3.5rem] xsm:text-[4.6rem] sm:text-[5rem]/none md:text-[5.3rem]/none lg:text-[9rem]  xl:text-c1/none;
+    /* 40px → 2.5rem, 80px → 5rem, 128px → 8rem, 182px = c1 */
+  }
+
+  .custom-c2 {
+    @apply text-[1.9rem]/none xs:text-[2.2rem] xsm:text-[2.6rem] sm:text-[3.75rem]/none md:text-[4.1rem]/none lg:text-7xl xl:text-c2/none;
+    /* 30px → 1.875rem, 60px → 3.75rem, 80px → 5rem, 100px = c2 */
+  }
+  .p-base {
+    @apply text-[0.5rem] xs:text-[0.67rem] sm:text-[0.9rem] md:text-base;
+    /* 16px → 1rem, 18px → 1.125rem, base = 20px = 1.25rem */
+  }
+}
+input:active,
+textarea:active,
+select:active {
+  outline: none;
+  box-shadow: none;
+  border-color: inherit;
+}
