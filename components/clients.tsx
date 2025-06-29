@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { text } from "stream/consumers";
 
 const Client = () => {
   const pairedClients = [
@@ -39,7 +38,11 @@ const Client = () => {
   const maxLength = Math.max(pairedGroups.length, singleClients.length);
 
   return (
-    <div className="relative w-full" id="clients">
+    <section
+      id="clients"
+      aria-label="Trusted Clients Logos"
+      className="relative w-full mt-52"
+    >
       <div className="max-w-screen-3xl mt-52 w-full mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-14 py-6 sm:py-8 md:py-10 flex flex-col gap-40">
         {Array.from({ length: maxLength }).map((_, idx) => (
           <div key={idx}>
@@ -58,7 +61,7 @@ const Client = () => {
                         width={336}
                         height={382}
                         src={`/images/clientLogo/${client.name}.svg`}
-                        alt={client.text}
+                        alt={`${client.text} Logo`}
                         className="max-h-full max-w-full object-contain"
                       />
                     </div>
@@ -78,11 +81,11 @@ const Client = () => {
                       width={336}
                       height={382}
                       src={`/images/clientLogo/${singleClients[idx].name}.svg`}
-                      alt={singleClients[idx].text}
+                      alt={`${singleClients[idx].text} Logo`}
                       className="max-h-full max-w-full object-contain"
                     />
                   </div>
-                  <p className="text-left p-base font-semibold text-primary mt-3">
+                  <p className="p-base font-semibold text-primary mt-3 text-left">
                     {singleClients[idx].text}
                   </p>
                 </div>
@@ -91,7 +94,7 @@ const Client = () => {
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 

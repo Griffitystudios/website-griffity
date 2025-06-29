@@ -10,17 +10,15 @@ const TrustedClients = () => {
   >("hidden");
 
   // Text to animate
-  const TEXT = "[TRUSTED CLIENTS]";
+  const TEXT = "TRUSTED CLIENTS";
   const TEXT_BLOCKS = ["COMPANIES WE HAVE", "WORKED WITH"];
 
-  // Handle scroll to control animation states
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
       const windowHeight = window.innerHeight;
       const fullHeight = document.documentElement.scrollHeight;
 
-      // Get the heights of the .about and .join-us sections
       const aboutSection = document.querySelector(
         ".about"
       ) as HTMLElement | null;
@@ -30,7 +28,6 @@ const TrustedClients = () => {
       const aboutHeight = aboutSection ? aboutSection.offsetHeight : 0;
       const joinUsHeight = joinUsSection ? joinUsSection.offsetHeight : 0;
 
-      // Check if near the bottom (within 100px + about + join-us heights)
       if (
         scrollTop + windowHeight >=
         fullHeight - (aboutHeight + joinUsHeight)
@@ -39,7 +36,6 @@ const TrustedClients = () => {
         return;
       }
 
-      // Check if section is in view
       if (sectionRef.current) {
         const rect = sectionRef.current.getBoundingClientRect();
         const isInView = rect.top < windowHeight && rect.bottom > 0;
@@ -48,27 +44,28 @@ const TrustedClients = () => {
     };
 
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); // Trigger on mount
+    handleScroll();
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Animation variants for clearer state management
   const textVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0 },
-    exitingBottom: { opacity: 0, y: -20 }, // Reverse direction for bottom exit
+    exitingBottom: { opacity: 0, y: -20 },
   };
 
   const wordVariants = {
     hidden: { opacity: 0, y: 10, filter: "blur(20px)" },
     visible: { opacity: 1, y: 0, filter: "blur(0px)" },
-    exitingBottom: { opacity: 0, y: -10, filter: "blur(20px)" }, // Reverse direction
+    exitingBottom: { opacity: 0, y: -10, filter: "blur(20px)" },
   };
 
   return (
-    <div
+    <section
       ref={sectionRef}
+      id="trusted-clients"
+      aria-label="Trusted Clients Section"
       className="flex sticky top-[200px] flex-col mt-[100px] z-10"
     >
       <motion.p
@@ -78,7 +75,7 @@ const TrustedClients = () => {
         transition={{ duration: 0.4, ease: "easeOut", delay: 0.7 }}
         className="text-primary font-medium p-base text-center"
       >
-        {TEXT}
+        &#91;{TEXT}&#93;
       </motion.p>
 
       <div className="w-fit mx-auto text-center text-primary text-[1.4rem] xs:text-[1.7rem] sm:text-[2.3rem] md:text-[2.8rem] lg:text-[4rem] xl:text-[6rem] leading-none">
@@ -113,7 +110,7 @@ const TrustedClients = () => {
           );
         })}
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -79,7 +79,7 @@ const Services = () => {
       id="services"
       className=" max-w-screen-3xl mt-20  px-4 sm:px-6 md:px-8 lg:px-12 xl:px-14 py-6 sm:py-8 md:py-10 mx-auto w-full justify-center items-center z-"
     >
-      <div className="flex md:justify-between leading-tight items-start  mt-2">
+      <header className="flex md:justify-between leading-tight items-start  mt-2">
         <div className="flex flex-col mt-5 ">
           <motion.span className="heading-h4 z-10 font-semibold ">
             WE BRING YOUR VISION{" "}
@@ -88,12 +88,13 @@ const Services = () => {
             TO LIFE WITH DYNAMIC DESIGN SOLUTIONS
           </motion.span>
         </div>
-        <motion.h1 className="p-base w-fit font-semibold text-primary z-10 flex-shrink-0">
+        <motion.h2 className="p-base w-fit font-semibold text-primary z-10 flex-shrink-0">
           [OUR SERVICES ]
-        </motion.h1>
-      </div>
-      <div
-        ref={containerRef}
+        </motion.h2>
+      </header>
+      <section
+        ref={brandingRef}
+        aria-labelledby="branding-title"
         className="flex flex-col   heading-h2  gap-10 mt-32  "
       >
         <motion.div
@@ -266,7 +267,7 @@ const Services = () => {
             <li>R&D FOR NEW MEDIA</li>
           </motion.ul>
         </motion.div>
-      </div>
+      </section>
     </div>
   );
 };
