@@ -2,6 +2,7 @@ import "../globals.css";
 import { ReactNode } from "react";
 import { poppins } from "@/fonts";
 import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
@@ -58,6 +59,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body
         className={`bg-body ${poppins.className} text-white transition-all ease-in-out duration-700`}
       >
+        <SpeedInsights/>
             <Analytics />
         <main>{children}</main>
       </body>
