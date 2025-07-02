@@ -3,6 +3,7 @@ import { ReactNode } from "react";
 import { poppins } from "@/fonts";
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import Script from "next/script";
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
@@ -54,6 +55,22 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           name="twitter:image"
           content="https://griffitystudios.com/logos/og-cover.jpg"
         />
+        
+        <Script
+  src="https://www.googletagmanager.com/gtag/js?id=G-ERFLFTBEEK"
+  strategy="afterInteractive"
+  async
+/>
+<Script id="gtag-init" strategy="afterInteractive">
+  {`
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-ERFLFTBEEK');
+  `}
+</Script>
+
+
       </head>
 
       <body
