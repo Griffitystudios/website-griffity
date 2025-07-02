@@ -56,7 +56,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           content="https://griffitystudios.com/logos/og-cover.jpg"
         />
         <GoogleAnalytics gaId="G-ERFLFTBEEK" />
-          
+        <meta name="google-site-verification" content="2GQTx5-n9JcIS0caqD2mItbou8HvUryLzFeRe8Fj9kM" />
       </head>
 
       <body
