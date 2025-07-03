@@ -1,7 +1,7 @@
-import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { FaCalendar, FaClock, FaUser, FaArrowLeft } from "react-icons/fa";
 import Link from "next/link";
+import { Metadata } from "next";
 
 import Breadcrumbs from "@/components/breadcrumbs";
 import SocialShare from "@/components/social-share";
@@ -10,16 +10,18 @@ import { getArticleData, getSortedArticles } from "@/lib/articles";
 import type { ArticleItem } from "@/types";
 
 interface PageProps {
-  params: {
-    slug: string;
-  };
+  params: Promise<{ slug: string }>; // Update to type params as a Promise
 }
 
 
+interface MetadataProps {
+  params: Promise<{ slug: string }>; // Update to type params as a Promise
+}
+
 export async function generateMetadata(
-  { params }: { params: { slug: string } }
+  { params }: MetadataProps
 ): Promise<Metadata> {
-  const {slug} = await params;
+  const { slug } = await params; // Await the params to resolve the Promise
   const article = await getArticleData(slug);
 
   if (!article) {
@@ -38,7 +40,7 @@ export async function generateMetadata(
     openGraph: {
       title: article.title,
       description: article.excerpt,
-      url: `https:griffitystudios.com/blogs/${article.slug}`,
+      url: `https://griffitystudios.com/blogs/${article.slug}`, // Fixed typo: added // before griffitystudios
       siteName: "Tech Blog",
       images: [
         {
@@ -74,16 +76,14 @@ export async function generateMetadata(
   };
 }
 
-
-export default async function ArticlePage({ params }: PageProps) {
-  const {slug} =  await params;
+const ArticlePage = async ({ params }: PageProps) => {
+  const { slug } = await params; // Await the params to resolve the Promise
   const article = await getArticleData(slug);
   const allArticles = getSortedArticles();
 
   if (!article) {
     notFound();
   }
-
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -228,3 +228,5 @@ export default async function ArticlePage({ params }: PageProps) {
     </>
   )
 }
+
+export default ArticlePage;
