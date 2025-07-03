@@ -11,6 +11,7 @@ import {
   FaWhatsapp,
 } from "react-icons/fa6";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from 'next/link';
 
 const Footer = () => {
   const [showBackToTop, setShowBackToTop] = useState(false);
@@ -63,7 +64,7 @@ const Footer = () => {
           <p className="text-4xl font-semibold">
             GRIFFITY<span className="font-light">STUDIOS</span>
           </p>
-          <p className="text-[1.2rem]">Mahalaxmisthan, Lalitpur</p>
+          <Link className="text-[1.2rem]" href={'https://maps.app.goo.gl/y2VDy6SmsppxK8ve8'}>Mahalaxmisthan, Lalitpur</Link>
           <a
             href="tel:+9779861292675"
             className="text-[1.2rem] hover:text-primary transition block"
