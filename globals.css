@@ -11,7 +11,7 @@ html {
 
 @layer components {
   .heading-h1 {
-    @apply text-[2.8rem]/none xs:text-[3.2rem] xsm:text-[4rem] sm:text-[4.375rem]/none md:text-[5.5rem]/none xl:text-h1/none;
+    @apply text-[5rem]/none xs:text-[3.2rem] xsm:text-[4rem] sm:text-[4.375rem]/none md:text-[5.5rem]/none xl:text-h1/none;
     /* 40px → 2.5rem, 70px → 4.375rem, 110px → 6.875rem, 157px = h1 */
   }
 
