@@ -118,7 +118,7 @@ export default function About() {
     const color = useTransform(
       scrollYProgress,
       [start, end],
-      isHighlighted ? ["#6b7280", "#ffffff"] : ["#6b7280", "#b9bec9"]
+      isHighlighted ? ["#163746", "#ffffff"] : ["#163746", "#b9bec9"]
     );
 
     // On-scroll glow effect for highlighted words
