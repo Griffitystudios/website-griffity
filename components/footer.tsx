@@ -75,7 +75,7 @@ const Footer = () => {
             href="mailto:griffitystudios@gmail.com"
             className="text-[1.2rem] hover:text-primary transition block"
           >
-            griffitystudios@gmail.com
+            info@griffitystudios.com
           </a>
         </address>
 
