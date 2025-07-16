@@ -41,7 +41,7 @@ const Client = () => {
     <section
       id="clients"
       aria-label="Trusted Clients Logos"
-      className="relative w-full mt-52"
+      className="relative w-full mt-52 z-10 "
     >
       <div className="max-w-screen-3xl mt-52 w-full mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-14 py-6 sm:py-8 md:py-10 flex flex-col gap-40">
         {Array.from({ length: maxLength }).map((_, idx) => (
@@ -56,7 +56,7 @@ const Client = () => {
                     ${i % 2 !== 0 ? "items-end" : ""}
                   `}
                   >
-                    <div className="w-[150px] xs:w-[200px] md:w-[250px]  lg:w-[336px]  aspect-[336/382] border border-primary flex items-center justify-center p-[10%] sm:p-14 z-10">
+                    <div className="w-[150px] xs:w-[200px] md:w-[250px]  lg:w-[336px]  aspect-[336/382] border border-primary flex items-center justify-center p-[10%] sm:p-14 ">
                       <Image
                         width={336}
                         height={382}
@@ -76,13 +76,13 @@ const Client = () => {
             {singleClients[idx] && (
               <div className="flex flex-col items-center mb-32 translate-y-32">
                 <div className="flex flex-col  w-[150px] xs:w-[200px] md:w-[250px]  lg:w-[336px] ">
-                  <div className="flex items-center justify-center  p-[10%] w-[150px] xs:w-[200px] md:w-[250px]  lg:w-[336px]  aspect-[336/382] z-20 border border-primary ">
+                  <div className="flex items-center justify-center  p-[10%] w-[150px] xs:w-[200px] md:w-[250px]  lg:w-[336px]  aspect-[336/382]  border border-primary ">
                     <Image
                       width={336}
                       height={382}
                       src={`/images/clientLogo/${singleClients[idx].name}.svg`}
                       alt={`${singleClients[idx].text} Logo`}
-                      className="max-h-full max-w-full object-contain"
+                      className="max-h-full max-w-full object-contain z-10"
                     />
                   </div>
                   <p className="p-base font-semibold text-primary mt-3 text-left">
