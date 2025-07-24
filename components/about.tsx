@@ -81,7 +81,7 @@ export default function About() {
   // Scroll progress for the about section
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start 0.5", "end 1"],
+    offset: ["start 0.5", "end 0.4"],
   });
 
   // Helper to animate each word's color based on scroll
