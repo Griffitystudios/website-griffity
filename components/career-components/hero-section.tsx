@@ -68,7 +68,7 @@ const HeroSectionCareers = () => {
                 href={
                   ["blogs", "careers"].includes(item.toLowerCase())
                     ? `/${item.toLowerCase()}`
-                    : `#${item.replace(/\s+/g, "-").toLowerCase()}`
+                    : `/#${item.replace(/\s+/g, "-").toLowerCase()}`
                 }
                 className={`transition-all duration-300 ease-out transform cursor-pointer md:p-base ml-12 hover:text-[#dba039]  
                 `}
