@@ -1,7 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import GriffityBg from "./bg-logo";
-import { indigo } from "@/fonts";
 
 // Format large numbers like 20000 to 20k
 const formatNumber = (num: number): string => {
@@ -31,7 +29,6 @@ const useInView = (
 
   return [ref, isVisible];
 };
-
 
 type DescType =
   | "of experience"
