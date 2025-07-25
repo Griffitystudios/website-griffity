@@ -1,34 +1,21 @@
 "use client";
+import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
+import React, { useEffect, useState } from "react";
+import { BiChevronDown } from "react-icons/bi";
+import { fortune } from "@/fonts";
+import Link from "next/link";
 
-import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-
-const Hero = () => {
+const HeroSectionCareers = () => {
   const navItems = [
     "about us",
     "services",
     "clients",
-    "contact us",
     "careers",
     "blogs",
+    "contact us",
   ];
-  const [visibleItems, setVisibleItems] = useState<number[]>([]);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const timeouts: NodeJS.Timeout[] = [];
-
-    navItems.forEach((_, index) => {
-      const timeout = setTimeout(() => {
-        setVisibleItems((prev) => [...prev, index]);
-      }, 3800 + index * 200);
-      timeouts.push(timeout);
-    });
-
-    return () => {
-      timeouts.forEach(clearTimeout);
-    };
-  }, []);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -37,15 +24,14 @@ const Hero = () => {
   return (
     <header className="relative h-screen w-full overflow-hidden">
       {/* Background video moved up by 20px */}
-      <video
-        className="absolute top-0 left-0 w-full h-full object-cover z-10 transform -translate-y-5"
-        src="/reelsmedia/bg.mp4"
-        autoPlay
-        loop
-        muted
-        playsInline
+      <Image
+        className="absolute top-0 left-0 w-full h-full object-cover z-10 transform -translate-y-5 "
+        src="/images/careers/gardens.png"
+        layout="fill"
+        objectFit="cover"
         title="Background video of Griffity brand elements"
         aria-hidden="true"
+        alt={""}
       />
 
       {/* Animated gradient overlay at bottom */}
@@ -60,26 +46,45 @@ const Hero = () => {
         }}
         className="pointer-events-none absolute bottom-0 left-0 w-full h-40 z-20 bg-gradient-to-t from-secondary to-transparent"
       /> */}
-      <div className="absolute bottom-0 left-0 right-0 h-80 z-10 bg-gradient-to-b to-body from-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-full z-10 bg-gradient-to-b to-body from-[#00000040]" />
 
       <div className="px-4 sm:px-6 md:px-8 lg:px-12 xl:px-14 py-6 sm:py-8 md:py-10 flex flex-col mx-auto h-full relative z-30">
-        <div className="flex justify-between items-center w-full">
-          <motion.img
-            initial={{ opacity: 0, x: -40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1, ease: "easeOut", delay: 3.8 }}
-            src="/logos/griffity.png"
-            alt="Griffity Studios logo"
-            className="w-6 sm:w-7 md:w-8 h-auto ml-5 z-30"
-          />
+        <div className="flex justify-between items-center w-full z-50 ">
+          <Link href={"/"}>
+            <motion.img
+              initial={{ opacity: 0, x: -40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1, ease: "easeOut" }}
+              src="/logos/griffity.png"
+              alt="Griffity Studios logo"
+              className="w-6 sm:w-7 md:w-8 h-auto z-30 ml-5"
+            />
+          </Link>
+          {/* Desktop Navigation Items - Hidden on mobile/tablet */}
+          <nav className="hidden xl:flex  flex-row gap-8 z-50 mr-10">
+            {navItems.map((item, index) => (
+              <a
+                key={index}
+                href={
+                  ["blogs", "careers"].includes(item.toLowerCase())
+                    ? `/${item.toLowerCase()}`
+                    : `#${item.replace(/\s+/g, "-").toLowerCase()}`
+                }
+                className={`transition-all duration-300 ease-out transform cursor-pointer md:p-base ml-12 hover:text-[#dba039]  
+                `}
+              >
+                {item}
+              </a>
+            ))}
+          </nav>
 
           {/* Burger Menu Button - Only visible on mobile/tablet */}
           <motion.button
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1, ease: "easeOut", delay: 3.8 }}
+            transition={{ duration: 1, ease: "easeOut" }}
             onClick={toggleMobileMenu}
-            className="lg:hidden z-50 relative w-8 h-8 flex flex-col justify-center items-center"
+            className="xl:hidden z-50 relative w-8 h-8 flex flex-col justify-center items-center"
             aria-label="Toggle menu"
           >
             <motion.span
@@ -108,43 +113,33 @@ const Hero = () => {
           </motion.button>
         </div>
 
-        <div className="flex items-center gap-10 h-full max-w-screen-3xl mx-auto">
-          <div className="z-30 flex-1">
-            <div className="flex flex-col items-start lg:translate-x-[-5%]">
-              <h1 className="text-2xl xs:text-3xl sm:text-6xl md:text-[4.2rem] xl:text-8xl 2xl:text-h2 font-medium leading-tight">
-                welcome to <span className="font-bold">griffity</span>
-              </h1>
-              <motion.p
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 4, ease: "easeOut" }}
-                className="text-sm sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-left sm:text-right self-start sm:self-end mt-2 sm:mt-4 font-extralight"
-              >
-                your brand's loudest whisper!
-              </motion.p>
-            </div>
+        <div className="flex items-center gap-5 h-full max-w-screen-3xl mx-auto">
+          <div className="flex flex-col items-center ">
+            <motion.p className="text-primary text-sm sm:text-base font-semibold tracking-wider uppercase mb-2 sm:mb-5">
+              [ CAREERS ]
+            </motion.p>
+            <h2 className="text-4xl sm:text-5xl md:text-[4rem] xl:text-7xl 2xl:text-8xl font-medium leading-tight">
+              one team.
+            </h2>
+            <h1
+              className={`text-8xl sm:text-9xl md:text-[9rem] xl:text-[180px] 2xl:text-[212px] font-medium text-primary ${fortune.className}`}
+            >
+              endless stories.
+            </h1>
+            <motion.p
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, ease: "easeOut" }}
+              className="text-sm sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl  font-extralight"
+            >
+              together, we create. together, we shine.
+            </motion.p>
           </div>
-
-          {/* Desktop Navigation Items - Hidden on mobile/tablet */}
-          <nav className="hidden lg:flex lg:translate-y-8 flex-col gap-8 z-50">
-            {navItems.map((item, index) => (
-              <a
-                key={index}
-                href={
-                  ["blogs", "careers"].includes(item.toLowerCase())
-                    ? `/${item.toLowerCase()}`
-                    : `#${item.replace(/\s+/g, "-").toLowerCase()}`
-                }
-                className={`transition-all duration-300 ease-out transform cursor-pointer text-base hover:text-[#dba039] hover:translate-x-2 hover:scale-110 ${
-                  visibleItems.includes(index)
-                    ? "opacity-100 translate-x-0"
-                    : "opacity-0 translate-x-10"
-                }`}
-              >
-                {item}
-              </a>
-            ))}
-          </nav>
+        </div>
+        <div className="flex flex-col items-center  text-white">
+          <div className="w-px h-16 bg-white mb-4 " />
+          <p className="text-lg">Scroll to explore</p>
+          <BiChevronDown className="w-6 h-6 mt-2 animate-bounce" />
         </div>
       </div>
 
@@ -209,4 +204,4 @@ const Hero = () => {
   );
 };
 
-export default Hero;
+export default HeroSectionCareers;
