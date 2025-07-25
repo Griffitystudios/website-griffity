@@ -154,7 +154,7 @@ const Clientnumber = () => {
     >
       {/* Heading */}
       <div
-        className={`lg:mb-16 mb-10 sm:left-[10%] xs:left-[5%] left-[10%] ${indigo.className} relative`}
+        className={`lg:mb-16 mb-10 sm:left-[10%] xs:left-[5%] left-[10%] relative`}
       >
         <h1
           className={`xl:text-7xl  text-[1.5rem] xs:text-3xl tracking-wider text-primary font-bold mb-2`}
