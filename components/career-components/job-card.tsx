@@ -65,12 +65,11 @@ export function JobCard({ job }: JobCardProps) {
             </ul>
           </div>
           {/* Using the custom Button component */}
-          <Button
-            asChild
-            className="w-full bg-amber-500 hover:bg-amber-600 text-body font-bold py-2 px-4 rounded"
-          >
-            <Link href={"#career-form"}>apply here</Link>
-          </Button>
+          <Link href={"#career-form"}>
+            <Button className="w-full bg-amber-500 hover:bg-amber-600 text-body font-bold py-2 px-4 mt-6 rounded">
+              apply here
+            </Button>
+          </Link>
         </CardContent>
       </Card>
     </motion.div>
