@@ -5,7 +5,7 @@ import { useRef } from "react";
 
 export function StorySection() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.7 });
+  const isInView = useInView(ref, { once: true, amount: 0.5 });
 
   const containerVariants = {
     hidden: { opacity: 0 },
