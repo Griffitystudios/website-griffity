@@ -47,7 +47,7 @@ export function StorySection() {
             className="text-primary text-sm sm:text-base font-semibold tracking-wider uppercase mb-2 sm:mb-5"
             variants={itemVariants}
           >
-            OUR STORY
+            [ OUR STORY ]
           </motion.p>
           <motion.h2
             className="text-white text-6xl xl:text-7xl font-bold leading-tight mb-2"
@@ -81,8 +81,8 @@ export function StorySection() {
           <Image
             src="/images/careers/gardens.png"
             alt="Group of team members collaborating at a table"
-            width={2500}
-            height={3000}
+            width={700}
+            height={1200}
             className="rounded-lg shadow-lg object-cover w-full h-auto"
           />
         </motion.div>
