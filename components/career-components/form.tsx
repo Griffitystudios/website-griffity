@@ -169,7 +169,8 @@ const JobForm = () => {
 
           <p className=" text-[1rem] font-light text-white mt-4">
             Accepted Formats:{" "}
-            <span className="text-primary">.pdf, .doc, .docx</span>
+            <span className="text-primary">.pdf, .doc, .docx. </span> Send mail
+            at hr@griffitystudios.com for any inqueries.
           </p>
         </div>
         <button
