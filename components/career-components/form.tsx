@@ -32,7 +32,7 @@ const JobForm = () => {
 
   return (
     <section
-      id="career"
+      id="career-form"
       className="relative max-w-screen-3xl mx-auto bg-cover mt-24 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-14 py-6 sm:py-8 md:py-10 bg-center bg-no-repeat join-us"
     >
       {/* <section
