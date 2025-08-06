@@ -13,14 +13,13 @@ interface PageProps {
   params: Promise<{ slug: string }>; // Update to type params as a Promise
 }
 
-
 interface MetadataProps {
   params: Promise<{ slug: string }>; // Update to type params as a Promise
 }
 
-export async function generateMetadata(
-  { params }: MetadataProps
-): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: MetadataProps): Promise<Metadata> {
   const { slug } = await params; // Await the params to resolve the Promise
   const article = await getArticleData(slug);
 
@@ -37,6 +36,9 @@ export async function generateMetadata(
     authors: [{ name: article.author }],
     creator: article.author,
     publisher: "Tech Blog",
+    alternates: {
+      canonical: `https://griffitystudios.com/blogs/${article.slug}`, // Fixed typo: added // before griffitystudios
+    },
     openGraph: {
       title: article.title,
       description: article.excerpt,
@@ -89,7 +91,7 @@ const ArticlePage = async ({ params }: PageProps) => {
     "@type": "BlogPosting",
     headline: article.title,
     description: article.excerpt,
-    image: article.imageUrl, 
+    image: article.imageUrl,
     url: `https:griffitystudios.com/blogs/${article.slug}`,
     datePublished: article.publishedAt,
     dateModified: article.publishedAt,
@@ -109,13 +111,16 @@ const ArticlePage = async ({ params }: PageProps) => {
     keywords: article.tags.join(", "),
     articleSection: article.category || "",
     wordCount: article.content.replace(/<[^>]+>/g, "").split(" ").length,
-  }
+  };
 
-  const currentUrl = `https:griffitystudios.com/blogs/${article.slug}`
+  const currentUrl = `https:griffitystudios.com/blogs/${article.slug}`;
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
 
       <div className="min-h-screen" style={{ backgroundColor: "#081c26" }}>
         {/* Header */}
@@ -134,7 +139,7 @@ const ArticlePage = async ({ params }: PageProps) => {
             <Breadcrumbs
               items={[
                 { label: "Blogs", href: "/blogs" },
-               
+
                 { label: article.title },
               ]}
             />
@@ -153,7 +158,9 @@ const ArticlePage = async ({ params }: PageProps) => {
                 <h1 className="font-cormorantGaramond text-4xl lg:text-5xl font-bold text-amber-100 mb-6 leading-tight">
                   {article.title}
                 </h1>
-                <p className="text-xl text-slate-300 font-poppins leading-relaxed mb-8">{article.excerpt}</p>
+                <p className="text-xl text-slate-300 font-poppins leading-relaxed mb-8">
+                  {article.excerpt}
+                </p>
               </div>
 
               {/* Article Meta */}
@@ -191,16 +198,19 @@ const ArticlePage = async ({ params }: PageProps) => {
 
               {/* Social Share */}
               <div className="mb-8">
-                <SocialShare url={currentUrl} title={article.title} description={article.excerpt} />
+                <SocialShare
+                  url={currentUrl}
+                  title={article.title}
+                  description={article.excerpt}
+                />
               </div>
             </header>
 
             {/* Article Content */}
-           <div
-  className="prose prose-invert prose-amber font-poppins max-w-none font-extralight"
-  dangerouslySetInnerHTML={{ __html: article.content }}
-/>
-
+            <div
+              className="prose prose-invert prose-amber font-poppins max-w-none font-extralight"
+              dangerouslySetInnerHTML={{ __html: article.content }}
+            />
 
             {/* Tags */}
             <div className="mt-12 pt-8 border-t border-slate-700/50">
@@ -222,11 +232,14 @@ const ArticlePage = async ({ params }: PageProps) => {
 
           {/* Related Articles */}
           {/* You may want to update RelatedArticles to use real articles */}
-          <RelatedArticles articles={allArticles} currentArticleId={article.id} />
+          <RelatedArticles
+            articles={allArticles}
+            currentArticleId={article.id}
+          />
         </main>
       </div>
     </>
-  )
-}
+  );
+};
 
 export default ArticlePage;
