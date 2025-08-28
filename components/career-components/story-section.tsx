@@ -75,17 +75,21 @@ export function StorySection() {
 
         {/* Right Column: Image */}
         <motion.div
-          className="flex flex-1 justify-center lg:ml-0 w-full sm:w-5/6 md:w-3/5 lg:w-full md:justify-end md:col-span-2"
-          variants={itemVariants}
-        >
-          <Image
-            src="/images/careers/gardens.png"
-            alt="Group of team members collaborating at a table"
-            width={700}
-            height={1200}
-            className="rounded-lg shadow-lg object-cover w-full h-auto"
-          />
-        </motion.div>
+  className="relative flex flex-1 justify-center lg:ml-0 w-full max-h-96 md:max-h-[500px] lg:max-h-full md:justify-end md:col-span-2"
+  variants={itemVariants}
+>
+  {/* Dark overlay */}
+  <div className="absolute inset-0 bg-[#081c26] bg-opacity-20 rounded-lg z-10" />
+
+  {/* Image */}
+  <Image
+    src="/images/careers/Life_at_griffity.jpg"
+    alt="Group of team members collaborating at a table"
+    width={700}
+    height={1200}
+    className="rounded-lg shadow-lg object-cover w-full h-auto z-0"
+  />
+</motion.div>
       </div>
     </motion.section>
   );
