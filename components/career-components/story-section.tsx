@@ -81,14 +81,14 @@ export function StorySection() {
   {/* Dark overlay */}
   <div className="absolute inset-0 bg-[#081c26] bg-opacity-20 rounded-lg z-10" />
 
-  {/* Image */}
   <Image
-    src="/images/careers/Life_at_griffity.jpg"
-    alt="Group of team members collaborating at a table"
-    width={700}
-    height={1200}
-    className="rounded-lg shadow-lg object-cover w-full h-auto z-0"
-  />
+  src="/images/careers/Life_at_griffity.jpg"
+  alt="Group of team members collaborating at a table"
+  width={700}
+  height={1200}
+  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+  className="rounded-lg shadow-lg object-cover w-full h-auto z-0"
+/>
 </motion.div>
       </div>
     </motion.section>
