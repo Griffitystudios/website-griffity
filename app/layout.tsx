@@ -4,6 +4,7 @@ import { poppins } from "@/fonts";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import MusicBackToTopButtons from "@/components/backToTopButtons";
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
@@ -78,7 +79,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       >
         <SpeedInsights />
         <Analytics />
-        <main>{children}</main>
+        <main>{children}
+          <MusicBackToTopButtons/>
+        </main>
       </body>
     </html>
   );
