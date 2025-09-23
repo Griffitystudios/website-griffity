@@ -9,6 +9,9 @@ import { BusinessOperationsSection } from "@/components/form-sections/business-o
 import { HostingTrafficSection } from "@/components/form-sections/hosting-traffic-section";
 import { OptionalFeaturesSection } from "@/components/form-sections/optional-features-section";
 import type { FormData } from "@/components/form-sections/form-type/form-type";
+import Navbar from "@/components/navbar";
+import { motion } from "framer-motion";
+import Link from "next/link";
 
 const sections = [
   {
@@ -49,6 +52,20 @@ const sections = [
 ];
 
 export default function QuestionnairePage() {
+  const navItems = [
+    "about us",
+    "services",
+    "clients",
+    "careers",
+    "blogs",
+    "contact us",
+  ];
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
   const [currentSection, setCurrentSection] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<{
@@ -250,136 +267,195 @@ export default function QuestionnairePage() {
   const progress = (currentSection / sections.length) * 100;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-body via-body-900 to-body relative overflow-hidden">
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/20 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-primary/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
-      </div>
+    <>
+      <div className="min-h-screen bg-gradient-to-br from-body via-body-900 to-body relative overflow-hidden">
+        <div className="flex justify-between items-center w-full z-50 ">
+          <Link href={"/"}>
+            <motion.img
+              initial={{ opacity: 0, x: -40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1, ease: "easeOut" }}
+              src="/logos/griffity.png"
+              alt="Griffity Studios logo"
+              className="w-6 sm:w-7 md:w-8 h-auto z-30 ml-5"
+            />
+          </Link>
+          {/* Desktop Navigation Items - Hidden on mobile/tablet */}
+          <nav className="hidden xl:flex  flex-row gap-8 z-50 mr-10">
+            {navItems.map((item, index) => (
+              <a
+                key={index}
+                href={
+                  ["blogs", "careers"].includes(item.toLowerCase())
+                    ? `/${item.toLowerCase()}`
+                    : `/#${item.replace(/\s+/g, "-").toLowerCase()}`
+                }
+                className={`transition-all duration-300 ease-out transform cursor-pointer md:p-base ml-12 hover:text-[#dba039]  
+                `}
+              >
+                {item}
+              </a>
+            ))}
+          </nav>
 
-      <div className="relative z-10 p-4 md:p-8">
-        <div className="mx-auto max-w-4xl">
-          <div className="mb-12 text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white">
-              Build Your Perfect{" "}
-              <span className="bg-gradient-to-r from-primary to-pink-400 bg-clip-text text-transparent">
-                Website
-              </span>
-            </h1>
-            <p className="text-lg text-slate-300 max-w-2xl mx-auto">
-              Help us understand your business needs to create a tailored
-              website solution that drives results
-            </p>
-          </div>
-
-          {/* Status Messages */}
-          {submitStatus.type && (
-            <div
-              className={`mb-6 p-4 rounded-xl border ${
-                submitStatus.type === "success"
-                  ? "bg-green-900/50 border-green-500/50 text-green-200"
-                  : "bg-red-900/50 border-red-500/50 text-red-200"
-              }`}
-            >
-              <div className="flex items-center gap-2">
-                <span className="text-lg">
-                  {submitStatus.type === "success" ? "✅" : "❌"}
+          {/* Burger Menu Button - Only visible on mobile/tablet */}
+          <motion.button
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+            onClick={toggleMobileMenu}
+            className="xl:hidden z-50 relative w-8 h-8 flex flex-col justify-center items-center"
+            aria-label="Toggle menu"
+          >
+            <motion.span
+              animate={{
+                rotate: isMobileMenuOpen ? 45 : 0,
+                y: isMobileMenuOpen ? 0 : -6,
+              }}
+              transition={{ duration: 0.3 }}
+              className="w-6 h-0.5 bg-white block absolute"
+            />
+            <motion.span
+              animate={{
+                opacity: isMobileMenuOpen ? 0 : 1,
+              }}
+              transition={{ duration: 0.3 }}
+              className="w-6 h-0.5 bg-white block absolute"
+            />
+            <motion.span
+              animate={{
+                rotate: isMobileMenuOpen ? -45 : 0,
+                y: isMobileMenuOpen ? 0 : 6,
+              }}
+              transition={{ duration: 0.3 }}
+              className="w-6 h-0.5 bg-white block absolute"
+            />
+          </motion.button>
+        </div>
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/20 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-primary/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        </div>
+        <div className="relative z-10 p-4 md:p-8">
+          <div className="mx-auto max-w-4xl">
+            <div className="mb-12 text-center">
+              <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white">
+                Build Your Perfect{" "}
+                <span className="bg-gradient-to-r from-primary to-pink-400 bg-clip-text text-transparent">
+                  Website
                 </span>
-                <p className="font-medium">{submitStatus.message}</p>
-              </div>
+              </h1>
+              <p className="text-lg text-slate-300 max-w-2xl mx-auto">
+                Help us understand your business needs to create a tailored
+                website solution that drives results
+              </p>
             </div>
-          )}
-
-          <div className="mb-8">
-            <div className="flex justify-between items-center mb-4">
-              <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-r from-primary to-pink-500 text-white text-sm font-bold shadow-lg">
-                  {currentSection}
-                </div>
-                <div>
-                  <span className="text-sm font-semibold text-white">
-                    Step {currentSection} of {sections.length}
+            {/* Status Messages */}
+            {submitStatus.type && (
+              <div
+                className={`mb-6 p-4 rounded-xl border ${
+                  submitStatus.type === "success"
+                    ? "bg-green-900/50 border-green-500/50 text-green-200"
+                    : "bg-red-900/50 border-red-500/50 text-red-200"
+                }`}
+              >
+                <div className="flex items-center gap-2">
+                  <span className="text-lg">
+                    {submitStatus.type === "success" ? "✅" : "❌"}
                   </span>
-                  <p className="text-xs text-slate-400">
-                    {sections[currentSection - 1].title}
-                  </p>
+                  <p className="font-medium">{submitStatus.message}</p>
                 </div>
               </div>
-              <span className="text-sm font-medium text-primary bg-primary/20 px-3 py-1 rounded-full border border-primary/30">
-                {Math.round(progress)}% Complete
-              </span>
-            </div>
-            <div className="relative">
-              <div className="w-full bg-slate-700/50 rounded-full h-3 backdrop-blur-sm">
-                <div
-                  className="bg-gradient-to-r from-primary to-pink-500 h-3 rounded-full transition-all duration-500 ease-out shadow-lg shadow-primary/30"
-                  style={{ width: `${progress}%` }}
-                ></div>
-              </div>
-            </div>
-          </div>
-
-          <div className="relative mb-8">
-            <div className="absolute inset-0 bg-gradient-to-r from-primary/50 to-pink-500/50 rounded-2xl blur-sm"></div>
-            <div className="relative bg-slate-800/90 backdrop-blur-xl border border-slate-700/50 rounded-2xl shadow-2xl hover:shadow-primary/20 transition-all duration-300">
-              <div className="p-6 border-b border-slate-700/50">
+            )}
+            <div className="mb-8">
+              <div className="flex justify-between items-center mb-4">
                 <div className="flex items-center gap-3">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-r from-primary to-pink-500 text-white font-bold shadow-lg">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-r from-primary to-pink-500 text-white text-sm font-bold shadow-lg">
                     {currentSection}
                   </div>
                   <div>
-                    <h2 className="text-2xl font-bold text-white">
+                    <span className="text-sm font-semibold text-white">
+                      Step {currentSection} of {sections.length}
+                    </span>
+                    <p className="text-xs text-slate-400">
                       {sections[currentSection - 1].title}
-                    </h2>
-                    <p className="text-slate-400 text-base mt-1">
-                      {sections[currentSection - 1].description}
                     </p>
                   </div>
                 </div>
+                <span className="text-sm font-medium text-primary bg-primary/20 px-3 py-1 rounded-full border border-primary/30">
+                  {Math.round(progress)}% Complete
+                </span>
               </div>
-              <div className="p-6">{renderCurrentSection()}</div>
+              <div className="relative">
+                <div className="w-full bg-slate-700/50 rounded-full h-3 backdrop-blur-sm">
+                  <div
+                    className="bg-gradient-to-r from-primary to-pink-500 h-3 rounded-full transition-all duration-500 ease-out shadow-lg shadow-primary/30"
+                    style={{ width: `${progress}%` }}
+                  ></div>
+                </div>
+              </div>
             </div>
-          </div>
-
-          <div className="flex justify-between items-center">
-            <button
-              onClick={handlePrevious}
-              disabled={currentSection === 1}
-              className="flex items-center gap-2 px-6 py-3 rounded-xl border-2 border-slate-600 bg-slate-800/50 text-white hover:border-primary/50 hover:bg-slate-700/50 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 backdrop-blur-sm"
-            >
-              <span className="text-sm">←</span>
-              Previous
-            </button>
-
-            {currentSection === sections.length ? (
+            <div className="relative mb-8">
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/50 to-pink-500/50 rounded-2xl blur-sm"></div>
+              <div className="relative bg-slate-800/90 backdrop-blur-xl border border-slate-700/50 rounded-2xl shadow-2xl hover:shadow-primary/20 transition-all duration-300">
+                <div className="p-6 border-b border-slate-700/50">
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-r from-primary to-pink-500 text-white font-bold shadow-lg">
+                      {currentSection}
+                    </div>
+                    <div>
+                      <h2 className="text-2xl font-bold text-white">
+                        {sections[currentSection - 1].title}
+                      </h2>
+                      <p className="text-slate-400 text-base mt-1">
+                        {sections[currentSection - 1].description}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="p-6">{renderCurrentSection()}</div>
+              </div>
+            </div>
+            <div className="flex justify-between items-center">
               <button
-                onClick={handleSubmit}
-                disabled={isSubmitting}
-                className="flex items-center gap-2 px-8 py-3 rounded-xl bg-gradient-to-r from-primary to-pink-500 hover:from-primary hover:to-pink-600 text-white font-semibold shadow-lg hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                onClick={handlePrevious}
+                disabled={currentSection === 1}
+                className="flex items-center gap-2 px-6 py-3 rounded-xl border-2 border-slate-600 bg-slate-800/50 text-white hover:border-primary/50 hover:bg-slate-700/50 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 backdrop-blur-sm"
               >
-                {isSubmitting ? (
-                  <>
-                    <div className="animate-spin rounded-full h-4 w-4 border-2 border-white border-t-transparent"></div>
-                    Submitting...
-                  </>
-                ) : (
-                  <>
-                    <span className="text-sm">📤</span>
-                    Submit Questionnaire
-                  </>
-                )}
+                <span className="text-sm">←</span>
+                Previous
               </button>
-            ) : (
-              <button
-                onClick={handleNext}
-                className="flex items-center gap-2 px-8 py-3 rounded-xl bg-gradient-to-r from-primary to-pink-500 hover:from-primary hover:to-pink-600 text-white font-semibold shadow-lg hover:shadow-xl hover:shadow-primary/30 transition-all duration-300"
-              >
-                Next Step
-                <span className="text-sm">→</span>
-              </button>
-            )}
+              {currentSection === sections.length ? (
+                <button
+                  onClick={handleSubmit}
+                  disabled={isSubmitting}
+                  className="flex items-center gap-2 px-8 py-3 rounded-xl bg-gradient-to-r from-primary to-pink-500 hover:from-primary hover:to-pink-600 text-white font-semibold shadow-lg hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {isSubmitting ? (
+                    <>
+                      <div className="animate-spin rounded-full h-4 w-4 border-2 border-white border-t-transparent"></div>
+                      Submitting...
+                    </>
+                  ) : (
+                    <>
+                      <span className="text-sm">📤</span>
+                      Submit Questionnaire
+                    </>
+                  )}
+                </button>
+              ) : (
+                <button
+                  onClick={handleNext}
+                  className="flex items-center gap-2 px-8 py-3 rounded-xl bg-gradient-to-r from-primary to-pink-500 hover:from-primary hover:to-pink-600 text-white font-semibold shadow-lg hover:shadow-xl hover:shadow-primary/30 transition-all duration-300"
+                >
+                  Next Step
+                  <span className="text-sm">→</span>
+                </button>
+              )}
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
