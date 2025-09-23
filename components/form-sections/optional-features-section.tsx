@@ -21,11 +21,11 @@ export function OptionalFeaturesSection({
       label:
         "Do you need multilingual support (e.g., English + local language)?",
     },
-    {
-      key: "wantSocialMediaIntegration",
-      label:
-        "Do you want social media integration (Facebook, Instagram shop, etc.)?",
-    },
+    // {
+    //   key: "wantSocialMediaIntegration",
+    //   label:
+    //     "Do you want social media integration (Facebook, Instagram shop, etc.)?",
+    // },
   ];
 
   return (

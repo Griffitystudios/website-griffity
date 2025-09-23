@@ -9,9 +9,9 @@ import { BusinessOperationsSection } from "@/components/form-sections/business-o
 import { HostingTrafficSection } from "@/components/form-sections/hosting-traffic-section";
 import { OptionalFeaturesSection } from "@/components/form-sections/optional-features-section";
 import type { FormData } from "@/components/form-sections/form-type/form-type";
-import Navbar from "@/components/navbar";
-import { motion } from "framer-motion";
 import Link from "next/link";
+import { useRouter } from "next/navigation"; // <-- Add this import
+import { motion } from "framer-motion";
 
 const sections = [
   {
@@ -68,6 +68,7 @@ export default function QuestionnairePage() {
 
   const [currentSection, setCurrentSection] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const router = useRouter();
   const [submitStatus, setSubmitStatus] = useState<{
     type: "success" | "error" | null;
     message: string;
@@ -153,6 +154,10 @@ export default function QuestionnairePage() {
           message:
             "Thank you! Your questionnaire has been submitted successfully. We'll get back to you soon!",
         });
+
+        setTimeout(() => {
+          router.push("/");
+        }, 3000);
 
         // Optional: Reset form after successful submission
         setTimeout(() => {
