@@ -365,8 +365,19 @@ export default function QuestionnairePage() {
                   </span>
                   <p className="font-medium">{submitStatus.message}</p>
                 </div>
+                {submitStatus.type === "success" && (
+                  <div className="mt-4 flex justify-end">
+                    <Link
+                      href="/"
+                      className="inline-flex items-center gap-2 px-5 py-2 rounded-lg bg-primary text-white font-semibold hover:bg-primary/90 transition"
+                    >
+                      <span>🏠</span> Go Home
+                    </Link>
+                  </div>
+                )}
               </div>
             )}
+
             <div className="mb-8">
               <div className="flex justify-between items-center mb-4">
                 <div className="flex items-center gap-3">
