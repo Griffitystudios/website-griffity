@@ -1,12 +1,10 @@
-import type { Metadata } from "next"
-import { HiBookOpen, HiHome, HiTrendingUp, HiUsers } from "react-icons/hi"
-
+import type { Metadata } from "next";
+import { HiBookOpen, HiHome, HiTrendingUp, HiUsers } from "react-icons/hi";
 
 import ArticleItemList from "@/components/article-item-list";
 import type { ArticleItem, BlogCategory } from "@/types";
 import { getSortedArticles } from "@/lib/articles";
 import Link from "next/link";
-
 
 // Group articles by category
 function getCategories(articles: ArticleItem[]): BlogCategory[] {
@@ -19,17 +17,32 @@ function getCategories(articles: ArticleItem[]): BlogCategory[] {
       });
     }
   });
-  return Object.entries(categoryMap).map(([name, articles]) => ({ name, articles }));
+  return Object.entries(categoryMap).map(([name, articles]) => ({
+    name,
+    articles,
+  }));
 }
 
 export const metadata: Metadata = {
   title: "Blog | Tech Insights & Tutorials",
   description:
     "Discover the latest insights, tutorials, and best practices in web development, programming, and technology. Stay updated with expert articles on React, Next.js, TypeScript, and more.",
-  keywords: ["blog", "web development", "programming", "React", "Next.js", "TypeScript", "tutorials", "tech insights"],
+  keywords: [
+    "blog",
+    "web development",
+    "programming",
+    "React",
+    "Next.js",
+    "TypeScript",
+    "tutorials",
+    "tech insights",
+  ],
   authors: [{ name: "Tech Blog Team" }],
   creator: "Tech Blog",
   publisher: "Tech Blog",
+  alternates: {
+    canonical: "https://griffitystudios.com/blogs",
+  },
   openGraph: {
     title: "Blog | Tech Insights & Tutorials",
     description:
@@ -65,8 +78,7 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-}
-
+};
 
 export default function BlogPage() {
   const articles = getSortedArticles();
@@ -99,23 +111,26 @@ export default function BlogPage() {
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
 
       <div className="min-h-screen" style={{ backgroundColor: "#081c26" }}>
-        
         {/* Hero Section */}
         <header className="relative py-20 lg:py-32">
           <div className="absolute inset-0 bg-gradient-to-br from-amber-700/10 to-transparent" />
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center space-y-6">
               <h1 className="font-cormorantGaramond text-5xl lg:text-7xl font-bold text-amber-100">
-                 Insights & Tutorials
+                Insights & Tutorials
               </h1>
               <p className="font-poppins text-xl lg:text-2xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-                Discover the latest insights, tutorials, and best practices in web development, programming, and
-                technology from industry experts.
+                Discover the latest insights, tutorials, and best practices in
+                web development, programming, and technology from industry
+                experts.
               </p>
- {/* Home Button */}
+              {/* Home Button */}
               <div className="pt-4">
                 <Link
                   href="/"
@@ -130,15 +145,21 @@ export default function BlogPage() {
               <div className="flex flex-wrap justify-center gap-8 pt-8">
                 <div className="flex items-center gap-2 text-amber-300">
                   <HiBookOpen className="w-5 h-5" />
-                  <span className="font-poppins font-medium">{articles.length}+ Articles</span>
+                  <span className="font-poppins font-medium">
+                    {articles.length}+ Articles
+                  </span>
                 </div>
                 <div className="flex items-center gap-2 text-amber-300">
                   <HiUsers className="w-5 h-5" />
-                  <span className="font-poppins font-medium">Expert Authors</span>
+                  <span className="font-poppins font-medium">
+                    Expert Authors
+                  </span>
                 </div>
                 <div className="flex items-center gap-2 text-amber-300">
                   <HiTrendingUp className="w-5 h-5" />
-                  <span className="font-poppins font-medium">Weekly Updates</span>
+                  <span className="font-poppins font-medium">
+                    Weekly Updates
+                  </span>
                 </div>
               </div>
             </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import {
   FaFacebookF,
   FaInstagram,
@@ -12,17 +12,15 @@ import {
 } from "react-icons/fa6";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from 'next/link';
+import { FaVolumeMute, FaVolumeUp } from "react-icons/fa";
 
 const Footer = () => {
-  const [showBackToTop, setShowBackToTop] = useState(false);
+  
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setShowBackToTop(window.scrollY > window.innerHeight * 0.9);
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+
+ 
+
+
 
   return (
     <footer
@@ -30,32 +28,6 @@ const Footer = () => {
       className="relative w-full max-w-screen-3xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-14 mt-16 text-white"
       aria-label="Footer with contact information and social links"
     >
-      {/* Back to Top Button */}
-      <AnimatePresence>
-        {showBackToTop && (
-          <motion.button
-            key="backtotop"
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="fixed bottom-8 right-6 bg-slate-800 text-white p-4 rounded-full shadow-lg z-10"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 30 }}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-            aria-label="Back to top"
-          >
-            <svg width="20" height="20" fill="none" viewBox="0 0 20 20">
-              <path
-                d="M10 15V5M10 5L5 10M10 5l5 5"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </motion.button>
-        )}
-      </AnimatePresence>
 
       {/* Main Footer Content */}
       <div className="flex flex-col lg:flex-row items-center justify-between gap-10">

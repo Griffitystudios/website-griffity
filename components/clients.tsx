@@ -13,12 +13,15 @@ const Client = () => {
     { name: "hult", text: "HULT PRIZE" },
     { name: "cafe", text: "CAFE BOH" },
     { name: "maha", text: "MAHAK MAHA" },
+    { name: "gurukul", text: "GURUKUL ACADEMY" },
+    { name: "opera", text: "OPERA ENGINEERING CONSULTANCY" },
   ];
 
   const singleClients = [
     { name: "nepal", text: "OFFICE OF PRIME MINISTER & COUNCIL OF MINISTERS" },
     { name: "ntc", text: "NEPAL TELECOM" },
     { name: "acem", text: "ADVANCED COLLEGE OF ENGINEERING & MANAGEMENT" },
+    { name: "rjn", text: "REMOTE JOB NEPAL" },
   ];
 
   interface PairedClient {

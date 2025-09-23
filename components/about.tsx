@@ -81,7 +81,7 @@ export default function About() {
   // Scroll progress for the about section
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start 0.5", "end 1"],
+    offset: ["start 0.5", "end 0.4"],
   });
 
   // Helper to animate each word's color based on scroll
@@ -118,7 +118,7 @@ export default function About() {
     const color = useTransform(
       scrollYProgress,
       [start, end],
-      isHighlighted ? ["#163746", "#ffffff"] : ["#163746", "#b9bec9"]
+      isHighlighted ? ["#051016", "#ffffff"] : ["#051016", "#b9bec9"]
     );
 
     // On-scroll glow effect for highlighted words

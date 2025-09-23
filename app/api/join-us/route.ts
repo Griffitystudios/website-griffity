@@ -6,6 +6,7 @@ export async function POST(req: NextRequest) {
 
   // Fields from the form
   const name = data.get("name") || data.get("fullName");
+  const position = data.get("position");
   const email = data.get("email");
   const message = data.get("message") || data.get("coverLetter");
   const contact = data.get("contact");
@@ -41,7 +42,7 @@ export async function POST(req: NextRequest) {
   const isJoinUs = !!contact || !!cvFile;
 
   const subject = isJoinUs
-    ? `New Join Us Submission from ${name}`
+    ? `New Application Submission from ${name} for position ${position}`
     : `New Contact Message from ${name}`;
 
   const text = isJoinUs
@@ -72,6 +73,9 @@ ${message}
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error("Error sending email:", error);
-    return NextResponse.json({ success: false, error: "Failed to send email" }, { status: 500 });
+    return NextResponse.json(
+      { success: false, error: "Failed to send email" },
+      { status: 500 }
+    );
   }
 }

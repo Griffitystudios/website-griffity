@@ -15,7 +15,7 @@ module.exports = {
       },
       colors: {
         primary: "#DBA039",
-        body: "#081C26",
+        body: "#051016",
         white: "#FFFFFF",
         muted: "#e6e6e6",
       },
@@ -31,4 +31,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require('@tailwindcss/typography')]};
+  plugins: [require("@tailwindcss/typography")],
+};

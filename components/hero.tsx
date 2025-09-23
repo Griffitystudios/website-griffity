@@ -4,7 +4,14 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const Hero = () => {
-  const navItems = ["about us", "services", "clients", "contact us", "blogs"];
+  const navItems = [
+    "about us",
+    "services",
+    "clients",
+    "contact us",
+    "careers",
+    "blogs",
+  ];
   const [visibleItems, setVisibleItems] = useState<number[]>([]);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -123,7 +130,11 @@ const Hero = () => {
             {navItems.map((item, index) => (
               <a
                 key={index}
-                href={item.toLowerCase() === "blogs" ? "/blogs" : `#${item.replace(/\s+/g, "-").toLowerCase()}`}
+                href={
+                  ["blogs", "careers"].includes(item.toLowerCase())
+                    ? `/${item.toLowerCase()}`
+                    : `#${item.replace(/\s+/g, "-").toLowerCase()}`
+                }
                 className={`transition-all duration-300 ease-out transform cursor-pointer text-base hover:text-[#dba039] hover:translate-x-2 hover:scale-110 ${
                   visibleItems.includes(index)
                     ? "opacity-100 translate-x-0"
@@ -165,7 +176,11 @@ const Hero = () => {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.3, delay: index * 0.1 }}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  href={item.toLowerCase() === "blogs" ? "/blogs" : `#${item.replace(/\s+/g, "-").toLowerCase()}`}
+                  href={
+                    item.toLowerCase() === "blogs"
+                      ? "/blogs"
+                      : `#${item.replace(/\s+/g, "-").toLowerCase()}`
+                  }
                   aria-label={item}
                   className="text-2xl sm:text-3xl font-light cursor-pointer hover:text-[#dba039] transition-colors duration-300 text-center"
                 >
