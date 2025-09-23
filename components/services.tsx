@@ -1,6 +1,6 @@
 "use client";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 
 const Services = () => {
   const containerRef = useRef(null);
