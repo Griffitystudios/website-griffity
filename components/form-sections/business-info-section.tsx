@@ -25,7 +25,7 @@ export function BusinessInfoSection({
           htmlFor="businessName"
           className="block text-sm font-medium text-slate-200"
         >
-          Business Name
+          Business Name <span className="text-red-500"> * required</span>
         </label>
         <input
           id="businessName"
@@ -42,7 +42,7 @@ export function BusinessInfoSection({
           htmlFor="businessDescription"
           className="block text-sm font-medium text-slate-200"
         >
-          Business Description
+          Business Description<span className="text-red-500"> * required</span>
         </label>
         <textarea
           id="businessDescription"

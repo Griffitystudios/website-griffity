@@ -453,10 +453,7 @@ export default function QuestionnairePage() {
                       Submitting...
                     </>
                   ) : (
-                    <>
-                      <span className="text-sm">📤</span>
-                      Submit Questionnaire
-                    </>
+                    <>Submit Questionnaire</>
                   )}
                 </button>
               ) : (
