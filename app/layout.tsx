@@ -72,6 +72,22 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           name="google-site-verification"
           content="2GQTx5-n9JcIS0caqD2mItbou8HvUryLzFeRe8Fj9kM"
         />
+
+        {/* Schema Markup */}
+        <script type="application/ld+json">
+          {`{
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Griffity Studios",
+            "url": "https://griffitystudios.com",
+            "logo": "https://griffitystudios.com/logos/logo.png",
+            "sameAs": [
+              "https://www.facebook.com/griffitystudios",
+              "https://www.instagram.com/griffitystudios",
+              "https://www.linkedin.com/company/griffitystudios"
+            ]
+          }`}
+        </script>
       </head>
 
       <body
@@ -79,8 +95,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       >
         <SpeedInsights />
         <Analytics />
-        <main>{children}
-          <MusicBackToTopButtons/>
+        <main>
+          {children}
+          <MusicBackToTopButtons />
         </main>
       </body>
     </html>
