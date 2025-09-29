@@ -5,6 +5,7 @@ description: "Discover how Griffity Studios built the brand identities of AITC I
 tags: ["Griffity Studios", "best IT company in Nepal", "best marketing company in Nepal", "AITC International", "Veda Studios"]
 author: "Griffity Studios"
 date: 25-09-2025
+imageUrl: "/images/blogs/Griffity-Studios-Built-Powerful-Brand-Identities.png"
 slug: "Griffity-Studios-Built-Powerful-Brand-Identities"
 ---
 
