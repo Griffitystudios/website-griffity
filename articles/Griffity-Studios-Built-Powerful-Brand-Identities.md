@@ -57,9 +57,5 @@ The success of **AITC International** and **Veda Studios** proves one thing: a s
 
 If you want to transform your brand, scale your digital presence, and stand out in Nepal’s competitive market, Griffity is the partner you need.  
 
-👉 **[Book your free 30-minute consultation with Griffity Studios today](https://griffitystudios.com/contact)** and let us create the brand identity your business deserves.  
+ **[Book your free 30-minute consultation with Griffity Studios today](https://griffitystudios.com/contact)** and let us create the brand identity your business deserves.  
 
----
-
-## Meta Description (SEO)  
-*Discover how Griffity Studios built the brand identities of AITC International and Veda Studios. The best marketing company in Nepal. The best IT company in Nepal.*
