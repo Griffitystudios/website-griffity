@@ -1,6 +1,6 @@
-import { remark } from "remark";
+import {remark} from "remark";
 import html from "remark-html";
-export async function getArticleData(slug: string): Promise<(ArticleItem & { content: string; category?: string; slug?: string }) | null> {
+export async function getArticleData(slug: string): Promise<(ArticleItem & {content: string; category?: string; slug?: string}) | null> {
   const fileNames = fs.readdirSync(articlesDirectory);
   const fileName = fileNames.find((f) => f.replace(/\.md$/, "") === slug || f.includes(slug));
   if (!fileName) return null;
@@ -33,7 +33,8 @@ export async function getArticleData(slug: string): Promise<(ArticleItem & { con
   // category and slug from frontmatter if present
   const category = matterResult.data.category || "";
   const slugField = matterResult.data.slug || id;
-
+  //description
+  const description = matterResult.data.description;
   // Parse markdown to HTML
   const processedContent = await remark().use(html).process(contentMd);
   const content = processedContent.toString();
@@ -43,6 +44,7 @@ export async function getArticleData(slug: string): Promise<(ArticleItem & { con
     title: matterResult.data.title || id,
     excerpt,
     publishedAt,
+    description,
     author,
     readTime,
     tags,
@@ -57,7 +59,7 @@ import matter from "gray-matter"
 import path from "path"
 
 
-import type { ArticleItem } from "@/types"
+import type {ArticleItem} from "@/types"
 
 const articlesDirectory = path.join(process.cwd(), "articles")
 

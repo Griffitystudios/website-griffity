@@ -2,6 +2,7 @@ export interface ArticleItem {
   id: string
   title: string
   excerpt: string
+  description?: string
   publishedAt: string
   author: string
   readTime: number

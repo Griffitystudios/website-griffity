@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { motion, AnimatePresence } from "framer-motion";
 import { FaVolumeMute, FaVolumeUp } from "react-icons/fa";
@@ -22,9 +22,9 @@ const MusicBackToTopButtons = () => {
   // show on scroll (plain window.scroll listener — avoids useScroll)
   useEffect(() => {
     const onScroll = () => setShow(window.scrollY > 100);
-    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
-    return () => window.removeEventListener('scroll', onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   // prime audio muted (optional improvement; safe-guarded)
@@ -59,29 +59,36 @@ const MusicBackToTopButtons = () => {
       if (!audio) return;
 
       try {
-        audio.muted = false;   // unmute
+        audio.muted = false; // unmute
         setIsMuted(false);
         const playPromise = audio.play();
         if (playPromise && typeof playPromise.then === "function") {
-          playPromise.catch(err => {
-            // If play is blocked, log for debugging only.
-            // Don't spam the console in production.
-            console.warn("Audio play blocked after interaction:", err);
-          });
+          playPromise.catch((err) => {});
         }
       } catch (err) {
         console.warn("Error starting audio after interaction:", err);
       }
     };
 
-    const events: Array<keyof WindowEventMap> = ['pointerdown', 'click', 'touchstart'];
+    const events: Array<keyof WindowEventMap> = [
+      "pointerdown",
+      "click",
+      "touchstart",
+    ];
     for (const ev of events) {
-      window.addEventListener(ev, handleFirstInteraction as EventListener, { once: true, capture: true });
+      window.addEventListener(ev, handleFirstInteraction as EventListener, {
+        once: true,
+        capture: true,
+      });
     }
 
     return () => {
       for (const ev of events) {
-        window.removeEventListener(ev, handleFirstInteraction as EventListener, { capture: true } as EventListenerOptions);
+        window.removeEventListener(
+          ev,
+          handleFirstInteraction as EventListener,
+          { capture: true } as EventListenerOptions
+        );
       }
     };
   }, [isClient, isHome]);
@@ -127,7 +134,7 @@ const MusicBackToTopButtons = () => {
     if (isHome && !hasUserInteracted) {
       setHasUserInteracted(true);
     }
-    setIsMuted(v => !v);
+    setIsMuted((v) => !v);
   };
 
   return (
@@ -152,8 +159,12 @@ const MusicBackToTopButtons = () => {
               exit={{ opacity: 0, x: 30 }}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
-              aria-label={isMuted ? "Unmute background music" : "Mute background music"}
-              title={isMuted ? "Unmute background music" : "Mute background music"}
+              aria-label={
+                isMuted ? "Unmute background music" : "Mute background music"
+              }
+              title={
+                isMuted ? "Unmute background music" : "Mute background music"
+              }
             >
               {isMuted ? <FaVolumeMute size={20} /> : <FaVolumeUp size={20} />}
             </motion.button>
@@ -170,7 +181,13 @@ const MusicBackToTopButtons = () => {
               title="Back to top"
             >
               <svg width="20" height="20" fill="none" viewBox="0 0 20 20">
-                <path d="M10 15V5M10 5L5 10M10 5l5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                <path
+                  d="M10 15V5M10 5L5 10M10 5l5 5"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
               </svg>
             </motion.button>
           </div>

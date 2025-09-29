@@ -31,7 +31,7 @@ export async function generateMetadata({
 
   return {
     title: `${article.title} | Tech Blog`,
-    description: article.excerpt,
+    description: article.description,
     keywords: article.tags.join(", "),
     authors: [{ name: article.author }],
     creator: article.author,
@@ -83,7 +83,6 @@ const ArticlePage = async ({ params }: PageProps) => {
   const article = await getArticleData(slug);
   const allArticles = getSortedArticles();
 
-  console.log("Article Data:", article); // Debugging log
   if (!article) {
     notFound();
   }
@@ -160,7 +159,7 @@ const ArticlePage = async ({ params }: PageProps) => {
                   {article.title}
                 </h1>
                 <p className="text-xl text-slate-300 font-poppins leading-relaxed mb-8">
-                  {article.excerpt}
+                  {article.description}
                 </p>
               </div>
 
