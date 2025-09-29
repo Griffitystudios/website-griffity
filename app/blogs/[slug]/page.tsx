@@ -83,6 +83,7 @@ const ArticlePage = async ({ params }: PageProps) => {
   const article = await getArticleData(slug);
   const allArticles = getSortedArticles();
 
+  console.log("Article Data:", article); // Debugging log
   if (!article) {
     notFound();
   }
@@ -127,14 +128,14 @@ const ArticlePage = async ({ params }: PageProps) => {
         <header className="border-b border-slate-700/50">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
             {/* <div className="flex items-center justify-between mb-4">
-              <Link
-                href="/blog"
-                className="flex items-center gap-2 text-slate-400 hover:text-amber-300 transition-colors font-poppins"
-              >
-                <FaArrowLeft className="w-4 h-4" />
-                Back to Blog
-              </Link>
-            </div> */}
+                <Link
+                  href="/blog"
+                  className="flex items-center gap-2 text-slate-400 hover:text-amber-300 transition-colors font-poppins"
+                >
+                  <FaArrowLeft className="w-4 h-4" />
+                  Back to Blog
+                </Link>
+              </div> */}
 
             <Breadcrumbs
               items={[
