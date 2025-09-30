@@ -12,7 +12,7 @@ tags:
   ]
 author: "Griffity Studios"
 date: "09-30-2025"
-imageUrl: "/images/blogs/Griffity-Studios-Outdoor-Advertising-Nepal.png"
+imageUrl: "/images/blogs/Outdoor-Advertising-in-Nepal-Griffity-Studios.png"
 slug: "Outdoor-Advertising-in-Nepal-Costs-Locations-ROI"
 ---
 
