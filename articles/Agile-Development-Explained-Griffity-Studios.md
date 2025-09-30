@@ -14,7 +14,7 @@ tags:
   ]
 author: "Griffity Studios"
 date: "30-09-2025"
-imageUrl: "/images/blogs/agile-development-explained-faster-project-delivery.png"
+imageUrl: "/images/blogs/Agile-Development-Explained-Griffity-Studios.png"
 slug: "agile-development-explained-faster-project-delivery"
 ---
 
@@ -114,4 +114,5 @@ Stop letting slow development cycles hold your business back. It's time to embra
     A **Minimum Viable Product (MVP)** is the most streamlined version of your software that can be released to solve a core problem for your initial users. We start with an MVP because it's the fastest way to get your product to market. This strategy allows you to:
     - **Launch Sooner:** Start generating user feedback and potential revenue quickly.
     - **Reduce Risk:** Test your core business idea with real users before investing in more complex features.
+
     - **Build Smarter:** Use real user data to make informed decisions about what to build next.
