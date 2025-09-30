@@ -1,6 +1,19 @@
 ---
-title: "Outdoor Advertising in Nepal: Costs, Locations, and ROI Breakdown | Griffity Studios"
+title: "Outdoor Advertising in Nepal: Costs, Locations, and ROI Breakdown"
+category: "Outdoor Marketing"
 description: "Discover the real costs, ROI, and best locations for outdoor advertising in Nepal. Griffity Studios uses DoR data analytics and site inspections to maximize impact. The best marketing company in Nepal."
+tags:
+  [
+    "Griffity Studios",
+    "best marketing company in Nepal",
+    "outdoor advertising Nepal",
+    "hoarding boards Nepal",
+    "billboard advertising Nepal",
+  ]
+author: "Griffity Studios"
+date: "01-10-2025"
+imageUrl: "/images/blogs/Griffity-Studios-Outdoor-Advertising-Nepal.png"
+slug: "Outdoor-Advertising-in-Nepal-Costs-Locations-ROI"
 ---
 
 # Outdoor Advertising in Nepal: Costs, Locations, and ROI Breakdown  
