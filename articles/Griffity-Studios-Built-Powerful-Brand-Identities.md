@@ -11,7 +11,7 @@ tags:
     "Veda Studios",
   ]
 author: "Griffity Studios"
-date: "25-09-2025"
+date: "2025-09-25"
 imageUrl: "/images/blogs/Griffity-Studios-Built-Powerful-Brand-Identities.png"
 slug: "Griffity-Studios-Built-Powerful-Brand-Identities"
 ---

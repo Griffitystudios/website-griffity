@@ -1,7 +1,7 @@
 ---
 title: "Why Branding Matters"
 category: "Branding"
-date: "25-06-2025"
+date: "2025-06-05"
 author: "Griffity Studios"
 tags: ["branding", "identity", "business", "marketing", "brand strategy"]
 imageUrl: "/images/blogs/branding-thumb.jpg"

@@ -1,7 +1,7 @@
 ---
 title: "What Is UI Design?"
 category: "Design"
-date: "01-07-2025"
+date: "2025-07-01"
 author: "Griffity Studios"
 tags: ["UI", "design", "user interface", "usability", "ux"]
 imageUrl: "/images/blogs/ui-design-thumb.jpg"
