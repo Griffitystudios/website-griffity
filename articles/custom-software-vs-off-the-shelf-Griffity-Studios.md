@@ -34,7 +34,7 @@ Off-the-shelf software refers to **ready-made applications** available for mass 
 - **Quick to implement** – No waiting time for development.  
 - **Widely supported** – Large user communities and tutorials.  
 
-✅ Best for: Small businesses with basic, standard needs.  
+Best for: Small businesses with basic, standard needs.  
 
 ---
 
@@ -49,7 +49,7 @@ Benefits of custom software include:
 - **Competitive advantage** – Gives you tools your competitors don’t have.  
 - **Better integration** – Works seamlessly with your existing systems.  
 
-✅ Best for: Growing businesses, SMEs, and enterprises seeking efficiency, automation, and innovation.  
+Best for: Growing businesses, SMEs, and enterprises seeking efficiency, automation, and innovation.  
 
 ---
 
@@ -84,8 +84,8 @@ The choice between **custom software** and **off-the-shelf solutions** depends o
 
 At **Griffity Studios**, we help you make the right choice—and back it up with world-class IT and marketing services.  
 
-📞 **Ready to discover the best fit for your business?**  
-👉 Book a free discovery call with Griffity Studios today.  
+**Ready to discover the best fit for your business?**  
+Book a free discovery call with Griffity Studios today.  
 
 ---
 
