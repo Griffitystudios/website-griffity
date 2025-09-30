@@ -85,7 +85,7 @@ The choice between **custom software** and **off-the-shelf solutions** depends o
 At **Griffity Studios**, we help you make the right choice—and back it up with world-class IT and marketing services.  
 
 **Ready to discover the best fit for your business?**  
-Book a free discovery call with Griffity Studios today.  
+[Book a free discovery call with Griffity Studios today.](https://www.griffitystudios.com/#contact-us)
 
 ---
 
