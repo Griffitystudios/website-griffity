@@ -90,5 +90,5 @@ Griffity Studios identifies **high-ROI spots** using **DoR data + site research*
 ## Take Your Brand Outdoors Today 
 If you’re considering hoarding boards, billboards, or any form of outdoor media in Nepal, Griffity Studios is your trusted partner.  
 
-👉 **[Request a custom media plan](https://griffitystudios.com/contact) today and let’s make your brand unmissable.**  
+👉 **[Request a custom media plan](https://www.griffitystudios.com/#contact-us) today and let’s make your brand unmissable.**  
 
