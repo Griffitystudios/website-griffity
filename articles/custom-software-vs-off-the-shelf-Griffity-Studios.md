@@ -14,7 +14,7 @@ tags:
   ]
 author: "Griffity Studios"
 date: "30-09-2025"
-imageUrl: "/images/blogs/Custom-Software-vs-Off-the-Shelf-Solutions.png"
+imageUrl: "/images/blogs/custom-software-vs-off-the-shelf-Griffity-Studios.png"
 slug: "custom-software-vs-off-the-shelf-solutions"
 ---
 
