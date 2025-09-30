@@ -11,7 +11,7 @@ tags:
     "billboard advertising Nepal",
   ]
 author: "Griffity Studios"
-date: "01-10-2025"
+date: "09-30-2025"
 imageUrl: "/images/blogs/Griffity-Studios-Outdoor-Advertising-Nepal.png"
 slug: "Outdoor-Advertising-in-Nepal-Costs-Locations-ROI"
 ---
