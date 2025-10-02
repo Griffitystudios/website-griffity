@@ -12,7 +12,7 @@ tags:
     "best marketing agency in Nepal"
   ]
 author: "Griffity Studios"
-date: "08-10-2025"
+date: "10-02-2025"
 imageUrl: "/images/blogs/Griffity-Studios-AI-in-Marketing-Software-2025.png"
 slug: "AI-Changing-Marketing-Software-Development-2025"
 ---
@@ -70,3 +70,4 @@ AI is changing everything—from the way we **market to customers** to how we **
 
 **Want to stay ahead of future trends?**  👉 [Subscribe for monthly insights](https://www.griffitystudios.com/#contact-us).  
 Partner with Griffity Studios—the **best IT company in Nepal** and **best marketing agency in Nepal**—to leverage AI for your business.  
+
