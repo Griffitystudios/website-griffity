@@ -86,5 +86,6 @@ Outdoor advertising is not just about being seen—it’s about being remembered
 
 ---
 
-**CTA:** Ready to take your brand outdoors?  
+**Ready to take your brand outdoors?**   
 👉 [Get a quote for all Nepal billboards](https://www.griffitystudios.com/#contact-us) with Griffity Studios—the **best outdoor marketing agency in Nepal**.  
+
