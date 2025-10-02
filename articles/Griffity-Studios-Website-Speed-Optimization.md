@@ -12,7 +12,7 @@ tags:
     "digital marketing Nepal",
   ]
 author: "Griffity Studios"
-date: "07-10-2025"
+date: "10-02-2025"
 imageUrl: "/images/blogs/Griffity-Studios-Website-Speed-Optimization.png"
 slug: "Website-Speed-Optimization-Nepal"
 ---
@@ -65,3 +65,4 @@ Website speed is no longer optional—it’s the difference between a sale and a
 **Want to know how fast your website really is?** 👉 [Request a free website audit](https://www.griffitystudios.com/#contact-us).  
 
 Looking to scale your online store? Griffity Studios—the **best IT company in Nepal**—will help you maximize speed and sales.  
+
