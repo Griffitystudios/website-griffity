@@ -15,7 +15,7 @@ tags:
   ]
 author: "Griffity Studios"
 date: "04-10-2025"
-imageUrl: "/images/blogs/Griffity-Studios-Top-Billboard-Designs-Nepal.jpg"
+imageUrl: "/images/blogs/Griffity-Studios-Top-Billboard-Designs-Nepal.webp"
 slug: "Top-10-Most-Creative-Billboard-Designs-Nepal"
 ---
 
@@ -89,5 +89,6 @@ Outdoor advertising is not just about being seen—it’s about being remembered
 
 **Ready to take your brand outdoors?**   
 👉 [Get a quote for all Nepal billboards](https://www.griffitystudios.com/#contact-us) with Griffity Studios—the **best outdoor marketing agency in Nepal**.  
+
 
 
