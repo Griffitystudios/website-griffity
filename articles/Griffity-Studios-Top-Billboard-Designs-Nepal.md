@@ -10,11 +10,12 @@ tags:
     "creative billboard ideas",
     "best outdoor marketing agency in Nepal",
     "price of hoarding board in Nepal",
-    "best IT company in Nepal"
+    "best IT company in Nepal",
+    "best marketing agency in Nepal"
   ]
 author: "Griffity Studios"
 date: "04-10-2025"
-imageUrl: "/images/blogs/Griffity-Studios-Top-Billboard-Designs-Nepal.png"
+imageUrl: "/images/blogs/Griffity-Studios-Top-Billboard-Designs-Nepal.jpg"
 slug: "Top-10-Most-Creative-Billboard-Designs-Nepal"
 ---
 
@@ -88,4 +89,5 @@ Outdoor advertising is not just about being seen—it’s about being remembered
 
 **Ready to take your brand outdoors?**   
 👉 [Get a quote for all Nepal billboards](https://www.griffitystudios.com/#contact-us) with Griffity Studios—the **best outdoor marketing agency in Nepal**.  
+
 
