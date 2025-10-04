@@ -59,13 +59,14 @@ Next.js builds on React’s foundation but adds everything developers need for *
 
 ##  React vs Next.js: Quick Comparison  
 
-| Feature | React | Next.js |
-|----------|--------|----------|
-| UI Components | ✅ | ✅ |
-| Routing Support | ❌ | ✅ Built-in |
-| SEO Optimization | ⚠️ Requires setup | ✅ SSR + SSG |
-| API Routes | ❌ | ✅ Built-in |
-| Performance | Good | Excellent |
+| Feature         | React          | Next.js      |
+|-----------------|----------------|--------------|
+| UI Components   | ✅             | ✅           |
+| Routing Support | ❌             | ✅ Built-in  |
+| SEO Optimization| ⚠️ Requires setup | ✅ SSR + SSG |
+| API Routes      | ❌             | ✅ Built-in  |
+| Performance     | Good           | Excellent    |
+
 
 ---
 
@@ -89,3 +90,4 @@ At **Griffity Studios**, the **best IT company in Nepal**, our developers build 
 👉 [**Contact us today**](https://www.griffitystudios.com/#contact-us) and let’s bring your digital vision to life.  
 
 ---
+
