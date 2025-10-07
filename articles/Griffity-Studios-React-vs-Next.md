@@ -12,7 +12,7 @@ tags:
     "Next.js development"
   ]
 author: "Griffity Studios"
-date: "10-10-2025"
+date: "10-05-2025"
 imageUrl: "/images/blogs/Griffity-Studios-React-vs-Next.png"
 slug: "React-vs-NextJS-Modern-Web-Apps"
 ---
@@ -90,4 +90,5 @@ At **Griffity Studios**, the **best IT company in Nepal**, our developers build 
 👉 [**Contact us today**](https://www.griffitystudios.com/#contact-us) and let’s bring your digital vision to life.  
 
 ---
+
 
