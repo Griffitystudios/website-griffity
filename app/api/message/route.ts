@@ -1,36 +1,81 @@
-import nodemailer from 'nodemailer';
-import { NextResponse } from 'next/server';
+import nodemailer from "nodemailer";
+import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
   try {
-    const data = await req.formData(); // 👈 Handles both JSON and FormData
-    const name = data.get('name');
-    const email = data.get('email');
-    const message = data.get('message');
+    const data = await req.formData();
 
+    // Match frontend field names
+    const name = data.get("name") || data.get("fullName");
+    const email = data.get("email");
+    const contact = data.get("contact");
+    const message = data.get("message") || data.get("coverLetter");
+    const attachment = data.get("attachment") as File | null;
+
+    // Validation
     if (!name || !email || !message) {
-      return NextResponse.json({ success: false, message: 'Missing fields' }, { status: 400 });
+      return NextResponse.json(
+        { success: false, message: "Missing required fields" },
+        { status: 400 }
+      );
     }
 
+    // Mail transporter
     const transporter = nodemailer.createTransport({
-      service: 'gmail',
+      service: "gmail",
       auth: {
         user: process.env.SENDER_MAIL,
         pass: process.env.EMAIL_PASS,
       },
     });
 
+    // Prepare attachment if exists
+    const attachments = [];
+    if (attachment && attachment.size > 0) {
+      const buffer = Buffer.from(await attachment.arrayBuffer());
+      attachments.push({
+        filename: attachment.name,
+        content: buffer,
+        contentType: attachment.type,
+      });
+    }
+
+    // Email content
+    const subject = contact
+      ? `New Contact / Join Us Message from ${name}`
+      : `New Message from ${name}`;
+
+    const text = `
+Full Name: ${name}
+Email: ${email}
+${contact ? `Contact: ${contact}` : ""}
+Message:
+${message}
+    `;
+
+    const html = `
+      <p><strong>Full Name:</strong> ${name}</p>
+      <p><strong>Email:</strong> ${email}</p>
+      ${contact ? `<p><strong>Contact:</strong> ${contact}</p>` : ""}
+      <p><strong>Message:</strong></p>
+      <p>${message}</p>
+    `;
+
     await transporter.sendMail({
       from: `"HeyJob Contact" <${process.env.SENDER_MAIL}>`,
       to: process.env.CONTACT_RECEIVER || process.env.SENDER_MAIL,
-      subject: `New Contact Message from ${name}`,
-      text: `From: ${name} (${email})\n\n${message}`,
-      html: `<p><strong>From:</strong> ${name} (${email})</p><p>${message}</p>`,
+      subject,
+      text,
+      html,
+      attachments,
     });
 
     return NextResponse.json({ success: true });
   } catch (err) {
-    console.error('Mail send error:', err);
-    return NextResponse.json({ success: false, message: 'Failed to send email' }, { status: 500 });
+    console.error("Mail send error:", err);
+    return NextResponse.json(
+      { success: false, message: "Failed to send email" },
+      { status: 500 }
+    );
   }
 }
