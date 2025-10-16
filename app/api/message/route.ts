@@ -42,7 +42,7 @@ export async function POST(req: Request) {
 
     // Email content
     const subject = contact
-      ? `New Contact / Join Us Message from ${name}`
+      ? `New Contact Message from ${name}`
       : `New Message from ${name}`;
 
     const text = `
