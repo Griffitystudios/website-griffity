@@ -172,8 +172,8 @@ const HeroSectionCareers = () => {
                   transition={{ duration: 0.3, delay: index * 0.1 }}
                   onClick={() => setIsMobileMenuOpen(false)}
                   href={
-                    item.toLowerCase() === "blogs"
-                      ? "/blogs"
+                    ["blogs", "careers"].includes(item.toLowerCase())
+                      ? `/${item.toLowerCase()}`
                       : `#${item.replace(/\s+/g, "-").toLowerCase()}`
                   }
                   aria-label={item}
