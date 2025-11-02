@@ -17,6 +17,8 @@ const Client = () => {
     { name: "opera", text: "OPERA ENGINEERING CONSULTANCY" },
     { name: "bambusa", text: "BAMBUSA" },
     { name: "majestic", text: "MAJESTIC GROUP" },
+    { name: "sukoon", text: "SUKOON" },
+    { name: "nepakids", text: "NEPAKIDS" },
   ];
 
   const singleClients = [
