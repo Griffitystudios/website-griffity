@@ -15,6 +15,8 @@ const Client = () => {
     { name: "maha", text: "MAHAK MAHA" },
     { name: "gurukul", text: "GURUKUL ACADEMY" },
     { name: "opera", text: "OPERA ENGINEERING CONSULTANCY" },
+    { name: "bambusa", text: "BAMBUSA" },
+    { name: "majestic", text: "MAJESTIC GROUP" },
   ];
 
   const singleClients = [
@@ -22,6 +24,8 @@ const Client = () => {
     { name: "ntc", text: "NEPAL TELECOM" },
     { name: "acem", text: "ADVANCED COLLEGE OF ENGINEERING & MANAGEMENT" },
     { name: "rjn", text: "REMOTE JOB NEPAL" },
+    { name: "techbehemoths", text: "TECH BEHEMOTHS" },
+    { name: "bstax", text: "BS TAX ACCOUNTANTS" },
   ];
 
   interface PairedClient {
