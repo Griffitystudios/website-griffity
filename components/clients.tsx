@@ -97,7 +97,7 @@ const Client = () => {
                     target="_blank"
                     rel="noopener "
                   >
-                    <div className="flex items-center justify-center p-[10%] w-[150px] xs:w-[200px] md:w-[250px] lg:w-[336px] aspect-[336/382] border border-primary ">
+                    <div className="flex items-center justify-center p-[40px] w-[150px] xs:w-[200px] md:w-[250px] lg:w-[336px] aspect-[336/382] border border-primary ">
                       <Image
                         width={336}
                         height={382}
@@ -108,7 +108,7 @@ const Client = () => {
                     </div>
                   </Link>
                 ) : (
-                  <div className="flex items-center justify-center p-[10%] w-[150px] xs:w-[200px] md:w-[250px] lg:w-[336px] aspect-[336/382] border border-primary">
+                  <div className="flex items-center justify-center p-[40px] w-[150px] xs:w-[200px] md:w-[250px] lg:w-[336px] aspect-[336/382] border border-primary">
                     <Image
                       width={336}
                       height={382}
