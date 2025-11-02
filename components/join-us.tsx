@@ -15,7 +15,7 @@ const JoinUs = () => {
     setStatus("sending");
     const formData = new FormData(formRef.current!);
 
-    const res = await fetch("/api/join-us", {
+    const res = await fetch("/api/message", {
       method: "POST",
       body: formData,
     });

@@ -169,24 +169,25 @@ const Hero = () => {
               <span className="block w-6 h-0.5 bg-white -rotate-45 absolute" />
             </button>
             <div className="flex flex-col items-center justify-center h-full gap-8 px-8">
-              {navItems.map((item, index) => (
-                <motion.a
-                  key={index}
-                  initial={{ opacity: 0, x: 50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.3, delay: index * 0.1 }}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  href={
-                    item.toLowerCase() === "blogs"
-                      ? "/blogs"
-                      : `#${item.replace(/\s+/g, "-").toLowerCase()}`
-                  }
-                  aria-label={item}
-                  className="text-2xl sm:text-3xl font-light cursor-pointer hover:text-[#dba039] transition-colors duration-300 text-center"
-                >
-                  {item}
-                </motion.a>
-              ))}
+            {navItems.map((item, index) => (
+  <motion.a
+    key={index}
+    initial={{ opacity: 0, x: 50 }}
+    animate={{ opacity: 1, x: 0 }}
+    transition={{ duration: 0.3, delay: index * 0.1 }}
+    onClick={() => setIsMobileMenuOpen(false)}
+    href={
+      ["blogs", "careers"].includes(item.toLowerCase())
+        ? `/${item.toLowerCase()}`
+        : `#${item.replace(/\s+/g, "-").toLowerCase()}`
+    }
+    aria-label={item}
+    className="text-2xl sm:text-3xl font-light cursor-pointer hover:text-[#dba039] transition-colors duration-300 text-center"
+  >
+    {item}
+  </motion.a>
+))}
+
             </div>
           </motion.nav>
         )}
