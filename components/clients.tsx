@@ -30,7 +30,7 @@ const Client = () => {
     {
       name: "techbehemoths",
       text: "TECH BEHEMOTHS",
-      website: "https://techbehemoths.com/",
+      website: "https://techbehemoths.com/company/griffity-studios",
     },
     { name: "bstax", text: "BS TAX ACCOUNTANTS" },
   ];
