@@ -114,10 +114,13 @@ const Services = () => {
             className="p-base w-1/3 font-extralight mb-6"
           >
             <li className="font-medium">&#8594;DIGITAL EXPERIENCE</li>
-            <li>UI/UX DESIGN</li>
+            <li>CUSTOM MOBILE/WEB APPLICATION</li>
+            <li>WEBSITE</li>
             <li>ECOMMERCE PLATFORMS & CMS SOLUTIONS</li>
             <li>SEO & PERFORMANCE OPTIMIZATION</li>
-            <li>MAINTENANCE & UPDATES</li>
+            <li>DEV OPS CLOUD SOLUTIONS</li>
+            <li>AI & ML</li>
+            <li>MAINTAINACE AND UPDATES</li>
           </motion.ul>
         </motion.div>
         <motion.div
