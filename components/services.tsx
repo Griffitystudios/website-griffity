@@ -150,6 +150,29 @@ const Services = () => {
           </motion.ul>
         </motion.div>
         <motion.div
+          ref={webappRef}
+          initial={{ opacity: 0, x: 30 }}
+          animate={webappInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
+          transition={{ duration: 0.5, ease: "easeOut", delay: 0.3 }}
+          className="border-b border-primary w-full flex items-center "
+        >
+          <p className=" z-10 font-semibold w-2/3 text-primary">WEB & APP</p>
+          <motion.ul
+            initial={{ opacity: 0, x: 30 }}
+            animate={
+              webappInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }
+            }
+            transition={{ duration: 0.3, ease: "easeOut", delay: 0.6 }}
+            className="p-base w-1/3 font-extralight mb-6"
+          >
+            <li className="font-medium">&#8594;DIGITAL EXPERIENCE</li>
+            <li>UI/UX DESIGN</li>
+            <li>ECOMMERCE PLATFORMS & CMS SOLUTIONS</li>
+            <li>SEO & PERFORMANCE OPTIMIZATION</li>
+            <li>MAINTENANCE & UPDATES</li>
+          </motion.ul>
+        </motion.div>
+        <motion.div
           ref={productionRef}
           initial={{ opacity: 0, x: 30 }}
           animate={
@@ -174,29 +197,7 @@ const Services = () => {
             <li>POST PRODUCTION SERVICES</li>
           </motion.ul>
         </motion.div>
-        <motion.div
-          ref={webappRef}
-          initial={{ opacity: 0, x: 30 }}
-          animate={webappInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
-          transition={{ duration: 0.5, ease: "easeOut", delay: 0.3 }}
-          className="border-b border-primary w-full flex items-center "
-        >
-          <p className=" z-10 font-semibold w-2/3 text-primary">WEB & APP</p>
-          <motion.ul
-            initial={{ opacity: 0, x: 30 }}
-            animate={
-              webappInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }
-            }
-            transition={{ duration: 0.3, ease: "easeOut", delay: 0.6 }}
-            className="p-base w-1/3 font-extralight mb-6"
-          >
-            <li className="font-medium">&#8594;DIGITAL EXPERIENCE</li>
-            <li>UI/UX DESIGN</li>
-            <li>ECOMMERCE PLATFORMS & CMS SOLUTIONS</li>
-            <li>SEO & PERFORMANCE OPTIMIZATION</li>
-            <li>MAINTENANCE & UPDATES</li>
-          </motion.ul>
-        </motion.div>
+
         <motion.div
           ref={modelingRef}
           initial={{ opacity: 0, x: 30 }}
