@@ -98,6 +98,29 @@ const Services = () => {
         className="flex flex-col   heading-h2  gap-10 mt-32  "
       >
         <motion.div
+          ref={webappRef}
+          initial={{ opacity: 0, x: 30 }}
+          animate={webappInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
+          transition={{ duration: 0.5, ease: "easeOut", delay: 0.3 }}
+          className="border-b border-primary w-full flex items-center "
+        >
+          <p className=" z-10 font-semibold w-2/3 text-primary">WEB & APP</p>
+          <motion.ul
+            initial={{ opacity: 0, x: 30 }}
+            animate={
+              webappInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }
+            }
+            transition={{ duration: 0.3, ease: "easeOut", delay: 0.6 }}
+            className="p-base w-1/3 font-extralight mb-6"
+          >
+            <li className="font-medium">&#8594;DIGITAL EXPERIENCE</li>
+            <li>UI/UX DESIGN</li>
+            <li>ECOMMERCE PLATFORMS & CMS SOLUTIONS</li>
+            <li>SEO & PERFORMANCE OPTIMIZATION</li>
+            <li>MAINTENANCE & UPDATES</li>
+          </motion.ul>
+        </motion.div>
+        <motion.div
           ref={brandingRef}
           initial={{ opacity: 0, x: 30 }}
           animate={
@@ -149,29 +172,7 @@ const Services = () => {
             <li>CONTENT CREATION</li>
           </motion.ul>
         </motion.div>
-        <motion.div
-          ref={webappRef}
-          initial={{ opacity: 0, x: 30 }}
-          animate={webappInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
-          transition={{ duration: 0.5, ease: "easeOut", delay: 0.3 }}
-          className="border-b border-primary w-full flex items-center "
-        >
-          <p className=" z-10 font-semibold w-2/3 text-primary">WEB & APP</p>
-          <motion.ul
-            initial={{ opacity: 0, x: 30 }}
-            animate={
-              webappInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }
-            }
-            transition={{ duration: 0.3, ease: "easeOut", delay: 0.6 }}
-            className="p-base w-1/3 font-extralight mb-6"
-          >
-            <li className="font-medium">&#8594;DIGITAL EXPERIENCE</li>
-            <li>UI/UX DESIGN</li>
-            <li>ECOMMERCE PLATFORMS & CMS SOLUTIONS</li>
-            <li>SEO & PERFORMANCE OPTIMIZATION</li>
-            <li>MAINTENANCE & UPDATES</li>
-          </motion.ul>
-        </motion.div>
+
         <motion.div
           ref={productionRef}
           initial={{ opacity: 0, x: 30 }}
@@ -222,29 +223,6 @@ const Services = () => {
             <li className="uppercase">Brand Guidelines</li>
             <li className="uppercase">Architectural Visualization</li>
             <li className="uppercase">Conceptual Design Models </li>
-          </motion.ul>
-        </motion.div>
-        <motion.div
-          ref={eventsRef}
-          initial={{ opacity: 0, x: 30 }}
-          animate={eventsInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
-          transition={{ duration: 0.5, ease: "easeOut", delay: 0.3 }}
-          className="border-b border-primary w-full flex items-center "
-        >
-          <p className=" z-10 font-semibold w-2/3 text-primary">EVENTS</p>
-          <motion.ul
-            initial={{ opacity: 0, x: 30 }}
-            animate={
-              eventsInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }
-            }
-            transition={{ duration: 0.3, ease: "easeOut", delay: 0.6 }}
-            className="p-base w-1/3 font-extralight mb-6"
-          >
-            <li className="font-medium">&#8594;IMMERSIVE BRAND EXPERIENCES</li>
-            <li>Event Planning & Execution</li>
-            <li>SPONSORSHIP MANAGEMENT</li>
-            <li>BRANDING & MARKETING</li>
-            <li>LOGISTICS & MORE</li>
           </motion.ul>
         </motion.div>
         <motion.div
