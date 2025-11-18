@@ -4,57 +4,60 @@ import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import GriffityBg from "../bg-logo";
 import { jobs } from "@/app/data/jobs-data";
+import ReCAPTCHA from "react-google-recaptcha";
 
 const JobForm = () => {
   const formRef = useRef<HTMLFormElement>(null);
-  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
-    "idle"
-  );
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
-const MAX_FILE_SIZE_MB = 5; // adjust as needed
+  const [token, setToken] = useState<string | null>(null); // ✅ reCAPTCHA token
+  const MAX_FILE_SIZE_MB = 5;
 
-const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
-  setStatus("sending");
-  setErrorMessage(null);
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus("sending");
+    setErrorMessage(null);
 
-  try {
-    const formData = new FormData(formRef.current!);
+    try {
+      const formData = new FormData(formRef.current!);
 
-    // ✅ File size validation before sending
-    const file = formData.get("attachment") as File | null;
-    if (file && file.size > MAX_FILE_SIZE_MB * 1024 * 1024) {
-      setErrorMessage(`File too large. Max ${MAX_FILE_SIZE_MB}MB allowed.`);
-      setStatus("error");
-      return; // stop submission
-    }
-
-    const res = await fetch("/api/join-us", {
-      method: "POST",
-      body: formData,
-    });
-
-    if (res.ok) {
-      setStatus("sent");
-    } else {
-      let errorText = "Failed to send. Please try again.";
-      try {
-        const data = await res.json();
-        if (data?.error) {
-          errorText = data.error;
-        }
-      } catch {
-        // fallback if response is not JSON
+      // ✅ File size validation
+      const file = formData.get("attachment") as File | null;
+      if (file && file.size > MAX_FILE_SIZE_MB * 1024 * 1024) {
+        setErrorMessage(`File too large. Max ${MAX_FILE_SIZE_MB}MB allowed.`);
+        setStatus("error");
+        return;
       }
-      setErrorMessage(errorText);
+
+      // ✅ Append reCAPTCHA token
+      formData.append("recaptchaToken", token || "");
+
+      const res = await fetch("/api/join-us", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (res.ok) {
+        setStatus("sent");
+        formRef.current?.reset(); // clear form
+        setToken(null); // reset captcha
+      } else {
+        let errorText = "Failed to send. Please try again.";
+        try {
+          const data = await res.json();
+          if (data?.error) errorText = data.error;
+        } catch {
+          // fallback if response is not JSON
+        }
+        setErrorMessage(errorText);
+        setStatus("error");
+      }
+    } catch (err: any) {
+      console.error("Network error:", err);
+      setErrorMessage("Network error. Please check your connection.");
       setStatus("error");
     }
-  } catch (err: any) {
-    console.error("Network error:", err);
-    setErrorMessage("Network error. Please check your connection.");
-    setStatus("error");
-  }
-};
+  };
   return (
     <section
       id="career-form"
@@ -199,31 +202,23 @@ const handleSubmit = async (e: React.FormEvent) => {
             at hr@griffitystudios.com for any inquiries.
           </p>
         </div>
+   {/* ✅ reCAPTCHA */}
+        <ReCAPTCHA
+          sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY ?? ""}
+          onChange={(t) => setToken(t)}
+          className="my-5"
+        />
+
         <button
           type="submit"
-  disabled={status === "sending" || status === "sent"}         
-   className="
-          mt-5
-          text-sm   sm:text-sm  md:text-base
-          px-3      sm:px-4    md:px-6
-          py-1.5      sm:py-2    md:py-3
-          bg-primary text-body font-normal rounded-full
-          disabled:opacity-60 disabled:cursor-not-allowed
-        "
+          disabled={status === "sending" || status === "sent"}
+          className="mt-5 px-6 py-3 bg-primary text-body font-normal rounded-full disabled:opacity-60 disabled:cursor-not-allowed"
         >
-          {status === "sending"
-            ? "Sending..."
-            : status === "sent"
-            ? "Sent!"
-            : "Submit"}
+          {status === "sending" ? "Sending..." : status === "sent" ? "Sent!" : "Submit"}
         </button>
 
-        {status === "error" && (
-          <p className="text-red-500 mt-2">{errorMessage}</p>
-        )}
-        {status === "sent" && (
-          <p className="text-green-500 mt-2">Application submitted successfully!</p>
-        )}
+        {status === "error" && <p className="text-red-500 mt-2">{errorMessage}</p>}
+        {status === "sent" && <p className="text-green-500 mt-2">Application submitted successfully!</p>}
       </form>
     </section>
   );

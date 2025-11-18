@@ -4,30 +4,59 @@ import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import ReCAPTCHA from "react-google-recaptcha";
 
+const MAX_FILE_SIZE_MB = 5; // adjust limit as needed
 
 const JoinUs = () => {
   const formRef = useRef<HTMLFormElement>(null);
-  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
-    "idle"
-  );
-    const [token, setToken] = useState<string | null>(null);
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
+  const [token, setToken] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("sending");
-    const formData = new FormData(formRef.current!);
-    formData.append("recaptchaToken", token || "");
-    const res = await fetch("/api/message", {
-      method: "POST",
-      body: formData,
-    });
+    setErrorMessage(null);
+    setSuccessMessage(null);
 
-    if (res.ok) {
-      setStatus("sent");
-      alert("Your message has been sent! We will get back to you soon.");
-    } else {
+    try {
+      const formData = new FormData(formRef.current!);
+
+      // ✅ File size validation (optional attachment)
+      const file = formData.get("attachment") as File | null;
+      if (file && file.size > MAX_FILE_SIZE_MB * 1024 * 1024) {
+        setErrorMessage(` File too large. Max ${MAX_FILE_SIZE_MB}MB allowed.`);
+        setStatus("error");
+        return;
+      }
+
+      formData.append("recaptchaToken", token || "");
+
+      const res = await fetch("/api/message", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (res.ok) {
+        setStatus("sent");
+        setSuccessMessage(" Your message has been sent! We will get back to you soon.");
+        formRef.current?.reset(); // clear form after success
+        setToken(null); // reset captcha
+      } else {
+        let errorText = " Failed to send. Please try again.";
+        try {
+          const data = await res.json();
+          if (data?.error) errorText = data.error;
+        } catch {
+          // fallback if response is not JSON
+        }
+        setErrorMessage(errorText);
+        setStatus("error");
+      }
+    } catch (err: any) {
+      console.error("Network error:", err);
+      setErrorMessage(" Network error. Please check your connection.");
       setStatus("error");
-      alert("Failed to send. Please try again.");
     }
   };
 
@@ -112,60 +141,39 @@ const JoinUs = () => {
           placeholder="HERE IS MY MESSAGE."
         />
         <div className="flex flex-col">
-          <label htmlFor="attachment" className=" my-2 lg:text-2xl text-xl">
-            UPLOAD ATTACHMENTS
-          </label>
+          <label htmlFor="attachment" className="my-2 lg:text-2xl text-xl">UPLOAD ATTACHMENTS</label>
           <input
             type="file"
             id="attachment"
             name="attachment"
             accept=".pdf,.doc,.docx"
-            className="
-    text-white 
-    file:bg-white 
-    file:text-black 
-    file:font-normal 
-    font-extralight 
-    file:rounded-full 
-    mt-4 
-    file:px-1 file:py-0.5
-    sm:file:px-4 sm:file:py-2
-    text-[0.75rem] sm:text-[1rem] 
-    file:border-0
-  "
+            className="text-white file:bg-white file:text-black file:rounded-full mt-4 file:px-4 file:py-2 text-sm file:border-0"
           />
-
-          <p className=" text-[1rem] font-light text-white mt-4">
-            Accepted Formats:{" "}
-            <span className="text-primary">.pdf, .doc, .docx</span>
+          <p className="text-[1rem] font-light text-white mt-4">
+            Accepted Formats: <span className="text-primary">.pdf, .doc, .docx</span> (Max {MAX_FILE_SIZE_MB}MB)
           </p>
         </div>
+
+        {/* reCAPTCHA */}
         <ReCAPTCHA
-        sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY ?? ""}      
-        onChange={(t) => setToken(t)}
-      />
+          sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY ?? ""}
+          onChange={(t) => setToken(t)}
+                    className="my-5"
+
+        />
+
+        {/* Submit button */}
         <button
           type="submit"
-          disabled={status === "sent"}
-          className="
-          mt-5
-          text-sm   sm:text-sm  md:text-base
-          px-3      sm:px-4    md:px-6
-          py-1.5      sm:py-2    md:py-3
-          bg-primary text-body font-normal rounded-full
-          disabled:opacity-60 disabled:cursor-not-allowed
-        "
+          disabled={status === "sending" || status === "sent"}
+          className="mt-5 px-6 py-3 bg-primary text-body font-normal rounded-full disabled:opacity-60 disabled:cursor-not-allowed"
         >
-          {status === "sending"
-            ? "Sending..."
-            : status === "sent"
-            ? "Sent!"
-            : "Submit"}
+          {status === "sending" ? "Sending..." : status === "sent" ? "Sent!" : "Submit"}
         </button>
 
-        {status === "error" && (
-          <p className="text-red-500 mt-2">Failed to send. Please try again.</p>
-        )}
+        {/* Feedback messages */}
+        {successMessage && <p className="text-green-500 mt-2">{successMessage}</p>}
+        {errorMessage && <p className="text-red-500 mt-2">{errorMessage}</p>}
       </form>
     </section>
   );
