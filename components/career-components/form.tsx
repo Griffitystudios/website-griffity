@@ -10,11 +10,24 @@ const JobForm = () => {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
     "idle"
   );
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+const MAX_FILE_SIZE_MB = 5; // adjust as needed
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setStatus("sending");
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  setStatus("sending");
+  setErrorMessage(null);
+
+  try {
     const formData = new FormData(formRef.current!);
+
+    // ✅ File size validation before sending
+    const file = formData.get("attachment") as File | null;
+    if (file && file.size > MAX_FILE_SIZE_MB * 1024 * 1024) {
+      setErrorMessage(`File too large. Max ${MAX_FILE_SIZE_MB}MB allowed.`);
+      setStatus("error");
+      return; // stop submission
+    }
 
     const res = await fetch("/api/join-us", {
       method: "POST",
@@ -23,13 +36,25 @@ const JobForm = () => {
 
     if (res.ok) {
       setStatus("sent");
-      alert("Your message has been sent! We will get back to you soon.");
     } else {
+      let errorText = "Failed to send. Please try again.";
+      try {
+        const data = await res.json();
+        if (data?.error) {
+          errorText = data.error;
+        }
+      } catch {
+        // fallback if response is not JSON
+      }
+      setErrorMessage(errorText);
       setStatus("error");
-      alert("Failed to send. Please try again.");
     }
-  };
-
+  } catch (err: any) {
+    console.error("Network error:", err);
+    setErrorMessage("Network error. Please check your connection.");
+    setStatus("error");
+  }
+};
   return (
     <section
       id="career-form"
@@ -145,12 +170,13 @@ const JobForm = () => {
 
         <div className="flex flex-col">
           <label htmlFor="attachment" className=" my-2 lg:text-2xl text-xl">
-            UPLOAD ATTACHMENTS
+            HERE'S MY CV
           </label>
           <input
             type="file"
             id="attachment"
             name="attachment"
+            required
             accept=".pdf,.doc,.docx"
             className="
     text-white 
@@ -175,8 +201,8 @@ const JobForm = () => {
         </div>
         <button
           type="submit"
-          disabled={status === "sent"}
-          className="
+  disabled={status === "sending" || status === "sent"}         
+   className="
           mt-5
           text-sm   sm:text-sm  md:text-base
           px-3      sm:px-4    md:px-6
@@ -193,7 +219,10 @@ const JobForm = () => {
         </button>
 
         {status === "error" && (
-          <p className="text-red-500 mt-2">Failed to send. Please try again.</p>
+          <p className="text-red-500 mt-2">{errorMessage}</p>
+        )}
+        {status === "sent" && (
+          <p className="text-green-500 mt-2">Application submitted successfully!</p>
         )}
       </form>
     </section>

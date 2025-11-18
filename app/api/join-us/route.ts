@@ -10,13 +10,21 @@ export async function POST(req: NextRequest) {
   const email = data.get("email");
   const message = data.get("message") || data.get("coverLetter");
   const contact = data.get("contact");
-  const cvFile = data.get("attachment") as File | null; // <-- updated name
+  const cvFile = data.get("attachment") as File | null;
 
-  // Optional: log received keys for debugging
+  // ✅ Require attachment
+  if (!cvFile || cvFile.size === 0) {
+    return NextResponse.json(
+      { success: false, error: "Attachment (CV) is required" },
+      { status: 400 }
+    );
+  }
+
+  // Debugging logs
   console.log("Received fields:", Array.from(data.keys()));
   console.log("Received file:", cvFile?.name, cvFile?.type, cvFile?.size);
 
-  // Set up the mail transporter
+  // Mail transporter
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
@@ -25,42 +33,26 @@ export async function POST(req: NextRequest) {
     },
   });
 
-  // Prepare attachments if file is present
-  const attachments = [];
-
-  if (cvFile && cvFile.size > 0) {
-    const buffer = Buffer.from(await cvFile.arrayBuffer());
-
-    attachments.push({
+  // Prepare attachment
+  const buffer = Buffer.from(await cvFile.arrayBuffer());
+  const attachments = [
+    {
       filename: cvFile.name,
       content: buffer,
       contentType: cvFile.type,
-    });
-  }
+    },
+  ];
 
-  // Determine subject and email body based on presence of contact or file
-  const isJoinUs = !!contact || !!cvFile;
-
-  const subject = isJoinUs
-    ? `New Application Submission from ${name} for position ${position}`
-    : `New Contact Message from ${name}`;
-
-  const text = isJoinUs
-    ? `
+  // Always "Join Us"
+  const subject = `New Application Submission from ${name} for position ${position}`;
+  const text = `
 Full Name: ${name}
 Email: ${email}
 Contact: ${contact}
 Cover Letter / Message:
 ${message}
-    `
-    : `
-Name: ${name}
-Email: ${email}
-Message:
-${message}
-    `;
+  `;
 
-  // Send email
   try {
     await transporter.sendMail({
       from: `"HeyJob Form" <${process.env.SENDER_MAIL}>`,

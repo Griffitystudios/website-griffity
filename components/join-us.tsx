@@ -2,19 +2,21 @@
 
 import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
-import GriffityBg from "./bg-logo";
+import ReCAPTCHA from "react-google-recaptcha";
+
 
 const JoinUs = () => {
   const formRef = useRef<HTMLFormElement>(null);
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
     "idle"
   );
+    const [token, setToken] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("sending");
     const formData = new FormData(formRef.current!);
-
+    formData.append("recaptchaToken", token || "");
     const res = await fetch("/api/message", {
       method: "POST",
       body: formData,
@@ -138,6 +140,10 @@ const JoinUs = () => {
             <span className="text-primary">.pdf, .doc, .docx</span>
           </p>
         </div>
+        <ReCAPTCHA
+        sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY ?? ""}      
+        onChange={(t) => setToken(t)}
+      />
         <button
           type="submit"
           disabled={status === "sent"}

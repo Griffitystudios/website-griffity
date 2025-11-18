@@ -4,6 +4,34 @@ import { NextResponse } from "next/server";
 export async function POST(req: Request) {
   try {
     const data = await req.formData();
+ const recaptcha = data.get("recaptcha") as string | null;
+ 
+   
+  const secret = process.env.RECAPTCHA_SECRET;
+
+  if (!recaptcha) {
+    return new Response(
+      JSON.stringify({ error: "Missing reCAPTCHA token" }),
+      { status: 400 }
+    );
+  }
+  const verifyRes = await fetch(
+    `https://www.google.com/recaptcha/api/siteverify?secret=${secret}&response=${recaptcha}`,
+    { method: "POST" }
+  );
+
+  const result: {
+    success: boolean;
+    score?: number;
+    "error-codes"?: string[];
+  } = await verifyRes.json();
+
+  if (!result.success) {
+    return new Response(
+      JSON.stringify({ error: "reCAPTCHA failed", details: result }),
+      { status: 400 }
+    );
+  }
 
     // Match frontend field names
     const name = data.get("name") || data.get("fullName");
