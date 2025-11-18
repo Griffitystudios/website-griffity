@@ -5,7 +5,7 @@ export async function POST(req: NextRequest) {
   const data = await req.formData();
 
   // ----- 🔐 1. reCAPTCHA Validation -----
-  const recaptchaToken = data.get("recaptcha") as string | null;
+  const recaptchaToken = data.get("recaptchaToken") as string | null;
 
   if (!recaptchaToken) {
     return NextResponse.json(
