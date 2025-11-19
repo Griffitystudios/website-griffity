@@ -122,7 +122,7 @@ const HeroSectionCareers = () => {
               one team.
             </h2>
             <h1
-              className={`text-8xl sm:text-9xl md:text-[9rem] xl:text-[180px] 2xl:text-[212px] font-medium text-primary ${fortune.className}`}
+              className={`text-7xl xsm:text-8xl sm:text-9xl md:text-[9rem] xl:text-[180px] 2xl:text-[212px] font-medium text-primary ${fortune.className}`}
             >
               endless stories.
             </h1>
