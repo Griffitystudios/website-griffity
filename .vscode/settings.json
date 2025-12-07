@@ -1,4 +1,9 @@
 {
   "postman.settings.dotenv-detection-notification-visibility": false,
-  "conventionalCommits.scopes": ["font", "import error", " optimization "]
+  "conventionalCommits.scopes": [
+    "font",
+    "import error",
+    " optimization ",
+    "vulnerable next patch fixed"
+  ]
 }
