@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 const Hero = () => {
   const navItems = [
@@ -109,8 +110,14 @@ const Hero = () => {
         </div>
 
         <div className="flex items-center gap-10 h-full max-w-screen-3xl mx-auto">
-          <div className="z-30 flex-1">
-            <div className="flex flex-col items-start lg:translate-x-[-5%]">
+          
+            <div className="flex z-30 flex-col items-center lg:translate-x-[-5%] lg:translate-y-[-25%]">
+                <div className="flex mb-5 gap-2 sm:gap-3 md:gap-4 overflow-x-auto">  
+                 
+             <Image src={'/images/awards/award-06.png'} alt="award" width={384} height={279} className="w-24 sm:w-40 md:w-48 lg:w-56 xl:w-72 flex-shrink-0 object-cover"/>
+             <Image src={'/images/awards/award-05.png'} alt="award" width={384} height={279} className="w-24 sm:w-40 md:w-48 lg:w-56 xl:w-72 flex-shrink-0 object-cover"/>
+             <Image src={'/images/awards/award-07.png'} alt="award" width={384} height={279} className="w-24 sm:w-40 md:w-48 lg:w-56 xl:w-72 flex-shrink-0 object-cover"/>
+                </div>
               <h1 className="text-2xl xs:text-3xl sm:text-6xl md:text-[4.2rem] xl:text-8xl 2xl:text-h2 font-medium leading-tight">
                 welcome to <span className="font-bold">griffity</span>
               </h1>
@@ -122,7 +129,7 @@ const Hero = () => {
               >
                 your brand's loudest whisper!
               </motion.p>
-            </div>
+           
           </div>
 
           {/* Desktop Navigation Items - Hidden on mobile/tablet */}
