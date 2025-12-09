@@ -96,6 +96,6 @@ These recognitions motivate us to innovate further, dream bigger, and set new be
 
 If you're looking for a company you can trust with your **app**, **brand**, or **design**, Griffity Studios is ready to build something extraordinary with you.
 
-**Contact us today and let’s grow together.**
-
+[Book a free discovery call with Griffity Studios today.](https://www.griffitystudios.com/#contact-us)
 ---
+
