@@ -114,11 +114,11 @@ const Hero = () => {
             <div className="flex z-30 flex-col items-center lg:translate-x-[-5%] lg:translate-y-[-25%]">
                 <div className="flex mb-5 gap-2 sm:gap-3 md:gap-4 overflow-x-auto">  
                  
-             <Image src={'/images/awards/award-06.png'} alt="award" width={384} height={279} className="w-24 sm:w-40 md:w-48 lg:w-56 xl:w-72 flex-shrink-0 object-cover"/>
-             <Image src={'/images/awards/award-05.png'} alt="award" width={384} height={279} className="w-24 sm:w-40 md:w-48 lg:w-56 xl:w-72 flex-shrink-0 object-cover"/>
-             <Image src={'/images/awards/award-07.png'} alt="award" width={384} height={279} className="w-24 sm:w-40 md:w-48 lg:w-56 xl:w-72 flex-shrink-0 object-cover"/>
+             <Image src={'/images/awards/award-06.png'} alt="award" width={384} height={279} className="w-20 xs:w-28 xsm:w-40 sm:w-48 md:w-56 lg:w-56 xl:w-72 flex-shrink-0 object-cover"/>
+             <Image src={'/images/awards/award-05.png'} alt="award" width={384} height={279} className="w-20 xs:w-28 xsm:w-40 sm:w-48 md:w-56 lg:w-56 xl:w-72 flex-shrink-0 object-cover"/>
+             <Image src={'/images/awards/award-07.png'} alt="award" width={384} height={279} className="w-20 xs:w-28 xsm:w-40 sm:w-48 md:w-56 lg:w-56 xl:w-72 flex-shrink-0 object-cover"/>
                 </div>
-              <h1 className="text-2xl xs:text-3xl sm:text-6xl md:text-[4.2rem] xl:text-8xl 2xl:text-h2 font-medium leading-tight">
+              <h1 className="text-[1.7rem] xs:text-[2.236rem] xsm:text-[3.23rem] sm:text-[3.8rem] md:text-[4.59rem] xl:text-8xl 2xl:text-h2 font-medium md:mb-2 lg:leading-tight">
                 welcome to <span className="font-bold">griffity</span>
               </h1>
               <motion.p
