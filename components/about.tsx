@@ -271,7 +271,7 @@ export default function About() {
             <dt className="sr-only">Industry awards</dt>
             <dd>
               <AnimatedCounter
-                end={5}
+                end={7}
                 label="industry awards"
                 accent="awards"
               />
