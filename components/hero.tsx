@@ -121,7 +121,7 @@ const Hero = () => {
               <Link href={"https://techbehemoths.com/company/griffity-studios"} target="_blank" rel="noopener noreferrer"> <Image src={'/images/awards/award-05.png'} alt="award" width={384} height={279} className="w-20 xs:w-28 xsm:w-40 sm:w-48 md:w-56 lg:w-56 xl:w-72 flex-shrink-0 object-cover"/></Link>
               <Link href={"https://techbehemoths.com/company/griffity-studios"} target="_blank" rel="noopener noreferrer"><Image src={'/images/awards/award-07.png'} alt="award" width={384} height={279} className="w-20 xs:w-28 xsm:w-40 sm:w-48 md:w-56 lg:w-56 xl:w-72 flex-shrink-0 object-cover"/></Link>
                 </div>
-              <h1 className="text-[1.7rem] xs:text-[2.236rem] xsm:text-[3.23rem] sm:text-[3.8rem] md:text-[4.59rem] xl:text-8xl 2xl:text-h2 font-medium md:mb-2 lg:leading-tight">
+              <h1 className="text-[1.7rem] xs:text-[2.236rem] xsm:text-[3.1823rem] sm:text-[3.8rem] md:text-[4.59rem] xl:text-8xl 2xl:text-h2 font-medium md:mb-2 lg:leading-tight">
                 welcome to <span className="font-bold">griffity</span>
               </h1>
               <motion.p

@@ -28,12 +28,11 @@ const Client = () => {
     { name: "acem", text: "ADVANCED COLLEGE OF ENGINEERING & MANAGEMENT" },
     { name: "rjn", text: "REMOTE JOB NEPAL" },
     {
-      name: "techbehemoths",
-      text: "TECH BEHEMOTHS",
-      website: "https://techbehemoths.com/company/griffity-studios",
+      name: "bagaicha",
+      text: "BAGAICHA",
     },
     { name: "bstax", text: "BS TAX ACCOUNTANTS" },
-  ];
+  ] as SingleClient[];
 
   interface PairedClient {
     name: string;
