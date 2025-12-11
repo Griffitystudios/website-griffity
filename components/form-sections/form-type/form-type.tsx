@@ -2,6 +2,7 @@ export interface FormData {
   // Business Information
   businessName: string;
   businessDescription: string;
+  contact: string;
   websiteGoal: string[];
   websiteGoalOther: string;
 

@@ -36,6 +36,22 @@ export function BusinessInfoSection({
           className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 backdrop-blur-sm"
         />
       </div>
+      <div className="space-y-2">
+        <label
+          htmlFor="businessContact"
+          className="block text-sm font-medium text-slate-200"
+        >
+          Business Contact <span className="text-red-500"> * required</span>
+        </label>
+        <input
+          id="businessContact"
+          type="text"
+          value={formData.contact}
+          onChange={(e) => updateFormData({ contact: e.target.value })}
+          placeholder="Enter your business contact"
+          className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 backdrop-blur-sm"
+        />
+      </div>
 
       <div className="space-y-2">
         <label

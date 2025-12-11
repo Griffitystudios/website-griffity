@@ -77,6 +77,7 @@ export default function QuestionnairePage() {
   const [formData, setFormData] = useState<FormData>({
     businessName: "",
     businessDescription: "",
+    contact: '',
     websiteGoal: [],
     websiteGoalOther: "",
     numberOfProducts: 0,
@@ -165,6 +166,7 @@ export default function QuestionnairePage() {
           setFormData({
             businessName: "",
             businessDescription: "",
+            contact: "",
             websiteGoal: [],
             websiteGoalOther: "",
             numberOfProducts: 0,
