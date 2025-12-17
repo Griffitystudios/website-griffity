@@ -1,16 +1,26 @@
 import {remark} from "remark";
+import remarkGfm from "remark-gfm";   
 import html from "remark-html";
-export async function getArticleData(slug: string): Promise<(ArticleItem & {content: string; category?: string; slug?: string}) | null> {
+
+
+
+
+export async function getArticleData(
+  slug: string
+): Promise<(ArticleItem & { content: string; category?: string; slug?: string }) | null> {
   const fileNames = fs.readdirSync(articlesDirectory);
-  const fileName = fileNames.find((f) => f.replace(/\.md$/, "") === slug || f.includes(slug));
+  const fileName = fileNames.find(
+    (f) => f.replace(/\.md$/, "") === slug || f.includes(slug)
+  );
   if (!fileName) return null;
+
   const id = fileName.replace(/\.md$/, "");
   const fullPath = path.join(articlesDirectory, fileName);
   const fileContents = fs.readFileSync(fullPath, "utf-8");
   const matterResult = matter(fileContents);
 
   // Excerpt: first paragraph after frontmatter
-  const excerptMatch = fileContents.split('---')[2]?.match(/\n([^#\n][^\n]*)/);
+  const excerptMatch = fileContents.split("---")[2]?.match(/\n([^#\n][^\n]*)/);
   const excerpt = excerptMatch ? excerptMatch[1].trim() : "";
 
   // PublishedAt: use 'date' from frontmatter, fallback to empty string
@@ -33,10 +43,16 @@ export async function getArticleData(slug: string): Promise<(ArticleItem & {cont
   // category and slug from frontmatter if present
   const category = matterResult.data.category || "";
   const slugField = matterResult.data.slug || id;
-  //description
+
+  // description
   const description = matterResult.data.description;
-  // Parse markdown to HTML
-  const processedContent = await remark().use(html).process(contentMd);
+
+  // ✅ Parse markdown to HTML with GFM support
+  const processedContent = await remark()
+    .use(remarkGfm)   // 👈 enables tables, strikethrough, autolinks, task lists
+    .use(html)
+    .process(contentMd);
+
   const content = processedContent.toString();
 
   return {
@@ -54,6 +70,8 @@ export async function getArticleData(slug: string): Promise<(ArticleItem & {cont
     slug: slugField,
   };
 }
+
+  
 import fs from "fs"
 import matter from "gray-matter"
 import path from "path"
