@@ -7,7 +7,7 @@ import Link from "next/link";
 const Client = () => {
   const pairedClients = [
     { name: "ncell", text: "NCELL" },
-    { name: "hyatt", text: "HYATT REGENCY KATHMANDU" },
+    { name: "hyatt", text: "HYATT REGENCY KATHMANDU", fileType: "png" },
     { name: "veda", text: "VEDA STUDIOS" },
     { name: "aitc", text: "AITC" },
     { name: "eureka", text: "EUREKA" },
@@ -97,13 +97,14 @@ const Client = () => {
                     rel="noopener "
                   >
                     <div className="flex items-center justify-center p-[40px] w-[150px] xs:w-[200px] md:w-[250px] lg:w-[336px] aspect-[336/382] border border-primary ">
-                      <Image
-                        width={336}
-                        height={382}
-                        src={`/images/clientLogo/${singleClients[idx].name}.svg`}
-                        alt={`${singleClients[idx].text} Logo`}
-                        className="max-h-full max-w-full object-contain z-10"
-                      />
+<Image
+  width={336}
+  height={382}
+  src={`/images/clientLogo/${singleClients[idx].name}.${singleClients[idx].fileType || "svg"}`}
+  alt={`${singleClients[idx].text} Logo`}
+  className="max-h-full max-w-full object-contain z-10"
+/>
+
                     </div>
                   </Link>
                 ) : (
