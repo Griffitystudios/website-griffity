@@ -37,7 +37,7 @@ const Client = () => {
   interface PairedClient {
     name: string;
     text: string;
-    fileType?: string;
+    fileType?: "svg" | "png";
   }
 
   interface SingleClient {
