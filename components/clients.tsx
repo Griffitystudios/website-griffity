@@ -5,21 +5,22 @@ import Image from "next/image";
 import Link from "next/link";
 
 const Client = () => {
-  const pairedClients = [
-    { name: "ncell", text: "NCELL" },
-    { name: "hyatt", text: "HYATT REGENCY KATHMANDU", fileType: "png" },
-    { name: "veda", text: "VEDA STUDIOS" },
-    { name: "aitc", text: "AITC" },
-    { name: "eureka", text: "EUREKA" },
-    { name: "hult", text: "HULT PRIZE" },
-    { name: "cafe", text: "CAFE BOH" },
-    { name: "maha", text: "MAHAK MAHA" },
-    { name: "gurukul", text: "GURUKUL ACADEMY" },
-    { name: "opera", text: "OPERA ENGINEERING CONSULTANCY" },
-    { name: "majestic", text: "MAJESTIC GROUP" },
-    { name: "sukoon", text: "SUKOON" },
-    { name: "nepakids", text: "NEPAKIDS" },
-  ];
+const pairedClients: PairedClient[] = [
+  { name: "ncell", text: "NCELL" },
+  { name: "hyatt", text: "HYATT REGENCY KATHMANDU", fileType: "png" },
+  { name: "veda", text: "VEDA STUDIOS" },
+  { name: "aitc", text: "AITC" },
+  { name: "eureka", text: "EUREKA" },
+  { name: "hult", text: "HULT PRIZE" },
+  { name: "cafe", text: "CAFE BOH" },
+  { name: "maha", text: "MAHAK MAHA" },
+  { name: "gurukul", text: "GURUKUL ACADEMY" },
+  { name: "opera", text: "OPERA ENGINEERING CONSULTANCY" },
+  { name: "majestic", text: "MAJESTIC GROUP" },
+  { name: "sukoon", text: "SUKOON" },
+  { name: "nepakids", text: "NEPAKIDS" },
+];
+
 
   const singleClients = [
     { name: "prvu", text: "PRABHU BANK" },
@@ -40,11 +41,12 @@ const Client = () => {
     fileType?: "svg" | "png";
   }
 
-  interface SingleClient {
+interface SingleClient { 
     name: string;
     text: string;
     website?: string;
-  }
+    fileType?: "svg" | "png";
+}
 
   const pairedGroups: PairedClient[][] = [];
   for (let i = 0; i < pairedClients.length; i += 2) {
@@ -73,13 +75,14 @@ const Client = () => {
                     `}
                   >
                     <div className="w-[150px] xs:w-[200px] md:w-[250px] lg:w-[336px] aspect-[336/382] border border-primary flex items-center justify-center p-[10%] sm:p-14">
-                      <Image
-                        width={336}
-                        height={382}
-                        src={`/images/clientLogo/${client.name}.svg`}
-                        alt={`${client.text} Logo`}
-                        className="max-h-full max-w-full object-contain"
-                      />
+               <Image
+  width={336}
+  height={382}
+  src={`/images/clientLogo/${client.name}.${client.fileType || "svg"}`}
+  alt={`${client.text} Logo`}
+  className="max-h-full max-w-full object-contain"
+/>
+
                     </div>
                     <p className="p-base font-semibold text-primary mt-3">
                       {client.text}
