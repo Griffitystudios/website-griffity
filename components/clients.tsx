@@ -7,7 +7,7 @@ import Link from "next/link";
 const Client = () => {
   const pairedClients = [
     { name: "ncell", text: "NCELL" },
-    { name: "prvu", text: "PRABHU BANK" },
+    { name: "hyatt", text: "HYATT REGENCY KATHMANDU" },
     { name: "veda", text: "VEDA STUDIOS" },
     { name: "aitc", text: "AITC" },
     { name: "eureka", text: "EUREKA" },
@@ -16,13 +16,13 @@ const Client = () => {
     { name: "maha", text: "MAHAK MAHA" },
     { name: "gurukul", text: "GURUKUL ACADEMY" },
     { name: "opera", text: "OPERA ENGINEERING CONSULTANCY" },
-    { name: "bambusa", text: "BAMBUSA" },
     { name: "majestic", text: "MAJESTIC GROUP" },
     { name: "sukoon", text: "SUKOON" },
     { name: "nepakids", text: "NEPAKIDS" },
   ];
 
   const singleClients = [
+    { name: "prvu", text: "PRABHU BANK" },
     { name: "nepal", text: "OFFICE OF PRIME MINISTER & COUNCIL OF MINISTERS" },
     { name: "ntc", text: "NEPAL TELECOM" },
     { name: "acem", text: "ADVANCED COLLEGE OF ENGINEERING & MANAGEMENT" },
