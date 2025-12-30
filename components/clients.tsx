@@ -37,6 +37,7 @@ const Client = () => {
   interface PairedClient {
     name: string;
     text: string;
+    fileType?: string;
   }
 
   interface SingleClient {
