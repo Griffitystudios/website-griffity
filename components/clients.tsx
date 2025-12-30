@@ -19,6 +19,7 @@ const pairedClients: PairedClient[] = [
   { name: "majestic", text: "MAJESTIC GROUP" },
   { name: "sukoon", text: "SUKOON" },
   { name: "nepakids", text: "NEPAKIDS" },
+    { name: "bstax", text: "BS TAX ACCOUNTANTS" },
 ];
 
 
@@ -32,7 +33,6 @@ const pairedClients: PairedClient[] = [
       name: "bagaicha",
       text: "BAGAICHA",
     },
-    { name: "bstax", text: "BS TAX ACCOUNTANTS" },
   ] as SingleClient[];
 
   interface PairedClient {
