@@ -5,24 +5,26 @@ import Image from "next/image";
 import Link from "next/link";
 
 const Client = () => {
-  const pairedClients = [
-    { name: "ncell", text: "NCELL" },
-    { name: "prvu", text: "PRABHU BANK" },
-    { name: "veda", text: "VEDA STUDIOS" },
-    { name: "aitc", text: "AITC" },
-    { name: "eureka", text: "EUREKA" },
-    { name: "hult", text: "HULT PRIZE" },
-    { name: "cafe", text: "CAFE BOH" },
-    { name: "maha", text: "MAHAK MAHA" },
-    { name: "gurukul", text: "GURUKUL ACADEMY" },
-    { name: "opera", text: "OPERA ENGINEERING CONSULTANCY" },
-    { name: "bambusa", text: "BAMBUSA" },
-    { name: "majestic", text: "MAJESTIC GROUP" },
-    { name: "sukoon", text: "SUKOON" },
-    { name: "nepakids", text: "NEPAKIDS" },
-  ];
+const pairedClients: PairedClient[] = [
+  { name: "ncell", text: "NCELL" },
+  { name: "hyatt", text: "HYATT REGENCY KATHMANDU", fileType: "png" },
+  { name: "veda", text: "VEDA STUDIOS" },
+  { name: "aitc", text: "AITC" },
+  { name: "eureka", text: "EUREKA" },
+  { name: "hult", text: "HULT PRIZE" },
+  { name: "cafe", text: "CAFE BOH" },
+  { name: "maha", text: "MAHAK MAHA" },
+  { name: "gurukul", text: "GURUKUL ACADEMY" },
+  { name: "opera", text: "OPERA ENGINEERING CONSULTANCY" },
+  { name: "majestic", text: "MAJESTIC GROUP" },
+  { name: "sukoon", text: "SUKOON" },
+  { name: "nepakids", text: "NEPAKIDS" },
+    { name: "bstax", text: "BS TAX ACCOUNTANTS" },
+];
+
 
   const singleClients = [
+    { name: "prvu", text: "PRABHU BANK" },
     { name: "nepal", text: "OFFICE OF PRIME MINISTER & COUNCIL OF MINISTERS" },
     { name: "ntc", text: "NEPAL TELECOM" },
     { name: "acem", text: "ADVANCED COLLEGE OF ENGINEERING & MANAGEMENT" },
@@ -31,19 +33,20 @@ const Client = () => {
       name: "bagaicha",
       text: "BAGAICHA",
     },
-    { name: "bstax", text: "BS TAX ACCOUNTANTS" },
   ] as SingleClient[];
 
   interface PairedClient {
     name: string;
     text: string;
+    fileType?: "svg" | "png";
   }
 
-  interface SingleClient {
+interface SingleClient { 
     name: string;
     text: string;
     website?: string;
-  }
+    fileType?: "svg" | "png";
+}
 
   const pairedGroups: PairedClient[][] = [];
   for (let i = 0; i < pairedClients.length; i += 2) {
@@ -72,13 +75,14 @@ const Client = () => {
                     `}
                   >
                     <div className="w-[150px] xs:w-[200px] md:w-[250px] lg:w-[336px] aspect-[336/382] border border-primary flex items-center justify-center p-[10%] sm:p-14">
-                      <Image
-                        width={336}
-                        height={382}
-                        src={`/images/clientLogo/${client.name}.svg`}
-                        alt={`${client.text} Logo`}
-                        className="max-h-full max-w-full object-contain"
-                      />
+               <Image
+  width={336}
+  height={382}
+  src={`/images/clientLogo/${client.name}.${client.fileType || "svg"}`}
+  alt={`${client.text} Logo`}
+  className="max-h-full max-w-full object-contain"
+/>
+
                     </div>
                     <p className="p-base font-semibold text-primary mt-3">
                       {client.text}
@@ -97,13 +101,14 @@ const Client = () => {
                     rel="noopener "
                   >
                     <div className="flex items-center justify-center p-[40px] w-[150px] xs:w-[200px] md:w-[250px] lg:w-[336px] aspect-[336/382] border border-primary ">
-                      <Image
-                        width={336}
-                        height={382}
-                        src={`/images/clientLogo/${singleClients[idx].name}.svg`}
-                        alt={`${singleClients[idx].text} Logo`}
-                        className="max-h-full max-w-full object-contain z-10"
-                      />
+<Image
+  width={336}
+  height={382}
+  src={`/images/clientLogo/${singleClients[idx].name}.${singleClients[idx].fileType || "svg"}`}
+  alt={`${singleClients[idx].text} Logo`}
+  className="max-h-full max-w-full object-contain z-10"
+/>
+
                     </div>
                   </Link>
                 ) : (

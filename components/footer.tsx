@@ -114,9 +114,10 @@ const Footer = () => {
       </div>
 
       {/* Copyright */}
-      <div className="w-full text-center text-white text-[1.2rem] mt-6 lg:mt-0">
-        © 2025 Griffity Studio Pvt. Ltd.
-      </div>
+    <div className="w-full text-center text-white text-[1.2rem] mt-6 lg:mt-0">
+  © {new Date().getFullYear()} Griffity Studio Pvt. Ltd.
+</div>
+
     </footer>
   );
 };
