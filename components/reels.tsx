@@ -143,9 +143,9 @@ const Reels = () => {
           screenSize === "mobile" ? 180 : screenSize === "tablet" ? 220 : 256, // desktop
       }}
     >
-      <div className="flex gap-0 justify-center">{renderHoles()}</div>
+      <div className="flex gap-0 translate-x-80">{renderHoles()}</div>
       <div className="flex gap-0">{renderCards()}</div>
-      <div className="flex gap-0 justify-center">{renderHoles()}</div>
+      <div className="flex gap-0 translate-x-80">{renderHoles()}</div>
     </motion.div>
   );
 };
