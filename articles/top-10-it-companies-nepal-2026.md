@@ -12,7 +12,7 @@ tags:
     "software development Nepal"
   ]
 author: "Griffity Studios"
-date: "10-01-2026"
+date: "01-09-2026"
 imageUrl: "/images/blogs/top-10-it-companies-nepal-2026.png"
 slug: "top-it-companies-nepal-2026"
 ---
@@ -128,4 +128,5 @@ Griffity Studios stands out as the **best IT company in Nepal** by offering end-
 ## Looking for the Best IT Company in Nepal?
 
 **Contact Griffity Studios today** to build powerful digital products, strong brand identities, and high-performing marketing campaigns.
+
 
