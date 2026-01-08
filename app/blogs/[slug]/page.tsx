@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { FaCalendar, FaClock, FaUser, FaArrowLeft } from "react-icons/fa";
+import { FaCalendar, FaClock, FaUser } from "react-icons/fa";
 import Link from "next/link";
 import { Metadata } from "next";
 
@@ -10,39 +10,40 @@ import { getArticleData, getSortedArticles } from "@/lib/articles";
 import type { ArticleItem } from "@/types";
 
 interface PageProps {
-  params: Promise<{ slug: string }>; // Update to type params as a Promise
+  params: Promise<{ slug: string }>;
 }
 
 interface MetadataProps {
-  params: Promise<{ slug: string }>; // Update to type params as a Promise
+  params: Promise<{ slug: string }>;
 }
 
 export async function generateMetadata({
   params,
 }: MetadataProps): Promise<Metadata> {
-  const { slug } = await params; // Await the params to resolve the Promise
+  const { slug } = await params;
   const article = await getArticleData(slug);
 
   if (!article) {
     return {
       title: "Article Not Found",
+      description: "Sorry, the requested article could not be found.",
     };
   }
 
   return {
     title: `${article.title} | Tech Blog`,
-    description: article.description,
-    keywords: article.tags.join(", "),
+    description: `${article.description} | Insights on ${article.category} from ${article.author}.`,
+    keywords: `${article.tags.join(", ")}, ${article.category}, ${article.title}`,
     authors: [{ name: article.author }],
     creator: article.author,
     publisher: "Tech Blog",
     alternates: {
-      canonical: `https://griffitystudios.com/blogs/${article.slug}`, // Fixed typo: added // before griffitystudios
+      canonical: `https://griffitystudios.com/blogs/${article.slug}`,
     },
     openGraph: {
       title: article.title,
-      description: article.excerpt,
-      url: `https://griffitystudios.com/blogs/${article.slug}`, // Fixed typo: added // before griffitystudios
+      description: `${article.excerpt} | Learn more about ${article.category}.`,
+      url: `https://griffitystudios.com/blogs/${article.slug}`,
       siteName: "Tech Blog",
       images: [
         {
@@ -61,7 +62,7 @@ export async function generateMetadata({
     twitter: {
       card: "summary_large_image",
       title: article.title,
-      description: article.excerpt,
+      description: `${article.excerpt} | Written by ${article.author}.`,
       images: [article.imageUrl || "/placeholder.svg?height=630&width=1200"],
     },
     robots: {
@@ -79,41 +80,45 @@ export async function generateMetadata({
 }
 
 const ArticlePage = async ({ params }: PageProps) => {
-  const { slug } = await params; // Await the params to resolve the Promise
+  const { slug } = await params;
   const article = await getArticleData(slug);
   const allArticles = getSortedArticles();
 
   if (!article) {
     notFound();
   }
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     headline: article.title,
     description: article.excerpt,
     image: article.imageUrl,
-    url: `https:griffitystudios.com/blogs/${article.slug}`,
+    url: `https://griffitystudios.com/blogs/${article.slug}`,
     datePublished: article.publishedAt,
     dateModified: article.publishedAt,
     author: {
       "@type": "Person",
       name: article.author,
-      // description: article.authorBio, // Not available in markdown frontmatter
     },
     publisher: {
       "@type": "Organization",
       name: "Tech Blog",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://griffitystudios.com/logo.png",
+      },
     },
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `https:griffitystudios.com/blogs/${article.slug}`,
+      "@id": `https://griffitystudios.com/blogs/${article.slug}`,
     },
     keywords: article.tags.join(", "),
     articleSection: article.category || "",
     wordCount: article.content.replace(/<[^>]+>/g, "").split(" ").length,
   };
 
-  const currentUrl = `https:griffitystudios.com/blogs/${article.slug}`;
+  const currentUrl = `https://griffitystudios.com/blogs/${article.slug}`;
 
   return (
     <>
@@ -126,20 +131,9 @@ const ArticlePage = async ({ params }: PageProps) => {
         {/* Header */}
         <header className="border-b border-slate-700/50">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-            {/* <div className="flex items-center justify-between mb-4">
-                <Link
-                  href="/blog"
-                  className="flex items-center gap-2 text-slate-400 hover:text-amber-300 transition-colors font-poppins"
-                >
-                  <FaArrowLeft className="w-4 h-4" />
-                  Back to Blog
-                </Link>
-              </div> */}
-
             <Breadcrumbs
               items={[
                 { label: "Blogs", href: "/blogs" },
-
                 { label: article.title },
               ]}
             />
@@ -216,24 +210,21 @@ const ArticlePage = async ({ params }: PageProps) => {
             <div className="mt-12 pt-8 border-t border-slate-700/50">
               <div className="flex flex-wrap gap-2">
                 {article.tags.map((tag: string) => (
-                  <span
-                    key={tag}
-                    className="px-3 py-1 bg-amber-700/20 text-amber-300 text-sm font-poppins rounded-full border border-amber-700/30"
-                  >
-                    #{tag}
-                  </span>
+                  <Link href={`/tags/${tag}`} key={tag}>
+                    <span className="px-3 py-1 bg-amber-700/20 text-amber-300 text-sm font-poppins rounded-full border border-amber-700/30">
+                      #{tag}
+                    </span>
+                  </Link>
                 ))}
               </div>
             </div>
-
-            {/* Author Bio */}
-            {/* Author bio not available in markdown frontmatter */}
           </article>
 
           {/* Related Articles */}
-          {/* You may want to update RelatedArticles to use real articles */}
           <RelatedArticles
-            articles={allArticles}
+            articles={allArticles.filter(
+              (a) => a.category === article.category
+            )}
             currentArticleId={article.id}
           />
         </main>
