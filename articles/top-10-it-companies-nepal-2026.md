@@ -25,7 +25,7 @@ Nepal’s IT industry continues to grow rapidly in 2026, with companies deliveri
 
 ##  1. Griffity Studios — Best IT Company in Nepal (2026)
 
-![Griffity Studios Logo](/images/logos/griffity-studios.png)
+![Griffity Studios Logo](/images/blogs/logo-griffity-studios.png)
 
 Griffity Studios leads Nepal’s IT landscape by combining **technology, creativity, and performance-driven marketing**. From scalable web platforms and mobile apps to branding, SEO, and outdoor marketing campaigns, Griffity delivers results that directly impact business growth.
 
@@ -39,7 +39,7 @@ Griffity Studios leads Nepal’s IT landscape by combining **technology, creativ
 
 ## 2. Deerwalk Inc.
 
-![Deerwalk Logo](/images/logos/deerwalk.png)
+![Deerwalk Logo](/images/blogs/logo-deerwalk.png)
 
 A globally recognized Nepali IT company specializing in healthcare analytics, enterprise software, and data-driven platforms.
 
@@ -47,7 +47,7 @@ A globally recognized Nepali IT company specializing in healthcare analytics, en
 
 ## 3. Leapfrog Technology
 
-![Leapfrog Technology Logo](/images/logos/leapfrog-technology.png)
+![Leapfrog Technology Logo](/images/blogs/logo-leapfrog-technology.png)
 
 Known for high-quality product engineering and modern software architecture for global clients.
 
@@ -55,7 +55,7 @@ Known for high-quality product engineering and modern software architecture for 
 
 ## 4. AITC International
 
-![AITC International Logo](/images/logos/aitc-international.png)
+![AITC International Logo](/images/blogs/logo-aitc-international.png)
 
 A trusted enterprise IT solutions provider focusing on infrastructure, systems integration, and managed services.
 
@@ -63,7 +63,7 @@ A trusted enterprise IT solutions provider focusing on infrastructure, systems i
 
 ## 5. Fusemachines Nepal
 
-![Fusemachines Logo](/images/logos/fusemachines.png)
+![Fusemachines Logo](/images/blogs/logo-fusemachines.png)
 
 An AI-first company delivering machine learning solutions and advanced AI education programs.
 
@@ -71,7 +71,7 @@ An AI-first company delivering machine learning solutions and advanced AI educat
 
 ## 6. Verisk Nepal
 
-![Verisk Nepal Logo](/images/logos/verisk-nepal.png)
+![Verisk Nepal Logo](/images/blogs/logo-verisk-nepal.png)
 
 A leading technology center for analytics, data engineering, and global risk solutions.
 
@@ -79,7 +79,7 @@ A leading technology center for analytics, data engineering, and global risk sol
 
 ## 7. CloudFactory
 
-![CloudFactory Logo](/images/logos/cloudfactory.png)
+![CloudFactory Logo](/images/blogs/logo-cloudfactory.png)
 
 A pioneer in combining AI with human intelligence to deliver scalable data solutions worldwide.
 
@@ -87,7 +87,7 @@ A pioneer in combining AI with human intelligence to deliver scalable data solut
 
 ## 8. BrainDigit IT Solutions
 
-![BrainDigit Logo](/images/logos/braindigit.png)
+![BrainDigit Logo](/images/blogs/logo-braindigit.png)
 
 Known for web development, mobile apps, and custom IT solutions for businesses in Nepal.
 
@@ -95,7 +95,7 @@ Known for web development, mobile apps, and custom IT solutions for businesses i
 
 ## 9. Leaphost Technologies
 
-![Leaphost Logo](/images/logos/leaphost.png)
+![Leaphost Logo](/images/blogs/logo-leaphost.png)
 
 A reliable provider of hosting, cloud infrastructure, and server solutions in Nepal.
 
@@ -103,7 +103,7 @@ A reliable provider of hosting, cloud infrastructure, and server solutions in Ne
 
 ## 10. Bajra Technologies
 
-![Bajra Technologies Logo](/images/logos/bajra-technologies.png)
+![Bajra Technologies Logo](/images/blogs/logo-bajra-technologies.png)
 
 A respected software development company delivering enterprise-grade and digital transformation solutions.
 
@@ -128,3 +128,4 @@ Griffity Studios stands out as the **best IT company in Nepal** by offering end-
 ## Looking for the Best IT Company in Nepal?
 
 **Contact Griffity Studios today** to build powerful digital products, strong brand identities, and high-performing marketing campaigns.
+
