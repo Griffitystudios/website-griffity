@@ -93,11 +93,11 @@ Known for web development, mobile apps, and custom IT solutions for businesses i
 
 ---
 
-## 9. Leaphost Technologies
+## 9. Cotiviti Nepal
 
-![Leaphost Logo](/images/blogs/logo-leaphost.png)
+![Cotiviti Nepal Logo](/images/blogs/logo-cotiviti-nepal.png)
 
-A reliable provider of hosting, cloud infrastructure, and server solutions in Nepal.
+A global healthcare analytics and payment accuracy company with a strong engineering and analytics presence in Nepal.
 
 ---
 
@@ -128,5 +128,6 @@ Griffity Studios stands out as the **best IT company in Nepal** by offering end-
 ## Looking for the Best IT Company in Nepal?
 
 **Contact Griffity Studios today** to build powerful digital products, strong brand identities, and high-performing marketing campaigns.
+
 
 
