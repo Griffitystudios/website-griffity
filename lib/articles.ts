@@ -111,6 +111,9 @@ export const getSortedArticles = (): ArticleItem[] => {
     // imageUrl: from frontmatter or undefined
     const imageUrl = matterResult.data.imageUrl;
 
+    //Category: from frontmatter or undefined
+    const category = matterResult.data.category || "";
+
     return {
       id,
       title: matterResult.data.title || id,
@@ -120,6 +123,7 @@ export const getSortedArticles = (): ArticleItem[] => {
       readTime,
       tags,
       imageUrl,
+      category,
     };
   });
 

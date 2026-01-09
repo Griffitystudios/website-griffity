@@ -9,6 +9,7 @@ export interface ArticleItem {
   tags: string[]
   imageUrl?: string
   slug?: string
+  category?: string
 }
 
 export interface BlogCategory {
