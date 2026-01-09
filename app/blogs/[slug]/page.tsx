@@ -25,49 +25,59 @@ export async function generateMetadata({
 
   if (!article) {
     return {
-      title: "Article Not Found",
+      title: "Article Not Found | Griffity Studios",
       description: "Sorry, the requested article could not be found.",
     };
   }
 
+  // Ensure category has a default value for SEO
+  const categoryText = article.category ? ` | ${article.category}` : "";
+  const metaDescription = article.description || article.excerpt;
+
   return {
-    title: `${article.title} | Tech Blog`,
-    description: `${article.description} | Insights on ${article.category} from ${article.author}.`,
-    keywords: `${article.tags.join(", ")}, ${article.category}, ${article.title}`,
+    title: `${article.title}${categoryText} | Griffity Studios Blog`,
+    description: metaDescription.substring(0, 155), // Google recommends 150-160 characters
+    keywords: `${article.tags.join(", ")}${article.category ? `, ${article.category}` : ""}, ${article.title}, Griffity Studios`,
     authors: [{ name: article.author }],
     creator: article.author,
-    publisher: "Tech Blog",
+    publisher: "Griffity Studios",
+    category: article.category || "Technology",
+    classification: "Blog",
     alternates: {
       canonical: `https://griffitystudios.com/blogs/${article.slug}`,
     },
     openGraph: {
-      title: article.title,
-      description: `${article.excerpt} | Learn more about ${article.category}.`,
+      title: `${article.title}${categoryText}`,
+      description: metaDescription.substring(0, 155),
       url: `https://griffitystudios.com/blogs/${article.slug}`,
-      siteName: "Tech Blog",
+      siteName: "Griffity Studios",
       images: [
         {
           url: article.imageUrl || "/placeholder.svg?height=630&width=1200",
           width: 1200,
           height: 630,
           alt: article.title,
+          type: "image/jpeg",
         },
       ],
       locale: "en_US",
       type: "article",
       publishedTime: article.publishedAt,
+      modifiedTime: article.publishedAt,
       authors: [article.author],
       tags: article.tags,
     },
     twitter: {
       card: "summary_large_image",
-      title: article.title,
-      description: `${article.excerpt} | Written by ${article.author}.`,
+      title: `${article.title}${categoryText}`,
+      description: metaDescription.substring(0, 155),
       images: [article.imageUrl || "/placeholder.svg?height=630&width=1200"],
+      creator: `@GrifityStudios`,
     },
     robots: {
       index: true,
       follow: true,
+      nocache: false,
       googleBot: {
         index: true,
         follow: true,
@@ -91,22 +101,33 @@ const ArticlePage = async ({ params }: PageProps) => {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
+    "@id": `https://griffitystudios.com/blogs/${article.slug}`,
     headline: article.title,
-    description: article.excerpt,
-    image: article.imageUrl,
+    alternativeHeadline: article.excerpt,
+    description: article.description || article.excerpt,
+    image: {
+      "@type": "ImageObject",
+      url: article.imageUrl || "https://griffitystudios.com/logo.png",
+      height: 630,
+      width: 1200,
+    },
     url: `https://griffitystudios.com/blogs/${article.slug}`,
     datePublished: article.publishedAt,
     dateModified: article.publishedAt,
+    inLanguage: "en-US",
     author: {
       "@type": "Person",
       name: article.author,
+      url: "https://griffitystudios.com",
     },
     publisher: {
       "@type": "Organization",
-      name: "Tech Blog",
+      name: "Griffity Studios",
       logo: {
         "@type": "ImageObject",
         url: "https://griffitystudios.com/logo.png",
+        height: 60,
+        width: 250,
       },
     },
     mainEntityOfPage: {
@@ -114,17 +135,47 @@ const ArticlePage = async ({ params }: PageProps) => {
       "@id": `https://griffitystudios.com/blogs/${article.slug}`,
     },
     keywords: article.tags.join(", "),
-    articleSection: article.category || "",
+    articleSection: article.category || "Technology",
     wordCount: article.content.replace(/<[^>]+>/g, "").split(" ").length,
+    articleBody: article.description || article.excerpt,
   };
 
   const currentUrl = `https://griffitystudios.com/blogs/${article.slug}`;
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://griffitystudios.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Blogs",
+        item: "https://griffitystudios.com/blogs",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: article.title,
+        item: currentUrl,
+      },
+    ],
+  };
 
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
 
       <div className="min-h-screen" style={{ backgroundColor: "#081c26" }}>
@@ -146,9 +197,11 @@ const ArticlePage = async ({ params }: PageProps) => {
             {/* Article Header */}
             <header className="mb-12">
               <div className="mb-6">
-                <span className="inline-block px-3 py-1 bg-amber-700/20 text-amber-300 text-sm font-poppins rounded-full border border-amber-700/30 mb-4">
-                  {article.category || ""}
-                </span>
+                {article.category && (
+                  <span className="inline-block px-3 py-1 bg-amber-700/20 text-amber-300 text-sm font-poppins rounded-full border border-amber-700/30 mb-4">
+                    {article.category}
+                  </span>
+                )}
                 <h1 className="font-cormorantGaramond text-4xl lg:text-5xl font-bold text-amber-100 mb-6 leading-tight">
                   {article.title}
                 </h1>
@@ -160,11 +213,11 @@ const ArticlePage = async ({ params }: PageProps) => {
               {/* Article Meta */}
               <div className="flex flex-wrap items-center gap-6 text-slate-400 font-poppins text-sm mb-8">
                 <div className="flex items-center gap-2">
-                  <FaUser className="w-4 h-4" />
-                  <span>{article.author}</span>
+                  <FaUser className="w-4 h-4" aria-hidden="true" />
+                  <span>By <span className="font-semibold">{article.author}</span></span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <FaCalendar className="w-4 h-4" />
+                  <FaCalendar className="w-4 h-4" aria-hidden="true" />
                   <time dateTime={article.publishedAt}>
                     {new Date(article.publishedAt).toLocaleDateString("en-US", {
                       year: "numeric",
@@ -174,20 +227,24 @@ const ArticlePage = async ({ params }: PageProps) => {
                   </time>
                 </div>
                 <div className="flex items-center gap-2">
-                  <FaClock className="w-4 h-4" />
+                  <FaClock className="w-4 h-4" aria-hidden="true" />
                   <span>{article.readTime} min read</span>
                 </div>
               </div>
 
               {/* Featured Image */}
               {article.imageUrl && (
-                <div className="mb-8">
+                <figure className="mb-8">
                   <img
-                    src={article.imageUrl || "/placeholder.svg"}
+                    src={article.imageUrl}
                     alt={article.title}
+                    title={article.title}
                     className="w-full h-64 lg:h-96 object-cover rounded-xl"
+                    loading="eager"
+                    decoding="async"
                   />
-                </div>
+                  <figcaption className="sr-only">{article.title}</figcaption>
+                </figure>
               )}
 
               {/* Social Share */}

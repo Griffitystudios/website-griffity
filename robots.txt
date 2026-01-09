@@ -1,4 +1,23 @@
-User-agent: *
-Disallow:
+# robots.txt for https://www.griffitystudios.com
 
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /_next/
+
+# Sitemap location
 Sitemap: https://www.griffitystudios.com/sitemap.xml
+
+# Crawl-delay (optional, helpful for rate limiting)
+Crawl-delay: 1
+
+# Common bots
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /

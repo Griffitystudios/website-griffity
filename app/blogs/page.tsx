@@ -24,37 +24,41 @@ function getCategories(articles: ArticleItem[]): BlogCategory[] {
 }
 
 export const metadata: Metadata = {
-  title: "Blog | Tech Insights & Tutorials",
+  title: "Blog | Tech Insights & Tutorials | Griffity Studios",
   description:
-    "Discover the latest insights, tutorials, and best practices in web development, programming, and technology. Stay updated with expert articles on React, Next.js, TypeScript, and more.",
+    "Discover the latest insights, tutorials, and best practices in web development, branding, design, and technology from Griffity Studios. Expert articles on React, Next.js, UI/UX, and digital marketing.",
   keywords: [
     "blog",
     "web development",
-    "programming",
+    "branding insights",
+    "design tutorials",
     "React",
     "Next.js",
     "TypeScript",
-    "tutorials",
-    "tech insights",
+    "UI/UX design",
+    "digital marketing",
+    "Nepal tech blog",
+    "Griffity Studios blog",
   ],
-  authors: [{ name: "Tech Blog Team" }],
-  creator: "Tech Blog",
-  publisher: "Tech Blog",
+  authors: [{ name: "Griffity Studios Team" }],
+  creator: "Griffity Studios",
+  publisher: "Griffity Studios",
   alternates: {
     canonical: "https://griffitystudios.com/blogs",
   },
   openGraph: {
-    title: "Blog | Tech Insights & Tutorials",
+    title: "Blog | Tech Insights & Tutorials | Griffity Studios",
     description:
-      "Discover the latest insights, tutorials, and best practices in web development, programming, and technology.",
-    url: "https://griffitystudios.com/blog",
-    siteName: "Tech Blog",
+      "Discover the latest insights, tutorials, and best practices in web development, branding, design, and technology from industry experts at Griffity Studios.",
+    url: "https://griffitystudios.com/blogs",
+    siteName: "Griffity Studios",
     images: [
       {
-        url: "/img-join-us.jpg?height=630&width=1200",
+        url: "https://griffitystudios.com/logos/og-cover.jpg",
         width: 1200,
         height: 630,
-        alt: "Tech Blog - Latest Articles",
+        alt: "Griffity Studios Blog - Latest Articles",
+        type: "image/jpeg",
       },
     ],
     locale: "en_US",
@@ -62,14 +66,16 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Blog | Tech Insights & Tutorials",
+    title: "Blog | Tech Insights & Tutorials | Griffity Studios",
     description:
-      "Discover the latest insights, tutorials, and best practices in web development, programming, and technology.",
-    images: ["/img-join-us.jpg?height=630&width=1200"],
+      "Discover the latest insights, tutorials, and best practices in web development, branding, design, and technology.",
+    images: ["https://griffitystudios.com/logos/og-cover.jpg"],
+    creator: "@GriffityStudios",
   },
   robots: {
     index: true,
     follow: true,
+    nocache: false,
     googleBot: {
       index: true,
       follow: true,
@@ -87,25 +93,38 @@ export default function BlogPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Blog",
-    name: "Tech Insights & Tutorials",
+    "@id": "https://griffitystudios.com/blogs/#blog",
+    name: "Griffity Studios Blog - Tech Insights & Tutorials",
     description:
-      "A blog featuring the latest insights, tutorials, and best practices in web development and technology",
-    url: "https://griffitystudios.com/blog",
-    author: {
+      "A blog featuring the latest insights, tutorials, and best practices in web development, branding, design, and technology from Griffity Studios.",
+    url: "https://griffitystudios.com/blogs",
+    inLanguage: "en-US",
+    publisher: {
       "@type": "Organization",
-      name: "Tech Blog Team",
+      "@id": "https://griffitystudios.com/#organization",
+      name: "Griffity Studios",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://griffitystudios.com/logos/logo.png",
+      },
     },
-    blogPost: articles.map((article: ArticleItem) => ({
+    blogPost: articles.slice(0, 10).map((article: ArticleItem) => ({
       "@type": "BlogPosting",
+      "@id": `https://griffitystudios.com/blogs/${article.id || article.slug}#blogpost`,
       headline: article.title,
       description: article.excerpt,
-      url: `https://griffitystudios.com/blog",/${article.id}`,
+      url: `https://griffitystudios.com/blogs/${article.id || article.slug}`,
       datePublished: article.publishedAt,
       author: {
         "@type": "Person",
         name: article.author,
       },
+      publisher: {
+        "@type": "Organization",
+        name: "Griffity Studios",
+      },
       keywords: Array.isArray(article.tags) ? article.tags.join(", ") : "",
+      image: article.imageUrl || "https://griffitystudios.com/logos/logo.png",
     })),
   };
 
