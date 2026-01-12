@@ -5,8 +5,9 @@ import { getSortedArticles } from "@/lib/articles";
 
 const normalize = (value: string) => value.toLowerCase().replace(/\s+/g, " ").trim();
 
-export function generateMetadata({ params }: { params: { tag: string } }): Metadata {
-  const tagParam = decodeURIComponent(params.tag);
+export async function generateMetadata({ params }: { params: Promise<{ tag: string }> }): Promise<Metadata> {
+  const { tag } = await params;
+  const tagParam = decodeURIComponent(tag);
   const title = `Articles tagged "${tagParam}" | Griffity Studios`;
   const description = `Explore articles tagged with ${tagParam} from Griffity Studios.`;
   const canonical = `https://www.griffitystudios.com/tags/${encodeURIComponent(tagParam)}`;
@@ -34,8 +35,9 @@ export function generateMetadata({ params }: { params: { tag: string } }): Metad
   };
 }
 
-export default function TagPage({ params }: { params: { tag: string } }) {
-  const tagParam = decodeURIComponent(params.tag);
+export default async function TagPage({ params }: { params: Promise<{ tag: string }> }) {
+  const { tag } = await params;
+  const tagParam = decodeURIComponent(tag);
   const articles = getSortedArticles();
 
   const taggedArticles = articles.filter((article) =>
