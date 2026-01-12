@@ -69,9 +69,9 @@ const JoinUs = () => {
       id="career"
       className="relative max-w-screen-3xl mx-auto bg-[#081C26] bg-[url('/images/img-join-us.jpg')] bg-cover bg-center bg-no-repeat join-us"
     > */}
-      <motion.h1 className="p-base w-fit font-semibold text-primary z-10 flex-shrink-0">
+      <motion.h3 className="p-base w-fit font-semibold text-primary z-10 flex-shrink-0">
         [CONTACT US ]
-      </motion.h1>
+      </motion.h3>
       <div className="absolute inset-0 " />
       <form
         ref={formRef}
