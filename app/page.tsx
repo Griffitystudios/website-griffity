@@ -14,7 +14,7 @@ import GriffityBg from "@/components/bg-logo";
 
 export const metadata: Metadata = {
   title: "Griffity Studios | Creative Agency Nepal | Branding, Design & Development",
-  description: "Griffity Studios is a full-service creative agency in Nepal specializing in branding, web design, video production, marketing, and digital experiences. Transform your brand with award-winning creative solutions.",
+  description: "Creative agency in Nepal specializing in branding, web design, video production, and digital marketing. Award-winning solutions to transform your brand.",
   keywords: [
     "branding agency Nepal",
     "creative agency Nepal",

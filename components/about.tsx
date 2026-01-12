@@ -180,7 +180,7 @@ export default function About() {
           >
             [ ABOUT US ]
           </motion.p>
-          <motion.h1
+          <motion.h2
             id="about-heading"
             className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-4 sm:mb-10"
             initial={{ opacity: 0, y: -20 }}
@@ -188,7 +188,7 @@ export default function About() {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             about <span className="text-primary">griffity!</span>
-          </motion.h1>
+          </motion.h2>
           <motion.p
             className="sm:text-xl lg:text-2xl text-muted font-extralight mb-6 sm:mb-8"
             initial={{ opacity: 0, y: 20 }}

@@ -115,8 +115,21 @@ const Footer = () => {
 
       {/* Copyright */}
     <div className="w-full text-center text-white text-[1.2rem] mt-6 lg:mt-0">
-  © {new Date().getFullYear()} Griffity Studio Pvt. Ltd.
-</div>
+      <p>© {new Date().getFullYear()} Griffity Studio Pvt. Ltd.</p>
+      <nav className="mt-4 text-sm flex justify-center gap-4 flex-wrap">
+        <Link href="/" className="text-primary hover:text-white transition">Home</Link>
+        <span className="text-muted">•</span>
+        <Link href="/#about-us" className="text-primary hover:text-white transition">About</Link>
+        <span className="text-muted">•</span>
+        <Link href="/#services" className="text-primary hover:text-white transition">Services</Link>
+        <span className="text-muted">•</span>
+        <Link href="/blogs" className="text-primary hover:text-white transition">Blog</Link>
+        <span className="text-muted">•</span>
+        <Link href="/careers" className="text-primary hover:text-white transition">Careers</Link>
+        <span className="text-muted">•</span>
+        <Link href="/ecommerce" className="text-primary hover:text-white transition">Ecommerce</Link>
+      </nav>
+    </div>
 
     </footer>
   );

@@ -156,14 +156,14 @@ const Clientnumber = () => {
       <div
         className={`lg:mb-16 mb-10 sm:left-[10%] xs:left-[5%] left-[10%] relative`}
       >
-        <h1
+        <h2
           className={`xl:text-7xl  text-[1.5rem] xs:text-3xl tracking-wider text-primary font-bold mb-2`}
         >
           TIRED OF OUTDATED
-        </h1>
-        <h2 className="xl:text-7xl text-[1.5rem] xs:text-3xl md:text-[6xl] tracking-wider text-primary font-bold">
-          SOLUTIONS?
         </h2>
+        <h3 className="xl:text-7xl text-[1.5rem] xs:text-3xl md:text-[6xl] tracking-wider text-primary font-bold">
+          SOLUTIONS?
+        </h3>
       </div>
 
       {/* Stats Section */}

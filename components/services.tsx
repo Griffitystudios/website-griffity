@@ -1,6 +1,7 @@
 "use client";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import React, { useRef } from "react";
+import Link from "next/link";
 
 const Services = () => {
   const containerRef = useRef(null);
@@ -250,6 +251,24 @@ const Services = () => {
           </motion.ul>
         </motion.div>
       </section>
+
+      {/* Internal Links Section for SEO */}
+      <div className="mt-16 pt-8 border-t border-primary">
+        <p className="text-sm text-muted mb-4">Explore more:</p>
+        <div className="flex flex-wrap gap-4">
+          <Link href="/blogs" className="text-primary hover:text-white transition-colors text-sm">
+            Read our blog articles
+          </Link>
+          <span className="text-muted">•</span>
+          <Link href="/careers" className="text-primary hover:text-white transition-colors text-sm">
+            Join our team
+          </Link>
+          <span className="text-muted">•</span>
+          <Link href="#about-us" className="text-primary hover:text-white transition-colors text-sm">
+            Learn about us
+          </Link>
+        </div>
+      </div>
     </div>
   );
 };

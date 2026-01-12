@@ -12,7 +12,24 @@ const nextConfig: NextConfig = {
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
   },
   
-  /* Headers for better SEO */
+  /* Redirects for www/non-www consistency */
+  async redirects() {
+    return [
+      {
+        source: "/:path*",
+        has: [
+          {
+            type: "host",
+            value: "griffitystudios.com",
+          },
+        ],
+        destination: "https://www.griffitystudios.com/:path*",
+        permanent: true,
+      },
+    ];
+  },
+  
+  /* Headers for better SEO and performance */
   async headers() {
     return [
       {
@@ -33,6 +50,24 @@ const nextConfig: NextConfig = {
           {
             key: "Referrer-Policy",
             value: "origin-when-cross-origin",
+          },
+        ],
+      },
+      {
+        source: "/images/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+      {
+        source: "/reelsmedia/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=86400",
           },
         ],
       },
