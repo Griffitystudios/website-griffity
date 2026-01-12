@@ -135,7 +135,7 @@ export default function BlogPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <div className="min-h-screen" style={{ backgroundColor: "#081c26" }}>
+      <div className="min-h-screen bg-body">
         {/* Hero Section */}
         <header className="relative py-20 lg:py-32">
           <div className="absolute inset-0 bg-gradient-to-br from-amber-700/10 to-transparent" />

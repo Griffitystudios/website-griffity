@@ -145,13 +145,7 @@ const JobForm = () => {
           name="position"
           required
           defaultValue={"Select a position"}
-          className="mt-1 mb-4 p-2 border-b border-white w-1/2 md:w-2/5 xl:w-1/5 bg-transparent text-white placeholder-gray-400 focus:outline-none focus:border-[#F59E0B] appearance-none cursor-pointer"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='white'%3E%3Cpath fillRule='evenodd' d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z' clipRule='evenodd'/%3E%3C/svg%3E")`,
-            backgroundRepeat: "no-repeat",
-            backgroundPosition: "right 0.5rem center",
-            backgroundSize: "1.5em 1.5em",
-          }}
+          className="mt-1 mb-4 p-2 border-b border-white w-1/2 md:w-2/5 xl:w-1/5 bg-transparent text-white placeholder-gray-400 focus:outline-none focus:border-amber-400 appearance-none cursor-pointer bg-[url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 20 20%22 fill=%22white%22%3E%3Cpath fillRule=%22evenodd%22 d=%22M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z%22 clipRule=%22evenodd%22/%3E%3C/svg%3E')] bg-no-repeat bg-[right_0.5rem_center] [background-size:1.5em_1.5em]"
         >
           <option
             value={""}

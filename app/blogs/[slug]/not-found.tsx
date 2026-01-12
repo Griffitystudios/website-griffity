@@ -3,7 +3,7 @@ import { FaArrowLeft, FaExclamationTriangle } from "react-icons/fa"
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: "#081c26" }}>
+    <div className="min-h-screen flex items-center justify-center bg-body">
       <div className="text-center space-y-6 max-w-md mx-auto px-4">
         <div className="flex justify-center">
           <FaExclamationTriangle className="w-24 h-24 text-slate-600" />

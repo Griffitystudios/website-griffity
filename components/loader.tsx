@@ -60,7 +60,7 @@ export default function Loader() {
                 duration: 0.8,
                 ease: "easeOut",
               }}
-              style={{ display: "inline-block" }}
+              className="inline-block"
             >
               {char}
             </motion.span>
