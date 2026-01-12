@@ -52,9 +52,8 @@ export async function getArticleData(
   // imageUrl: from frontmatter or undefined
   const imageUrl = matterResult.data.imageUrl;
 
-  // category and slug from frontmatter if present
+  // category from frontmatter if present
   const category = matterResult.data.category || "";
-  const slugField = matterResult.data.slug || id;
 
   // description
   const description = matterResult.data.description;
