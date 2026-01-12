@@ -16,7 +16,7 @@ tags:
 author: "Griffity Studios"
 date: "10-02-2025"
 imageUrl: "/images/blogs/Griffity-Studios-Top-Billboard-Designs-Nepal.webp"
-slug: "Top-10-Most-Creative-Billboard-Designs-Nepal"
+slug: "top-10-most-creative-billboard-designs-nepal"
 ---
 
 # Top 10 Most Creative Billboard Designs in Nepal (and Why They Work)  

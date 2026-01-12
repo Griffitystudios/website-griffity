@@ -8,9 +8,8 @@ import React from "react";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Careers at Griffity Studios | Join Our Creative Team in Nepal",
-  description:
-    "Explore exciting career opportunities at Griffity Studios Nepal. Join our innovative team and grow your career in branding, design, development, and digital marketing. We're hiring talented creatives in Kathmandu.",
+  title: "Join Griffity Studios | Careers in Nepal",
+ description: "Join Griffity Studios Nepal. Explore career opportunities in branding, design, development, and digital marketing.",
   keywords: [
     "careers Nepal",
     "jobs at Griffity Studios",
@@ -30,13 +29,12 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Careers at Griffity Studios | Join Our Team",
-    description:
-      "Explore exciting career opportunities at Griffity Studios Nepal. Join our innovative team and grow your career in design, development, and technology.",
+    description: "Discover career opportunities at Griffity Studios Nepal in design, development, and technology.",
     url: "https://www.griffitystudios.com/careers",
     siteName: "Griffity Studios",
     images: [
       {
-        url: "https://griffitystudios.com/logos/og-cover.jpg",
+        url: "https://www.griffitystudios.com/logos/og-cover.jpg",
         width: 1200,
         height: 630,
         alt: "Careers at Griffity Studios",
@@ -49,9 +47,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Careers at Griffity Studios | Join Our Team",
-    description:
-      "Explore exciting career opportunities at Griffity Studios Nepal. Join our innovative creative team.",
-    images: ["https://griffitystudios.com/logos/og-cover.jpg"],
+   description: "Join Griffity Studios Nepal. Exciting career opportunities for creatives in design and development.",
+    images: ["https://www.griffitystudios.com/logos/og-cover.jpg"],
     creator: "@GriffityStudios",
   },
   robots: {

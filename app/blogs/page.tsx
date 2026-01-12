@@ -26,7 +26,7 @@ function getCategories(articles: ArticleItem[]): BlogCategory[] {
 export const metadata: Metadata = {
   title: "Blog | Tech Insights & Tutorials | Griffity Studios",
   description:
-    "Discover the latest insights, tutorials, and best practices in web development, branding, design, and technology from Griffity Studios. Expert articles on React, Next.js, UI/UX, and digital marketing.",
+    "Latest insights, tutorials, and best practices in web development, branding, design, and technology from Griffity Studios.",
   keywords: [
     "blog",
     "web development",
@@ -44,17 +44,17 @@ export const metadata: Metadata = {
   creator: "Griffity Studios",
   publisher: "Griffity Studios",
   alternates: {
-    canonical: "https://griffitystudios.com/blogs",
+    canonical: "https://www.griffitystudios.com/blogs",
   },
   openGraph: {
     title: "Blog | Tech Insights & Tutorials | Griffity Studios",
     description:
-      "Discover the latest insights, tutorials, and best practices in web development, branding, design, and technology from industry experts at Griffity Studios.",
-    url: "https://griffitystudios.com/blogs",
+      "Explore expert articles on web development, branding, design, and technology from Griffity Studios.",
+    url: "https://www.griffitystudios.com/blogs",
     siteName: "Griffity Studios",
     images: [
       {
-        url: "https://griffitystudios.com/logos/og-cover.jpg",
+        url: "https://www.griffitystudios.com/logos/og-cover.jpg",
         width: 1200,
         height: 630,
         alt: "Griffity Studios Blog - Latest Articles",
@@ -68,8 +68,8 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Blog | Tech Insights & Tutorials | Griffity Studios",
     description:
-      "Discover the latest insights, tutorials, and best practices in web development, branding, design, and technology.",
-    images: ["https://griffitystudios.com/logos/og-cover.jpg"],
+      "Expert insights on web development, branding, design, and technology from Griffity Studios.",
+    images: ["https://www.griffitystudios.com/logos/og-cover.jpg"],
     creator: "@GriffityStudios",
   },
   robots: {
@@ -93,27 +93,27 @@ export default function BlogPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Blog",
-    "@id": "https://griffitystudios.com/blogs/#blog",
+    "@id": "https://www.griffitystudios.com/blogs/#blog",
     name: "Griffity Studios Blog - Tech Insights & Tutorials",
     description:
       "A blog featuring the latest insights, tutorials, and best practices in web development, branding, design, and technology from Griffity Studios.",
-    url: "https://griffitystudios.com/blogs",
+    url: "https://www.griffitystudios.com/blogs",
     inLanguage: "en-US",
     publisher: {
       "@type": "Organization",
-      "@id": "https://griffitystudios.com/#organization",
+      "@id": "https://www.griffitystudios.com/#organization",
       name: "Griffity Studios",
       logo: {
         "@type": "ImageObject",
-        url: "https://griffitystudios.com/logos/logo.png",
+        url: "https://www.griffitystudios.com/logos/logo.png",
       },
     },
     blogPost: articles.slice(0, 10).map((article: ArticleItem) => ({
       "@type": "BlogPosting",
-      "@id": `https://griffitystudios.com/blogs/${article.slug || article.id}#blogpost`,
+      "@id": `https://www.griffitystudios.com/blogs/${article.slug || article.id}#blogpost`,
       headline: article.title,
       description: article.excerpt,
-      url: `https://griffitystudios.com/blogs/${article.slug || article.id}`,
+      url: `https://www.griffitystudios.com/blogs/${article.slug || article.id}`,
       datePublished: article.publishedAt,
       author: {
         "@type": "Person",
@@ -124,7 +124,7 @@ export default function BlogPage() {
         name: "Griffity Studios",
       },
       keywords: Array.isArray(article.tags) ? article.tags.join(", ") : "",
-      image: article.imageUrl || "https://griffitystudios.com/logos/logo.png",
+      image: article.imageUrl || "https://www.griffitystudios.com/logos/logo.png",
     })),
   };
 

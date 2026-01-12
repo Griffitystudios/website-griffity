@@ -13,7 +13,7 @@ import JoinUs from "@/components/join-us";
 import GriffityBg from "@/components/bg-logo";
 
 export const metadata: Metadata = {
-  title: "Griffity Studios | Creative Agency Nepal | Branding, Design & Development",
+  title: "Griffity Studios | Creative Branding & Web Development Nepal",
   description: "Creative agency in Nepal specializing in branding, web design, video production, and digital marketing. Award-winning solutions to transform your brand.",
   keywords: [
     "branding agency Nepal",
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     siteName: "Griffity Studios",
     images: [
       {
-        url: "https://griffitystudios.com/logos/og-cover.jpg",
+        url: "https://www.griffitystudios.com/logos/og-cover.jpg",
         width: 1200,
         height: 630,
         alt: "Griffity Studios - Creative Agency Nepal",
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Griffity Studios | Creative Agency in Nepal",
     description: "Your go-to branding and digital agency in Nepal — from visual identity to web, media, marketing, and immersive events.",
-    images: ["https://griffitystudios.com/logos/og-cover.jpg"],
+    images: ["https://www.griffitystudios.com/logos/og-cover.jpg"],
     creator: "@GriffityStudios",
   },
   robots: {
@@ -78,12 +78,12 @@ const Page = () => {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "@id": "https://griffitystudios.com/#organization",
+    "@id": "https://www.griffitystudios.com/#organization",
     name: "Griffity Studios",
-    url: "https://griffitystudios.com",
+    url: "https://www.griffitystudios.com",
     logo: {
       "@type": "ImageObject",
-      url: "https://griffitystudios.com/logos/logo.png",
+      url: "https://www.griffitystudios.com/logos/logo.png",
       width: 250,
       height: 60,
     },
@@ -109,12 +109,12 @@ const Page = () => {
   const websiteJsonLd = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "@id": "https://griffitystudios.com/#website",
-    url: "https://griffitystudios.com",
+    "@id": "https://www.griffitystudios.com/#website",
+    url: "https://www.griffitystudios.com",
     name: "Griffity Studios",
     description: "Creative Agency in Nepal - Branding, Design & Development",
     publisher: {
-      "@id": "https://griffitystudios.com/#organization",
+      "@id": "https://www.griffitystudios.com/#organization",
     },
     inLanguage: "en-US",
   };

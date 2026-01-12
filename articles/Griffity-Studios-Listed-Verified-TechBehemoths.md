@@ -14,7 +14,7 @@ tags:
 author: "Griffity Studios"
 date: "11-01-2025"
 imageUrl: "/images/blogs/Griffity-Studios-TechBehemoths-Verified.png"
-slug: "Griffity-Studios-Listed-Verified-TechBehemoths"
+slug: "griffity-studios-listed-verified-techbehemoths"
 ---
 
 # Griffity Studios Officially Listed and Verified on TechBehemoths  

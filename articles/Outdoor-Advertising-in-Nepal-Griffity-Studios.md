@@ -13,7 +13,7 @@ tags:
 author: "Griffity Studios"
 date: "2025-09-30"
 imageUrl: "/images/blogs/Outdoor-Advertising-in-Nepal-Griffity-Studios.png"
-slug: "Outdoor-Advertising-in-Nepal-Costs-Locations-ROI"
+slug: "outdoor-advertising-in-nepal-costs-locations-roi"
 ---
 
 # Outdoor Advertising in Nepal: Costs, Locations, and ROI Breakdown

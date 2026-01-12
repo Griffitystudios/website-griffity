@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     siteName: "Griffity Studios",
     images: [
       {
-        url: "https://griffitystudios.com/logos/og-cover.jpg",
+        url: "https://www.griffitystudios.com/logos/og-cover.jpg",
         width: 1200,
         height: 630,
         alt: "Griffity Studios E-commerce Services",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     title: "E-commerce Website Questionnaire | Griffity Studios",
     description:
       "Get started with your custom e-commerce website. Fill out our questionnaire to begin your online store journey.",
-    images: ["https://griffitystudios.com/logos/og-cover.jpg"],
+    images: ["https://www.griffitystudios.com/logos/og-cover.jpg"],
     creator: "@GriffityStudios",
   },
   robots: {

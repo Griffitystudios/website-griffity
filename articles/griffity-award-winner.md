@@ -15,7 +15,7 @@ tags:
 author: "Griffity Studios"
 date: "2025-12-09"
 imageUrl: "/images/blogs/Griffity-Studios-Best-Company-Nepal-2025.png"
-slug: "Griffity-Studios-Best-Company-Nepal-2025"
+slug: "griffity-studios-best-company-nepal-2025"
 ---
 
 # Griffity Studios Recognized as Nepal’s Best in 2025 🎉  

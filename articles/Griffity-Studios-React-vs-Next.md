@@ -14,7 +14,7 @@ tags:
 author: "Griffity Studios"
 date: "10-05-2025"
 imageUrl: "/images/blogs/Griffity-Studios-React-vs-Next.png"
-slug: "React-vs-NextJS-Modern-Web-Apps"
+slug: "rect-vs-nextjs-mordern-web-apps"
 ---
 
 # React vs Next.js: Which We Prefer for Building Modern Web Apps  

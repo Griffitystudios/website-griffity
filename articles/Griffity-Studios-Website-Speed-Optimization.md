@@ -14,7 +14,7 @@ tags:
 author: "Griffity Studios"
 date: "10-02-2025"
 imageUrl: "/images/blogs/Griffity-Studios-Website-Speed-Optimization.png"
-slug: "Website-Speed-Optimization-Nepal"
+slug: "website-speed-optimization-nepal"
 ---
 
 # Website Speed Optimization: Why It Matters for Sales  

@@ -14,7 +14,7 @@ tags:
 author: "Griffity Studios"
 date: "10-02-2025"
 imageUrl: "/images/blogs/Griffity-Studios-AI-in-Marketing-Software-2025.png"
-slug: "AI-Changing-Marketing-Software-Development-2025"
+slug: "ai-changing-marketing-software-development-2025"
 ---
 
 # How AI is Changing Marketing and Software Development in 2025  

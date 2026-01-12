@@ -44,12 +44,12 @@ export async function generateMetadata({
     category: article.category || "Technology",
     classification: "Blog",
     alternates: {
-      canonical: `https://griffitystudios.com/blogs/${article.slug}`,
+      canonical: `https://www.griffitystudios.com/blogs/${article.slug}`,
     },
     openGraph: {
       title: `${article.title}${categoryText}`,
       description: metaDescription.substring(0, 155),
-      url: `https://griffitystudios.com/blogs/${article.slug}`,
+      url: `https://www.griffitystudios.com/blogs/${article.slug}`,
       siteName: "Griffity Studios",
       images: [
         {
@@ -101,38 +101,38 @@ const ArticlePage = async ({ params }: PageProps) => {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "@id": `https://griffitystudios.com/blogs/${article.slug}`,
+    "@id": `https://www.griffitystudios.com/blogs/${article.slug}`,
     headline: article.title,
     alternativeHeadline: article.excerpt,
     description: article.description || article.excerpt,
     image: {
       "@type": "ImageObject",
-      url: article.imageUrl || "https://griffitystudios.com/logo.png",
+      url: article.imageUrl || "https://www.griffitystudios.com/logo.png",
       height: 630,
       width: 1200,
     },
-    url: `https://griffitystudios.com/blogs/${article.slug}`,
+    url: `https://www.griffitystudios.com/blogs/${article.slug}`,
     datePublished: article.publishedAt,
     dateModified: article.publishedAt,
     inLanguage: "en-US",
     author: {
       "@type": "Person",
       name: article.author,
-      url: "https://griffitystudios.com",
+      url: "https://www.griffitystudios.com",
     },
     publisher: {
       "@type": "Organization",
       name: "Griffity Studios",
       logo: {
         "@type": "ImageObject",
-        url: "https://griffitystudios.com/logo.png",
+        url: "https://www.griffitystudios.com/logo.png",
         height: 60,
         width: 250,
       },
     },
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `https://griffitystudios.com/blogs/${article.slug}`,
+      "@id": `https://www.griffitystudios.com/blogs/${article.slug}`,
     },
     keywords: article.tags.join(", "),
     articleSection: article.category || "Technology",
@@ -140,7 +140,7 @@ const ArticlePage = async ({ params }: PageProps) => {
     articleBody: article.description || article.excerpt,
   };
 
-  const currentUrl = `https://griffitystudios.com/blogs/${article.slug}`;
+  const currentUrl = `https://www.griffitystudios.com/blogs/${article.slug}`;
 
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
@@ -150,13 +150,13 @@ const ArticlePage = async ({ params }: PageProps) => {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://griffitystudios.com",
+        item: "https://www.griffitystudios.com",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Blogs",
-        item: "https://griffitystudios.com/blogs",
+        item: "https://www.griffitystudios.com/blogs",
       },
       {
         "@type": "ListItem",

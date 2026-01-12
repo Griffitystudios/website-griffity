@@ -3,6 +3,7 @@ title: "What Is UI Design?"
 category: "Design"
 date: "2025-07-01"
 author: "Griffity Studios"
+description: "Discover what UI design is and why it matters. Learn the core principles of effective user interface design — clarity, consistency, visual hierarchy, feedback, and accessibility. Explore essential UI tools like Figma, Sketch, Adobe XD, and frameworks such as React and Tailwind CSS. Avoid common mistakes and understand how great UI enhances user experience by making digital products intuitive, seamless, and engaging."
 tags: ["UI", "design", "user interface", "usability", "ux"]
 imageUrl: "/images/blogs/ui-design-thumb.jpg"
 slug: "what-is-ui-design"

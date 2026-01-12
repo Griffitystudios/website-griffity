@@ -13,7 +13,7 @@ tags:
 author: "Griffity Studios"
 date: "2025-09-25"
 imageUrl: "/images/blogs/Griffity-Studios-Built-Powerful-Brand-Identities.png"
-slug: "Griffity-Studios-Built-Powerful-Brand-Identities"
+slug: "griffity-studios-build-powerful-brand-identities"
 ---
 
 # How Griffity Studios Built Powerful Brand Identities for AITC International and Veda Studios
