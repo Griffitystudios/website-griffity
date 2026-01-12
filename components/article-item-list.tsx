@@ -14,10 +14,10 @@ const ArticleItemList = ({ articles }: Props) => {
       <div className="grid gap-8 md:gap-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
         {articles.map((article) => (
           <article
-            key={article.id}
+            key={article.slug}
             className="group bg-slate-800/50 rounded-xl p-6 border border-slate-700/50 hover:border-amber-700/50 transition-all duration-300 hover:bg-slate-800/70 flex flex-col h-full"
           >
-            <Link href={`/blogs/${article.id}`} className="block h-full">
+            <Link href={`/blogs/${article.slug}`} className="block h-full">
               {article.imageUrl && (
                 <div className="w-full h-48 mb-4">
                   <img

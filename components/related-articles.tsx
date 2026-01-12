@@ -4,11 +4,11 @@ import type { ArticleItem } from "@/types"
 
 interface RelatedArticlesProps {
   articles: ArticleItem[]
-  currentArticleId: string
+  currentSlug: string
 }
 
-export default function RelatedArticles({ articles, currentArticleId }: RelatedArticlesProps) {
-  const relatedArticles = articles.filter((article) => article.id !== currentArticleId).slice(0, 3)
+export default function RelatedArticles({ articles, currentSlug }: RelatedArticlesProps) {
+  const relatedArticles = articles.filter((article) => article.slug !== currentSlug).slice(0, 3)
 
   if (relatedArticles.length === 0) return null
 
@@ -18,7 +18,7 @@ export default function RelatedArticles({ articles, currentArticleId }: RelatedA
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {relatedArticles.map((article) => (
           <article
-            key={article.id}
+            key={article.slug}
             className="group bg-slate-800/50 rounded-xl p-6 border border-slate-700/50 hover:border-amber-700/50 transition-all duration-300"
           >
             <Link href={`/blogs/${article.slug}`}>

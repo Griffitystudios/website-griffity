@@ -8,7 +8,7 @@ export interface ArticleItem {
   readTime: number
   tags: string[]
   imageUrl?: string
-  slug?: string
+  slug: string
   category?: string
 }
 

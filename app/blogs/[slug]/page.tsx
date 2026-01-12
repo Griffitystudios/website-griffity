@@ -282,7 +282,7 @@ const ArticlePage = async ({ params }: PageProps) => {
             articles={allArticles.filter(
               (a) => a.category === article.category
             )}
-            currentArticleId={article.id}
+            currentSlug={article.slug}
           />
         </main>
       </div>

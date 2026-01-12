@@ -110,10 +110,10 @@ export default function BlogPage() {
     },
     blogPost: articles.slice(0, 10).map((article: ArticleItem) => ({
       "@type": "BlogPosting",
-      "@id": `https://griffitystudios.com/blogs/${article.id || article.slug}#blogpost`,
+      "@id": `https://griffitystudios.com/blogs/${article.slug || article.id}#blogpost`,
       headline: article.title,
       description: article.excerpt,
-      url: `https://griffitystudios.com/blogs/${article.id || article.slug}`,
+      url: `https://griffitystudios.com/blogs/${article.slug || article.id}`,
       datePublished: article.publishedAt,
       author: {
         "@type": "Person",

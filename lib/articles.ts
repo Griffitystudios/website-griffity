@@ -9,15 +9,27 @@ export async function getArticleData(
   slug: string
 ): Promise<(ArticleItem & { content: string; category?: string; slug?: string }) | null> {
   const fileNames = fs.readdirSync(articlesDirectory);
-  const fileName = fileNames.find(
-    (f) => f.replace(/\.md$/, "") === slug || f.includes(slug)
-  );
-  if (!fileName) return null;
 
+  let matched: { fileName: string; fileContents: string; matterResult: ReturnType<typeof matter> } | null = null;
+
+  for (const fileName of fileNames) {
+    const idFromFile = fileName.replace(/\.md$/, "");
+    const fullPath = path.join(articlesDirectory, fileName);
+    const fileContents = fs.readFileSync(fullPath, "utf-8");
+    const matterResult = matter(fileContents);
+    const slugField = matterResult.data.slug || idFromFile;
+
+    if (slugField === slug || idFromFile === slug || fileName.includes(slug)) {
+      matched = { fileName, fileContents, matterResult };
+      break;
+    }
+  }
+
+  if (!matched) return null;
+
+  const { fileName, fileContents, matterResult } = matched;
   const id = fileName.replace(/\.md$/, "");
-  const fullPath = path.join(articlesDirectory, fileName);
-  const fileContents = fs.readFileSync(fullPath, "utf-8");
-  const matterResult = matter(fileContents);
+  const slugField = matterResult.data.slug || id;
 
   // Excerpt: first paragraph after frontmatter
   const excerptMatch = fileContents.split("---")[2]?.match(/\n([^#\n][^\n]*)/);
@@ -57,6 +69,7 @@ export async function getArticleData(
 
   return {
     id,
+    slug: slugField,
     title: matterResult.data.title || id,
     excerpt,
     publishedAt,
@@ -67,7 +80,6 @@ export async function getArticleData(
     imageUrl,
     content,
     category,
-    slug: slugField,
   };
 }
 
@@ -114,8 +126,12 @@ export const getSortedArticles = (): ArticleItem[] => {
     //Category: from frontmatter or undefined
     const category = matterResult.data.category || "";
 
+    // Slug: prefer frontmatter slug, fallback to file id
+    const slug = matterResult.data.slug || id;
+
     return {
       id,
+      slug,
       title: matterResult.data.title || id,
       excerpt,
       publishedAt,

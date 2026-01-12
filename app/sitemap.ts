@@ -8,7 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const articles = getSortedArticles();
   
   const blogUrls = articles.map((article) => ({
-    url: `${baseUrl}/blogs/${article.id || article.slug}`,
+    url: `${baseUrl}/blogs/${article.slug}`,
     lastModified: new Date(article.publishedAt),
     changeFrequency: 'monthly' as const,
     priority: 0.7,
