@@ -4,6 +4,7 @@ import { poppins } from "@/fonts";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import Script from "next/script";
 import MusicBackToTopButtons from "@/components/backToTopButtons";
 import type { Metadata, Viewport } from "next";
 
@@ -27,6 +28,12 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <head>
         {/* Google Analytics */}
         <GoogleAnalytics gaId="G-ERFLFTBEEK" />
+        {/* Ahrefs Analytics */}
+        <Script
+          src="https://analytics.ahrefs.com/analytics.js"
+          data-key="YZP9Yd1gdOh/bg8OscMkig"
+          strategy="afterInteractive"
+        />
       </head>
 
       <body
