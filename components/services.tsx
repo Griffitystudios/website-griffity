@@ -1,7 +1,6 @@
 "use client";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import React, { useRef } from "react";
-import Link from "next/link";
 
 const Services = () => {
   const containerRef = useRef(null);
@@ -251,10 +250,6 @@ const Services = () => {
           </motion.ul>
         </motion.div>
       </section>
-
-     
-        </div>
-      </div>
     </div>
   );
 };
