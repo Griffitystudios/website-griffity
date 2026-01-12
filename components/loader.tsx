@@ -54,13 +54,12 @@ export default function Loader() {
                 opacity: 1,
                 filter: "blur(0px)",
               }}
-              className={i < 8 ? "font-semibold" : "font-light"}
+              className={`${i < 8 ? "font-semibold" : "font-light"} inline-block`}
               transition={{
                 delay: 0.5 + (TEXT.length - 1 - i) * 0.08,
                 duration: 0.8,
                 ease: "easeOut",
               }}
-              className="inline-block"
             >
               {char}
             </motion.span>
