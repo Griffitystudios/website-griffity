@@ -34,6 +34,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           data-key="YZP9Yd1gdOh/bg8OscMkig"
           strategy="afterInteractive"
         />
+        <meta name="ahrefs-site-verification" content="fcad86c6c0ed508072002e416ac7f8ed168abfa79bacf55b562e3c211aedf216"></meta>
       </head>
 
       <body
