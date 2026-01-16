@@ -214,5 +214,6 @@ By focusing on **business-driven software development**, modern architecture, an
 
 If you are looking for a **software company in Nepal** that understands both technology and business, **Griffity Studios is built for that role**.
 
-**Contact Griffity Studios** to discuss your software or IT project today.
+[Contact Griffity Studios](https://www.griffitystudios.com/#contact-us) to discuss your software or IT project today.
+
 
