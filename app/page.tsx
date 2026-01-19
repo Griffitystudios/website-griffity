@@ -130,6 +130,10 @@ const Page = () => {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
       />
       <main className="relative ">
+        <h4 className="sr-only">Griffity Studios | Creative Branding & Web Development in Nepal</h4>
+        <p className="sr-only">
+          Creative branding, web design, and web development agency in Nepal delivering award-winning solutions.
+        </p>
         <Loader />
         <Hero />
         <div className="relative overflow-hidden">
