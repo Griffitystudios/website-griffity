@@ -6,10 +6,16 @@ import { getSortedArticles } from "@/lib/articles";
 const normalize = (value: string) => value.toLowerCase().replace(/\s+/g, " ").trim();
 
 export async function generateMetadata({ params }: { params: Promise<{ tag: string }> }): Promise<Metadata> {
-  const { tag } = await params;
+   const { tag } = await params;
   const tagParam = decodeURIComponent(tag);
-  const title = `Articles tagged "${tagParam}" | Griffity Studios`;
-  const description = `Explore articles tagged with ${tagParam} from Griffity Studios.`;
+  const articles = getSortedArticles();
+  const taggedArticles = articles.filter((article) =>
+    article.tags?.some((tag) => normalize(tag) === normalize(tagParam))
+  );
+  
+  const articleCount = taggedArticles.length;
+  const title = `${tagParam} - ${articleCount} Articles | Griffity Studios`;
+  const description = `Discover ${articleCount} in-depth articles about ${tagParam}. Expert insights and resources from Griffity Studios to help you master this topic.`;
   const canonical = `https://www.griffitystudios.com/tags/${encodeURIComponent(tagParam)}`;
 
   return {
