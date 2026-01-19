@@ -121,17 +121,17 @@ const Hero = () => {
               <Link href={"https://techbehemoths.com/company/griffity-studios"} target="_blank" rel="noopener noreferrer"> <Image src={'/images/awards/award-05.png'} alt="award" width={384} height={279} className="w-20 xs:w-28 xsm:w-40 sm:w-48 md:w-56 lg:w-56 xl:w-72 flex-shrink-0 object-cover"/></Link>
               <Link href={"https://techbehemoths.com/company/griffity-studios"} target="_blank" rel="noopener noreferrer"><Image src={'/images/awards/award-07.png'} alt="award" width={384} height={279} className="w-20 xs:w-28 xsm:w-40 sm:w-48 md:w-56 lg:w-56 xl:w-72 flex-shrink-0 object-cover"/></Link>
                 </div>
-              <h1 className="text-[1.7rem] xs:text-[2.236rem] xsm:text-[3.1823rem] sm:text-[3.8rem] md:text-[4.59rem] xl:text-8xl 2xl:text-h2 font-medium md:mb-2 lg:leading-tight">
+                <div className="text-[1.7rem] xs:text-[2.236rem] xsm:text-[3.1823rem] sm:text-[3.8rem] md:text-[4.59rem] xl:text-8xl 2xl:text-h2 font-medium md:mb-2 lg:leading-tight">
                 welcome to <span className="font-bold">griffity</span>
-              </h1>
-              <motion.p
+                </div>
+              <motion.h1
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 4, ease: "easeOut" }}
                 className="text-sm sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-left sm:text-right self-start sm:self-end mt-2 sm:mt-4 font-extralight"
               >
                 your brand's loudest whisper!
-              </motion.p>
+              </motion.h1>
            
           </div>
 
