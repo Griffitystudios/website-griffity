@@ -1,27 +1,10 @@
 import type { Metadata } from "next";
-import { HiBookOpen, HiHome, HiTrendingUp, HiUsers } from "react-icons/hi";
-
-import ArticleItemList from "@/components/article-item-list";
-import type { ArticleItem, BlogCategory } from "@/types";
-import { getSortedArticles } from "@/lib/articles";
+import { HiHome } from "react-icons/hi";
 import Link from "next/link";
 
-// Group articles by category
-function getCategories(articles: ArticleItem[]): BlogCategory[] {
-  const categoryMap: { [key: string]: ArticleItem[] } = {};
-  articles.forEach((article) => {
-    if (Array.isArray(article.tags)) {
-      article.tags.forEach((tag) => {
-        if (!categoryMap[tag]) categoryMap[tag] = [];
-        categoryMap[tag].push(article);
-      });
-    }
-  });
-  return Object.entries(categoryMap).map(([name, articles]) => ({
-    name,
-    articles,
-  }));
-}
+import ArticleItemList from "@/components/article-item-list";
+import type { ArticleItem } from "@/types";
+import { getSortedArticles } from "@/lib/articles";
 
 export const metadata: Metadata = {
   title: "Blog | Tech Insights & Tutorials | Griffity Studios",
@@ -75,7 +58,6 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
-    nocache: false,
     googleBot: {
       index: true,
       follow: true,
@@ -88,7 +70,6 @@ export const metadata: Metadata = {
 
 export default function BlogPage() {
   const articles = getSortedArticles();
-  const categories = getCategories(articles);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -123,8 +104,12 @@ export default function BlogPage() {
         "@type": "Organization",
         name: "Griffity Studios",
       },
-      keywords: Array.isArray(article.tags) ? article.tags.join(", ") : "",
-      image: article.imageUrl || "https://www.griffitystudios.com/logos/logo.png",
+      keywords: Array.isArray(article.tags)
+        ? article.tags.join(", ")
+        : "",
+      image:
+        article.imageUrl ||
+        "https://www.griffitystudios.com/logos/logo.png",
     })),
   };
 
@@ -135,82 +120,78 @@ export default function BlogPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <div className="min-h-screen bg-body">
-        {/* Hero Section */}
-        <header className="relative py-20 lg:py-32">
-          <div className="absolute inset-0 bg-gradient-to-br from-amber-700/10 to-transparent" />
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center space-y-6">
-              <h1 className="font-cormorantGaramond text-5xl lg:text-7xl font-bold text-amber-100">
-                Insights & Tutorials
-              </h1>
-              <p className="font-poppins text-xl lg:text-2xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-                Discover the latest insights, tutorials, and best practices in
-                web development, programming, and technology from industry
-                experts.
-              </p>
-              {/* Home Button */}
-              <div className="pt-4">
-                <Link
-                  href="/"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-amber-700 hover:bg-amber-600 text-white font-poppins font-medium rounded-lg transition-colors duration-200"
-                >
-                  <HiHome className="w-5 h-5" />
-                  Back to Home
-                </Link>
-              </div>
+      <div className="min-h-screen" style={{ backgroundColor: "#051016" }}>
+        {/* Back to Home */}
+        <div className="fixed top-8 left-8 z-50">
+          <Link
+            href="/"
+            className="group inline-flex items-center gap-2 px-5 py-2.5 bg-slate-900/80 backdrop-blur-md border border-slate-700/50 hover:border-amber-500/50 text-slate-300 hover:text-white font-poppins font-medium rounded-lg transition-all duration-300"
+          >
+            <HiHome className="w-4 h-4 transition-transform group-hover:-translate-x-0.5" />
+            <span className="text-sm">Home</span>
+          </Link>
+        </div>
 
-              {/* Stats */}
-              <div className="flex flex-wrap justify-center gap-8 pt-8">
-                <div className="flex items-center gap-2 text-amber-300">
-                  <HiBookOpen className="w-5 h-5" />
-                  <span className="font-poppins font-medium">
-                    {articles.length}+ Articles
-                  </span>
-                </div>
-                <div className="flex items-center gap-2 text-amber-300">
-                  <HiUsers className="w-5 h-5" />
-                  <span className="font-poppins font-medium">
-                    Expert Authors
-                  </span>
-                </div>
-                <div className="flex items-center gap-2 text-amber-300">
-                  <HiTrendingUp className="w-5 h-5" />
-                  <span className="font-poppins font-medium">
-                    Weekly Updates
-                  </span>
-                </div>
+        {/* Hero */}
+        <header className="relative overflow-hidden pt-24 pb-16 lg:pb-20">
+          <div className="absolute inset-0 opacity-[0.02]">
+            <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <pattern
+                  id="code-pattern"
+                  width="200"
+                  height="200"
+                  patternUnits="userSpaceOnUse"
+                >
+                  <text x="10" y="20" fill="rgb(148 163 184)" fontSize="12" fontFamily="monospace">&lt;/&gt;</text>
+                  <text x="60" y="50" fill="rgb(148 163 184)" fontSize="10" fontFamily="monospace">const</text>
+                  <text x="120" y="80" fill="rgb(148 163 184)" fontSize="12" fontFamily="monospace">{}</text>
+                  <text x="30" y="110" fill="rgb(148 163 184)" fontSize="10" fontFamily="monospace">function</text>
+                  <text x="100" y="140" fill="rgb(148 163 184)" fontSize="12" fontFamily="monospace">[ ]</text>
+                  <text x="160" y="170" fill="rgb(148 163 184)" fontSize="10" fontFamily="monospace">=&gt;</text>
+                </pattern>
+              </defs>
+              <rect width="100%" height="100%" fill="url(#code-pattern)" />
+            </svg>
+          </div>
+
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#051016]/50 to-[#051016]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-amber-950/10 via-transparent to-blue-950/10" />
+
+          <div className="relative max-w-5xl mx-auto px-4 text-center space-y-5">
+            <h1 className="font-cormorantGaramond text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-[1.1] tracking-tight">
+              Insights & Tutorials
+            </h1>
+
+            <p className="font-poppins text-base lg:text-lg text-slate-400 max-w-2xl mx-auto">
+              Articles on web development, design, and technology from industry experts
+            </p>
+
+            <div className="flex flex-wrap items-center justify-center gap-6 pt-6 text-sm font-poppins">
+              <div className="flex items-center gap-2 text-slate-400">
+                <span className="text-white font-semibold">
+                  {articles.length}+
+                </span>
+                <span>Articles</span>
+              </div>
+              <div className="w-1 h-1 rounded-full bg-slate-600" />
+              <div className="flex items-center gap-2 text-slate-400">
+                <span className="text-white font-semibold">Weekly</span>
+                <span>Updates</span>
+              </div>
+              <div className="w-1 h-1 rounded-full bg-slate-600 hidden sm:block" />
+              <div className="flex items-center gap-2 text-slate-400">
+                <span className="text-white font-semibold">Expert</span>
+                <span>Authors</span>
               </div>
             </div>
           </div>
         </header>
 
-        {/* Main Content */}
-        <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
-          <div className="space-y-16">
-            <ArticleItemList articles={articles} />
-          </div>
+        {/* Articles */}
+        <main className="max-w-7xl mx-auto px-4 pb-24 pt-12">
+          <ArticleItemList articles={articles} />
         </main>
-
-        {/* Newsletter Section */}
-        {/* <section className="bg-slate-800/30 border-t border-slate-700/50">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
-            <h2 className="font-cormorantGaramond text-3xl lg:text-4xl text-amber-100 mb-4">Stay Updated</h2>
-            <p className="font-poppins text-slate-300 mb-8 text-lg">
-              Get the latest articles and tutorials delivered to your inbox weekly.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
-              />
-              <button className="px-6 py-3 bg-amber-700 hover:bg-amber-600 text-white font-poppins font-medium rounded-lg transition-colors duration-200">
-                Subscribe
-              </button>
-            </div>
-          </div>
-        </section> */}
       </div>
     </>
   );
