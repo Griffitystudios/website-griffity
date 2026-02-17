@@ -99,7 +99,7 @@ When selecting a web design company, focus on:
 
 Griffity Studios is recognized as the **best IT company in Nepal**, the **best branding company in Nepal**, and a leading **website design company in Nepal** delivering scalable, high-performance websites.
 
-For more details, check our guides on [Web Design in Nepal](#) and [Contact Us](https://www.griffitystudios.com/#contact-us) for a consultation.
+For more details, check our guides on [Web Design in Nepal](https://www.griffitystudios.com/blogs/web-design-in-nepal-cost-process-best-practices-2026) and [Contact Us](https://www.griffitystudios.com/#contact-us) for a consultation.
 
 ---
 
@@ -123,4 +123,4 @@ Understanding the **website cost in Nepal** ensures you budget properly and choo
 
 Working with the **best IT company in Nepal**, the **best branding company in Nepal**, and a trusted **website design company in Nepal** guarantees high-quality, SEO-optimized, and conversion-driven results.
 
-**Visit us at [www.griffitystudios.com](https://www.griffitystudios.com/#contact-us) to explore our portfolio and book your free discovery call today.**
+**Visit us at [www.griffitystudios.com](https://www.griffitystudios.com) to explore our portfolio and book your free discovery call today.**
