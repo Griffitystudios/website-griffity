@@ -90,7 +90,7 @@ ${message}
     `;
 
     await transporter.sendMail({
-      from: `"HeyJob Contact" <${process.env.SENDER_MAIL}>`,
+      from: `"Griffity web Contact" <${process.env.SENDER_MAIL}>`,
       to: process.env.CONTACT_RECEIVER || process.env.SENDER_MAIL,
       subject,
       text,
