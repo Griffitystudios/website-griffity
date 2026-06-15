@@ -100,7 +100,7 @@ const Hero = () => {
 
           <nav className="hidden lg:flex lg:translate-y-8 flex-col gap-8 z-50">
             {navItems.map((item, index) => (
-              
+              <a
                 key={index}
                 href={item.href}
                 className={`transition-all duration-300 ease-out transform cursor-pointer text-base hover:text-[#dba039] hover:translate-x-2 hover:scale-110 ${
