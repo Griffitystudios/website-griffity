@@ -64,6 +64,40 @@ const Hero = () => {
       /> */}
       <div className="absolute bottom-0 left-0 right-0 h-80 z-10 bg-gradient-to-b to-body from-transparent" />
 
+      {/* Burger Menu Button - Visible on all screen sizes */}
+      <motion.button
+        initial={{ opacity: 0, x: 40 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1, ease: "easeOut", delay: 3.8 }}
+        onClick={toggleMobileMenu}
+        className="fixed top-6 right-8 z-50 w-8 h-8 flex flex-col justify-center items-center"
+        aria-label="Toggle menu"
+      >
+        <motion.span
+          animate={{
+            rotate: isMobileMenuOpen ? 45 : 0,
+            y: isMobileMenuOpen ? 0 : -6,
+          }}
+          transition={{ duration: 0.3 }}
+          className="w-6 h-0.5 bg-white block absolute"
+        />
+        <motion.span
+          animate={{
+            opacity: isMobileMenuOpen ? 0 : 1,
+          }}
+          transition={{ duration: 0.3 }}
+          className="w-6 h-0.5 bg-white block absolute"
+        />
+        <motion.span
+          animate={{
+            rotate: isMobileMenuOpen ? -45 : 0,
+            y: isMobileMenuOpen ? 0 : 6,
+          }}
+          transition={{ duration: 0.3 }}
+          className="w-6 h-0.5 bg-white block absolute"
+        />
+      </motion.button>
+
       <div className="px-4 sm:px-6 md:px-8 lg:px-12 xl:px-14 py-6 sm:py-8 md:py-10 flex flex-col mx-auto h-full relative z-30">
         <div className="flex justify-between items-center w-full">
           <motion.img
@@ -74,40 +108,6 @@ const Hero = () => {
             alt="Griffity Studios logo"
             className="w-6 sm:w-7 md:w-8 h-auto ml-5 z-30"
           />
-
-          {/* Burger Menu Button - Only visible on mobile/tablet */}
-          <motion.button
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1, ease: "easeOut", delay: 3.8 }}
-            onClick={toggleMobileMenu}
-            className="lg:hidden z-50 relative w-8 h-8 flex flex-col justify-center items-center"
-            aria-label="Toggle menu"
-          >
-            <motion.span
-              animate={{
-                rotate: isMobileMenuOpen ? 45 : 0,
-                y: isMobileMenuOpen ? 0 : -6,
-              }}
-              transition={{ duration: 0.3 }}
-              className="w-6 h-0.5 bg-white block absolute"
-            />
-            <motion.span
-              animate={{
-                opacity: isMobileMenuOpen ? 0 : 1,
-              }}
-              transition={{ duration: 0.3 }}
-              className="w-6 h-0.5 bg-white block absolute"
-            />
-            <motion.span
-              animate={{
-                rotate: isMobileMenuOpen ? -45 : 0,
-                y: isMobileMenuOpen ? 0 : 6,
-              }}
-              transition={{ duration: 0.3 }}
-              className="w-6 h-0.5 bg-white block absolute"
-            />
-          </motion.button>
         </div>
 
         <div className="flex items-center gap-10 h-full max-w-screen-3xl mx-auto">
@@ -134,27 +134,6 @@ const Hero = () => {
               </motion.h1>
            
           </div>
-
-          {/* Desktop Navigation Items - Hidden on mobile/tablet */}
-          <nav className="hidden lg:flex lg:translate-y-8 flex-col gap-8 z-50">
-            {navItems.map((item, index) => (
-              <a
-                key={index}
-                href={
-                  ["blogs", "careers"].includes(item.toLowerCase())
-                    ? `/${item.toLowerCase()}`
-                    : `#${item.replace(/\s+/g, "-").toLowerCase()}`
-                }
-                className={`transition-all duration-300 ease-out transform cursor-pointer text-base hover:text-[#dba039] hover:translate-x-2 hover:scale-110 ${
-                  visibleItems.includes(index)
-                    ? "opacity-100 translate-x-0"
-                    : "opacity-0 translate-x-10"
-                }`}
-              >
-                {item}
-              </a>
-            ))}
-          </nav>
         </div>
       </div>
 
@@ -167,17 +146,8 @@ const Hero = () => {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="fixed top-0 right-0 w-full sm:w-80 h-full bg-black bg-opacity-95 backdrop-blur-sm z-40 lg:hidden"
+            className="fixed top-0 right-0 w-full sm:w-80 h-full bg-black bg-opacity-95 backdrop-blur-sm z-40"
           >
-            {/* Close Button */}
-            <button
-              onClick={() => setIsMobileMenuOpen(false)}
-              aria-label="Close menu"
-              className="absolute top-6 right-6 w-8 h-8 flex items-center justify-center z-50"
-            >
-              <span className="block w-6 h-0.5 bg-white rotate-45 absolute" />
-              <span className="block w-6 h-0.5 bg-white -rotate-45 absolute" />
-            </button>
             <div className="flex flex-col items-center justify-center h-full gap-8 px-8">
             {navItems.map((item, index) => (
   <motion.a
@@ -212,7 +182,7 @@ const Hero = () => {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
             onClick={() => setIsMobileMenuOpen(false)}
-            className="fixed inset-0 bg-black bg-opacity-50 z-30 lg:hidden"
+            className="fixed inset-0 bg-black bg-opacity-50 z-30"
           />
         )}
       </AnimatePresence>
