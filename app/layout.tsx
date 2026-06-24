@@ -1,4 +1,9 @@
+// Ignore missing type declarations for global CSS side-effect import
+// TypeScript may complain when no declaration file exists for CSS imports.
+// @ts-ignore
 import "../globals.css";
+
+
 import { ReactNode } from "react";
 import { poppins } from "@/fonts";
 import { Analytics } from "@vercel/analytics/next";
@@ -7,6 +12,8 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 import Script from "next/script";
 import MusicBackToTopButtons from "@/components/backToTopButtons";
 import type { Metadata, Viewport } from "next";
+import Nav from "@/components/nav/Nav";
+import { navConfig } from "@/config/nav";
 
 export const viewport: Viewport = {
   width: "device-width",

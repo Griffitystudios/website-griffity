@@ -11,6 +11,7 @@ import {
   FaWhatsapp,
 } from "react-icons/fa6";
 import { motion, AnimatePresence } from "framer-motion";
+import { poppins, montserrat } from "@/fonts";
 import Link from 'next/link';
 import { FaVolumeMute, FaVolumeUp } from "react-icons/fa";
 
@@ -33,7 +34,7 @@ const Footer = () => {
       <div className="flex  flex-col-reverse lg:flex-row items-center justify-between gap-10">
         {/* Company Info */}
         <address className="not-italic text-center lg:text-left">
-          <p className="text-4xl font-semibold">
+          <p className={`text-4xl  font-semibold ${montserrat.className}`}>
             GRIFFITY<span className="font-light">STUDIOS</span>
           </p>
           <Link className="text-[1.2rem]" href={'https://maps.app.goo.gl/y2VDy6SmsppxK8ve8'}>Mahalaxmisthan, Lalitpur</Link>

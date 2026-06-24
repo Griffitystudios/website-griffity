@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { navConfig } from "@/config/nav";
+import Nav from "./nav/Nav";
 
 const Hero = () => {
   const navItems = [
@@ -38,6 +40,9 @@ const Hero = () => {
 
   return (
     <header className="relative h-screen w-full overflow-hidden">
+
+   <Nav {...navConfig} />
+
       {/* Background video moved up by 20px */}
       <video
         className="absolute top-0 left-0 w-full h-full object-cover z-10 transform -translate-y-5"
@@ -64,74 +69,22 @@ const Hero = () => {
       /> */}
       <div className="absolute bottom-0 left-0 right-0 h-80 z-10 bg-gradient-to-b to-body from-transparent" />
 
-      {/* Burger Menu Button - Visible on all screen sizes */}
-      <motion.button
-        initial={{ opacity: 0, x: 40 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 1, ease: "easeOut", delay: 3.8 }}
-        onClick={toggleMobileMenu}
-        className="fixed top-6 right-8 z-50 w-8 h-8 flex flex-col justify-center items-center"
-        aria-label="Toggle menu"
-      >
-        <motion.span
-          animate={{
-            rotate: isMobileMenuOpen ? 45 : 0,
-            y: isMobileMenuOpen ? 0 : -6,
-          }}
-          transition={{ duration: 0.3 }}
-          className="w-6 h-0.5 bg-white block absolute"
-        />
-        <motion.span
-          animate={{
-            opacity: isMobileMenuOpen ? 0 : 1,
-          }}
-          transition={{ duration: 0.3 }}
-          className="w-6 h-0.5 bg-white block absolute"
-        />
-        <motion.span
-          animate={{
-            rotate: isMobileMenuOpen ? -45 : 0,
-            y: isMobileMenuOpen ? 0 : 6,
-          }}
-          transition={{ duration: 0.3 }}
-          className="w-6 h-0.5 bg-white block absolute"
-        />
-      </motion.button>
 
-      <div className="px-4 sm:px-6 md:px-8 lg:px-12 xl:px-14 py-6 sm:py-8 md:py-10 flex flex-col mx-auto h-full relative z-30">
-        <div className="flex justify-between items-center w-full">
-          <motion.img
-            initial={{ opacity: 0, x: -40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1, ease: "easeOut", delay: 3.8 }}
-            src="/logos/griffity.png"
-            alt="Griffity Studios logo"
-            className="w-6 sm:w-7 md:w-8 h-auto ml-5 z-30"
-          />
-        </div>
 
+      <div className="px-4 sm:px-6 md:px-8 lg:px-12 xl:px-14 py-6 sm:py-8 md:py-10 flex flex-col mx-auto h-full relative z-10">
         <div className="flex items-center gap-10 h-full max-w-screen-3xl mx-auto">
           
             <div className="flex z-30 flex-col items-center lg:translate-x-[-5%] lg:translate-y-[-25%]">
                 <div className="flex mb-5 gap-2 sm:gap-3 md:gap-4 overflow-x-auto">  
                  
              <Link href={"https://techbehemoths.com/company/griffity-studios"} target="_blank" rel="noopener noreferrer">
-               <Image src={'/images/awards/award-06.png'} alt="award" width={384} height={279} className="w-20 xs:w-28 xsm:w-40 sm:w-48 md:w-56 lg:w-56 xl:w-72 flex-shrink-0 object-cover"/>
+               <Image src={'/images/awards/award-06.png'} alt="award" width={384} height={279} className="w-20 xs:w-28 xsm:w-40 sm:w-48 md:w-56 lg:w-56 xl:w-72  object-cover"/>
              </Link>
-              <Link href={"https://techbehemoths.com/company/griffity-studios"} target="_blank" rel="noopener noreferrer"> <Image src={'/images/awards/award-05.png'} alt="award" width={384} height={279} className="w-20 xs:w-28 xsm:w-40 sm:w-48 md:w-56 lg:w-56 xl:w-72 flex-shrink-0 object-cover"/></Link>
-              <Link href={"https://techbehemoths.com/company/griffity-studios"} target="_blank" rel="noopener noreferrer"><Image src={'/images/awards/award-07.png'} alt="award" width={384} height={279} className="w-20 xs:w-28 xsm:w-40 sm:w-48 md:w-56 lg:w-56 xl:w-72 flex-shrink-0 object-cover"/></Link>
+              <Link href={"https://techbehemoths.com/company/griffity-studios"} target="_blank" rel="noopener noreferrer"> <Image src={'/images/awards/award-05.png'} alt="award" width={384} height={279} className="w-20 xs:w-28 xsm:w-40 sm:w-48 md:w-56 lg:w-56 xl:w-72  object-cover"/></Link>
+              <Link href={"https://techbehemoths.com/company/griffity-studios"} target="_blank" rel="noopener noreferrer"><Image src={'/images/awards/award-07.png'} alt="award" width={384} height={279} className="w-20 xs:w-28 xsm:w-40 sm:w-48 md:w-56 lg:w-56 xl:w-72  object-cover"/></Link>
                 </div>
-                <div className="text-[1.7rem] xs:text-[2.236rem] xsm:text-[3.1823rem] sm:text-[3.8rem] md:text-[4.59rem] xl:text-8xl 2xl:text-h2 font-medium md:mb-2 lg:leading-tight">
-                welcome to <span className="font-bold">griffity</span>
-                </div>
-              <motion.h1
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 4, ease: "easeOut" }}
-                className="text-sm sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-left sm:text-right self-start sm:self-end mt-2 sm:mt-4 font-extralight"
-              >
-                your brand's loudest whisper!
-              </motion.h1>
+              
+            
            
           </div>
         </div>

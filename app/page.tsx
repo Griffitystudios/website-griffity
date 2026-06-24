@@ -11,6 +11,8 @@ import Reels2 from "@/components/reels2";
 import About from "@/components/about";
 import JoinUs from "@/components/join-us";
 import GriffityBg from "@/components/bg-logo";
+import Nav from "@/components/nav/Nav";
+import { navConfig } from "@/config/nav";
 
 export const metadata: Metadata = {
   title: "Griffity Studios | Creative Branding & Web Development Nepal",
@@ -130,11 +132,12 @@ const Page = () => {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
       />
       <main className="relative ">
+
         <h4 className="sr-only">Griffity Studios | Creative Branding & Web Development in Nepal</h4>
         <p className="sr-only">
           Creative branding, web design, and web development agency in Nepal delivering award-winning solutions.
         </p>
-        <Loader />
+        {/* <Loader /> */}
         <Hero />
         <div className="relative overflow-hidden">
           {/* <GradientRec /> */}
