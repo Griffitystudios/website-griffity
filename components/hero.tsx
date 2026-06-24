@@ -71,29 +71,20 @@ const Hero = () => {
 
 
 
-      <div className="px-4 sm:px-6 md:px-8 lg:px-12 xl:px-14 py-6 sm:py-8 md:py-10 flex flex-col mx-auto h-full relative z-30">
+      <div className="px-4 sm:px-6 md:px-8 lg:px-12 xl:px-14 py-6 sm:py-8 md:py-10 flex flex-col mx-auto h-full relative z-10">
         <div className="flex items-center gap-10 h-full max-w-screen-3xl mx-auto">
           
             <div className="flex z-30 flex-col items-center lg:translate-x-[-5%] lg:translate-y-[-25%]">
                 <div className="flex mb-5 gap-2 sm:gap-3 md:gap-4 overflow-x-auto">  
                  
              <Link href={"https://techbehemoths.com/company/griffity-studios"} target="_blank" rel="noopener noreferrer">
-               <Image src={'/images/awards/award-06.png'} alt="award" width={384} height={279} className="w-20 xs:w-28 xsm:w-40 sm:w-48 md:w-56 lg:w-56 xl:w-72 flex-shrink-0 object-cover"/>
+               <Image src={'/images/awards/award-06.png'} alt="award" width={384} height={279} className="w-20 xs:w-28 xsm:w-40 sm:w-48 md:w-56 lg:w-56 xl:w-72  object-cover"/>
              </Link>
-              <Link href={"https://techbehemoths.com/company/griffity-studios"} target="_blank" rel="noopener noreferrer"> <Image src={'/images/awards/award-05.png'} alt="award" width={384} height={279} className="w-20 xs:w-28 xsm:w-40 sm:w-48 md:w-56 lg:w-56 xl:w-72 flex-shrink-0 object-cover"/></Link>
-              <Link href={"https://techbehemoths.com/company/griffity-studios"} target="_blank" rel="noopener noreferrer"><Image src={'/images/awards/award-07.png'} alt="award" width={384} height={279} className="w-20 xs:w-28 xsm:w-40 sm:w-48 md:w-56 lg:w-56 xl:w-72 flex-shrink-0 object-cover"/></Link>
+              <Link href={"https://techbehemoths.com/company/griffity-studios"} target="_blank" rel="noopener noreferrer"> <Image src={'/images/awards/award-05.png'} alt="award" width={384} height={279} className="w-20 xs:w-28 xsm:w-40 sm:w-48 md:w-56 lg:w-56 xl:w-72  object-cover"/></Link>
+              <Link href={"https://techbehemoths.com/company/griffity-studios"} target="_blank" rel="noopener noreferrer"><Image src={'/images/awards/award-07.png'} alt="award" width={384} height={279} className="w-20 xs:w-28 xsm:w-40 sm:w-48 md:w-56 lg:w-56 xl:w-72  object-cover"/></Link>
                 </div>
-                <div className="text-[1.7rem] xs:text-[2.236rem] xsm:text-[3.1823rem] sm:text-[3.8rem] md:text-[4.59rem] xl:text-8xl 2xl:text-h2 font-medium md:mb-2 lg:leading-tight">
-                welcome to <span className="font-bold">griffity</span>
-                </div>
-              <motion.h1
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 4, ease: "easeOut" }}
-                className="text-sm sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-left sm:text-right self-start sm:self-end mt-2 sm:mt-4 font-extralight"
-              >
-                your brand's loudest whisper!
-              </motion.h1>
+              
+            
            
           </div>
         </div>

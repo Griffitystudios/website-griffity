@@ -43,6 +43,14 @@ html {
     @apply text-[1.9rem]/none xs:text-[2.2rem] xsm:text-[2.6rem] sm:text-[3.75rem]/none md:text-[4.1rem]/none lg:text-7xl xl:text-c2/none;
     /* 30px → 1.875rem, 60px → 3.75rem, 80px → 5rem, 100px = c2 */
   }
+  .label{
+    @apply text-[0.5rem] xs:text-[0.8rem] sm:text-[0.9rem] md:text-[1rem];
+    /* 12px → 1rem, 14px → 1.125rem, base = 16px = 1rem */
+  }
+  .p-small {
+    @apply text-[0.75rem] md:text-[0.875rem];
+    /* 12px → 0.75rem, 14px → 0.875rem */
+  }
   .p-base {
     @apply text-[0.5rem] xs:text-[0.67rem] sm:text-[0.9rem] md:text-base;
     /* 16px → 1rem, 18px → 1.125rem, base = 20px = 1.25rem */

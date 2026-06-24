@@ -23,17 +23,16 @@ export interface NavSocials {
   tiktok?: string;
   youtube?: string;
   x?: string;
-  pinterest?: string;
+  linkedin?: string;
   whatsapp?: string;
-  spotted?: string;
 }
 
 export interface NavProps {
   brandName?: string;
-  illustrationSrc?: string;
-  sattyaLogoSrc?: string;
+  illustrationSrc: string;
+  griffityLogo?: string;
   sattyaLogoTopSrc?: string;
-  spaceLogos?: { src: string; alt: string }[];
+  awards?: { src: string; alt: string }[];
   tagline?: string;
   links: NavLink[];
   className?: string;
@@ -45,9 +44,8 @@ export interface NavProps {
 export default function Nav({
   brandName = "SATTYA MEDIA ARTS COLLECTIVE",
   illustrationSrc,
-  sattyaLogoSrc,
-  sattyaLogoTopSrc,
-  spaceLogos = [],
+  griffityLogo,
+  awards = [],
   tagline,
   className = "",
   links,
@@ -86,9 +84,8 @@ export default function Nav({
       <NavOverlay
         brandName={brandName}
         illustrationSrc={illustrationSrc}
-        sattyaLogoSrc={sattyaLogoSrc}
-        sattyaLogoTopSrc={sattyaLogoTopSrc}
-        spaceLogos={spaceLogos}
+        griffityLogo={griffityLogo}
+        awards={awards}
         links={links}
         contact={contact}
         socials={socials}
