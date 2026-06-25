@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { usePathname } from "next/navigation";
 import {  montserrat } from "@/fonts";
+import { generateLiquidGlassMap } from "@/utils/liquidGlassFilter";
 
 import type { NavLink, NavContact, NavSocials } from "./Nav";
 import Image from "next/image";
@@ -74,6 +75,19 @@ export default function NavOverlay({
     const [open, setOpen] = useState(false);
     const [openDropdown, setOpenDropdown] = useState<string | null>(null);
     const [scrolled, setScrolled] = useState(false);
+// Instead of empty string + useEffect, compute immediately:
+const [panelMapUrl] = useState<string>(() => {
+  if (typeof window === "undefined") return ""; // SSR guard
+  const pw = Math.round(window.innerWidth * 0.4);
+  const ph = window.innerHeight;
+  return generateLiquidGlassMap(pw, ph, 0, 60, 1);
+});
+
+const [navMapUrl] = useState<string>(() => {
+  if (typeof window === "undefined") return "";
+  const nw = window.innerWidth;
+  return generateLiquidGlassMap(nw, 80, 0, 30, 1);
+});
 
     const pathname = usePathname();
     const logoColor = BLACK_PAGES.some((p) => pathname.startsWith(p)) ? "black" : "white";
@@ -84,21 +98,45 @@ export default function NavOverlay({
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
+
     return (
         <div className={`relative z-30`}>
+ {/* ── SVG Filter Definitions ── */}
+<svg style={{ display: 'none' }} xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="lg-nav" x="-5%" y="-20%" width="110%" height="140%" color-interpolation-filters="sRGB">
+      {navMapUrl && (
+        <feImage href={navMapUrl} x="0" y="0" width="100%" height="100%"
+          result="dispMap" preserveAspectRatio="none" />
+      )}
+      <feDisplacementMap in="SourceGraphic" in2="dispMap"
+        scale="20" xChannelSelector="R" yChannelSelector="G" result="displaced" />
+      <feComposite in="displaced" in2="SourceGraphic" operator="in" />
+    </filter>
 
+    <filter id="lg-panel" x="-5%" y="-2%" width="110%" height="104%" color-interpolation-filters="sRGB">
+      {panelMapUrl && (
+        <feImage href={panelMapUrl} x="0" y="0" width="100%" height="100%"
+          result="dispMap" preserveAspectRatio="none" />
+      )}
+      <feDisplacementMap in="SourceGraphic" in2="dispMap"
+        scale="32" xChannelSelector="R" yChannelSelector="G" result="displaced" />
+      <feComposite in="displaced" in2="SourceGraphic" operator="in" />
+    </filter>
+  </defs>
+</svg>
             {/* ── Single hamburger instance — fixed, always on top ── */}
             <button
                 onClick={() => setOpen(!open)}
                 aria-label={open ? "Close menu" : "Open menu"}
                 aria-expanded={open}
                 aria-controls="nav-overlay"
-                className="fixed top-10 right-5 md:right-10 z-[60] w-8 h-8 flex flex-col items-center justify-center"
+                className="fixed top-9 md:top-10 right-5 md:right-10 z-[60] w-8 h-8 flex flex-col items-center justify-center"
             >
                 <motion.span
                     animate={open ? { rotate: 45, y: 4 } : { rotate: 0, y: 0 }}
                     transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                    className="block h-[3px] bg-white shadow-2xl shadow-black origin-center absolute"
+                    className="block h-[3px] bg-white shadow-2xl top-2 shadow-black origin-center absolute"
                     style={{ width: "32px" }}
                 />
                 <motion.span
@@ -116,17 +154,23 @@ export default function NavOverlay({
                         ? "opacity-100 translate-y-0"
                         : "opacity-0 -translate-y-full pointer-events-none"
                 }`}
-                style={{
-                    background: "rgba(5, 16, 22, 0.2)",
-                    backdropFilter: "blur(7px) saturate(100%)",
-                    WebkitBackdropFilter: "blur(7px) saturate(100%)",
-                    boxShadow:
-                        "0 8px 32px rgba(0, 0, 0, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.35), inset 0 -1px 0 rgba(255, 255, 255, 0.05)",
-                }}
-            >
+               style={{
+  background: "rgba(5, 16, 22, 0.12)",
+  // remove backdropFilter and WebkitBackdropFilter entirely
+  
+}}
+            ><div style={{
+    position: "absolute",
+    inset: 0,
+    zIndex: -1,
+    filter: "url(#lg-nav)",
+    backdropFilter: "blur(3px)",
+    WebkitBackdropFilter: "blur(3px)",
+    overflow: "hidden",
+  }} />
                 {griffityLogo && (
                     <Link href="/">
-                       <p className={`font-semibold text-3xl uppercase text-center text-white shrink-0 ${montserrat.className}`}>
+                       <p className={`font-semibold text-xl md:text-3xl uppercase text-center text-white shrink-0 ${montserrat.className}`}>
                                     {brandName.split(" ")[0]}<span className="font-light">{brandName.split(" ")[1]}</span>
                                 </p>
                     </Link>
@@ -153,6 +197,7 @@ export default function NavOverlay({
                     />
                 </Link>
             )}
+
 
             {/* ── Fullscreen overlay ── */}
             <AnimatePresence>
@@ -202,25 +247,32 @@ export default function NavOverlay({
 
                             {/* RIGHT */}
                             <motion.div
-                                variants={panelVariants.right}
-                                initial="hidden"
-                                animate="visible"
-                                exit="exit"
-                                className="flex flex-col h-full overflow-y-auto p-8 md:p-10 pt-20 md:pt-25 relative"
-                                style={{
-                                    background: "rgba(5, 16, 22, 0.2)",
-                                    backdropFilter: "blur(7px) saturate(100%)",
-                                    WebkitBackdropFilter: "blur(7px) saturate(100%)",
-                                    boxShadow:
-                                        "0 8px 32px rgba(0, 0, 0, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.35), inset 0 -1px 0 rgba(255, 255, 255, 0.05)",
-                                }}
-                            >
-                              
+  variants={panelVariants.right}
+  initial="hidden"
+  animate="visible"
+  exit="exit"
+  className="flex flex-col h-full overflow-y-auto p-8 md:p-10 pt-20 md:pt-25 relative"
+  style={{
+    background: "rgba(5, 16, 22, 0.12)",
+    
+    // no backdropFilter here
+  }}
+>
+                              <div style={{
+    position: "absolute",
+    inset: 0,
+    zIndex: 0,
+    filter: "url(#lg-panel)",
+    backdropFilter: "blur(3px)",
+    WebkitBackdropFilter: "blur(3px)",
+    overflow: "hidden",
+    pointerEvents: "none",
+  }} /> 
                                 {/* Content */}
                                 <div className="relative z-10 flex flex-col h-full">
                                     <motion.nav
                                         aria-label="Menu navigation"
-                                        className="flex flex-col gap-8 flex-1 mt-4"
+                                        className="flex flex-col gap-8 flex-1 mt-24"
                                         variants={linkContainerVariants}
                                         initial="hidden"
                                         animate="visible"
@@ -297,7 +349,7 @@ export default function NavOverlay({
                                     >
                                         {contact?.hours && (
                                             <div className="flex w-full flex-col gap-2 sm:flex-row sm:gap-5">
-                                                <p className="label text-white/40 uppercase tracking-widest sm:w-1/3 lg:w-2/5 shrink-0">Hours</p>
+                                                <p className="label text-white/70 uppercase tracking-widest sm:w-1/3 lg:w-2/5 shrink-0">Hours</p>
                                                 <div className="flex min-w-0 flex-col gap-1">
                                                     {contact.hours.office && <p className="p-base text-white">Office: {contact.hours.office}</p>}
                                                     {contact.hours.cowork && <p className="p-base text-white">CoWork: {contact.hours.cowork}</p>}
@@ -308,7 +360,7 @@ export default function NavOverlay({
 
                                         {contact && (contact.email || contact.phones || contact.address) && (
                                             <div className="flex w-full flex-col gap-2 sm:flex-row sm:gap-5">
-                                                <p className="label text-white/40 uppercase tracking-widest sm:w-1/3 lg:w-2/5 shrink-0">Contact</p>
+                                                <p className="label text-white/70 uppercase tracking-widest sm:w-1/3 lg:w-2/5 shrink-0">Contact</p>
                                                 <div className="flex min-w-0 flex-col gap-1">
                                                     {contact.email && (
                                                         <a href={`mailto:${contact.email}`} className="p-bold break-words text-white hover:text-white/80 transition-colors">{contact.email}</a>
@@ -325,7 +377,7 @@ export default function NavOverlay({
 
                                         {socials && (
                                             <div className="flex w-full flex-col gap-2 sm:flex-row sm:gap-5">
-                                                <p className="label text-white/40 uppercase tracking-widest sm:w-1/3 lg:w-2/5 shrink-0">Socials</p>
+                                                <p className="label text-white/70 uppercase tracking-widest sm:w-1/3 lg:w-2/5 shrink-0">Socials</p>
                                                 <div className="flex min-w-0 flex-col gap-1">
                                                     {socials.instagram && <a href={socials.instagram} target="_blank" rel="noopener noreferrer" className="p-bold text-white hover:text-white/80 transition-colors">Instagram</a>}
                                                     {socials.tiktok && <a href={socials.tiktok} target="_blank" rel="noopener noreferrer" className="p-bold text-white hover:text-white/80 transition-colors">TikTok</a>}
