@@ -5,6 +5,8 @@ import Link from "next/link";
 import ArticleItemList from "@/components/article-item-list";
 import type { ArticleItem } from "@/types";
 import { getSortedArticles } from "@/lib/articles";
+import { navConfig } from "@/config/nav";
+import Nav from "@/components/nav/Nav";
 
 export const metadata: Metadata = {
   title: "Blog | Tech Insights & Tutorials | Griffity Studios",
@@ -121,16 +123,7 @@ export default function BlogPage() {
       />
 
       <div className="min-h-screen" style={{ backgroundColor: "#051016" }}>
-        {/* Back to Home */}
-        <div className="fixed top-8 left-8 z-50">
-          <Link
-            href="/"
-            className="group inline-flex items-center gap-2 px-5 py-2.5 bg-slate-900/80 backdrop-blur-md border border-slate-700/50 hover:border-amber-500/50 text-slate-300 hover:text-white font-poppins font-medium rounded-lg transition-all duration-300"
-          >
-            <HiHome className="w-4 h-4 transition-transform group-hover:-translate-x-0.5" />
-            <span className="text-sm">Home</span>
-          </Link>
-        </div>
+  <Nav {...navConfig} />
 
         {/* Hero */}
         <header className="relative overflow-hidden pt-24 pb-16 lg:pb-20">

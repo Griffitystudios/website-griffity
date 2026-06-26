@@ -137,7 +137,7 @@ const Page = () => {
         <p className="sr-only">
           Creative branding, web design, and web development agency in Nepal delivering award-winning solutions.
         </p>
-        {/* <Loader /> */}
+        <Loader />
         <Hero />
         <div className="relative overflow-hidden">
           {/* <GradientRec /> */}

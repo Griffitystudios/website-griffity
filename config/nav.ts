@@ -13,13 +13,13 @@ export const navConfig: NavProps = {
     ],
     links: [
         { label: "Home", href: "/" },
-        { label: "About Us", href: "/about" },
-        { label: "Services", href: "/services" },
-        { label: "Our Works", href: "/our-works" },
-        { label: "Clients", href: "/clients" },
+        // { label: "About Us", href: "/about" },
+        // { label: "Services", href: "/services" },
+        // { label: "Our Works", href: "/our-works" },
+        // { label: "Clients", href: "/clients" },
         { label: "careers", href: "/careers" },
         { label: "insights", href: "/blogs" },
-        { label: "Contact Us", href: "/contact" },
+        // { label: "Contact Us", href: "/contact" },
     ],
     contact: {
         email: "info@griffitystudios.com",

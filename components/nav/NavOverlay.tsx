@@ -86,11 +86,8 @@ const [panelMapUrl] = useState<string>(() => {
 const [navMapUrl] = useState<string>(() => {
   if (typeof window === "undefined") return "";
   const nw = window.innerWidth;
-  return generateLiquidGlassMap(nw, 80, 0, 30, 1);
+  return generateLiquidGlassMap(nw, 80, 10, 100, 1);
 });
-
-    const pathname = usePathname();
-    const logoColor = BLACK_PAGES.some((p) => pathname.startsWith(p)) ? "black" : "white";
 
     useEffect(() => {
         const handleScroll = () => setScrolled(window.scrollY > 80);
@@ -187,10 +184,7 @@ const [navMapUrl] = useState<string>(() => {
                         scrolled && !open ? "opacity-0 pointer-events-none" : "opacity-100"
                     }`}
                 >
-                    <motion.img
-                        initial={{ opacity: 0, x: -40 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 1, ease: "easeOut", delay: 3.8 }}
+                    <img
                         src="/logos/griffity.png"
                         alt="Griffity Studios logo"
                         className="w-8 sm:w-7 md:w-9 h-auto ml-5"
