@@ -29,17 +29,17 @@ export default function About() {
         <section
             id="about-us"
             aria-labelledby="about-heading"
-            className="min-h-screen text-white"
+            className="text-white"
         >
             <div
-                className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-28 xl:py-32 max-w-screen-3xl"
+                className="container mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-20 lg:pt-24 pb-12 sm:pb-14 lg:pb-16 max-w-screen-3xl"
                 ref={ref}
             >
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 xl:gap-24 items-center">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 xl:gap-20 items-center">
                     {/* Left column */}
-                    <div>
+                    <div className="w-full">
                         <motion.p
-                            className="text-primary text-xs sm:text-sm font-semibold tracking-[0.12em] uppercase mb-6 sm:mb-8"
+                            className="text-primary text-sm sm:text-base md:text-lg font-semibold tracking-[0.12em] uppercase mb-6 sm:mb-8"
                             {...fadeUp(0)}
                         >
                             [01-ABOUT US]
@@ -47,7 +47,7 @@ export default function About() {
 
                         <motion.h2
                             id="about-heading"
-                            className="text-4xl sm:text-5xl md:text-6xl lg:text-[3.5rem] xl:text-6xl font-bold leading-[1.1] mb-8 sm:mb-10"
+                            className="text-5xl sm:text-6xl md:text-7xl lg:text-[4.25rem] xl:text-[4.75rem] font-bold leading-[1.05] mb-8 sm:mb-10"
                             {...fadeUp(0.1)}
                         >
                             <span className="block text-white">Every Dream</span>
@@ -55,7 +55,7 @@ export default function About() {
                         </motion.h2>
 
                         <motion.div
-                            className="space-y-5 sm:space-y-6 text-muted/90 text-sm sm:text-base md:text-lg leading-relaxed max-w-xl"
+                            className="space-y-5 sm:space-y-6 text-muted/90 text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed max-w-2xl"
                             {...fadeUp(0.2)}
                         >
                             <p>
@@ -72,24 +72,26 @@ export default function About() {
                     </div>
 
                     {/* Right column — stats grid */}
-                    <motion.dl
-                        className="grid grid-cols-3 gap-x-4 sm:gap-x-6 md:gap-x-8 gap-y-10 sm:gap-y-12 md:gap-y-14"
-                        {...fadeUp(0.3)}
-                    >
-                        {STATS.map((stat) => (
-                            <div key={stat.label}>
-                                <dt className="sr-only">{stat.label}</dt>
-                                <dd className="m-0 flex flex-col gap-2 sm:gap-3">
-                                    <p className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-white leading-none">
-                                        {stat.value}
-                                    </p>
-                                    <p className="text-primary text-[0.65rem] sm:text-xs md:text-sm font-medium tracking-[0.15em] uppercase">
-                                        {stat.label} +
-                                    </p>
-                                </dd>
-                            </div>
-                        ))}
-                    </motion.dl>
+                    <div className="flex w-full items-center justify-center lg:justify-center">
+                        <motion.dl
+                            className="grid grid-cols-3 gap-x-6 sm:gap-x-8 md:gap-x-10 gap-y-8 sm:gap-y-10 lg:gap-y-10 w-full max-w-lg lg:max-w-xl xl:max-w-2xl"
+                            {...fadeUp(0.3)}
+                        >
+                            {STATS.map((stat) => (
+                                <div key={stat.label} className="text-center">
+                                    <dt className="sr-only">{stat.label}</dt>
+                                    <dd className="m-0 flex flex-col items-center gap-2 sm:gap-3">
+                                        <p className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-semibold text-white leading-none">
+                                            {stat.value}
+                                        </p>
+                                        <p className="text-primary text-xs sm:text-sm md:text-base font-medium tracking-[0.15em] uppercase">
+                                            {stat.label} +
+                                        </p>
+                                    </dd>
+                                </div>
+                            ))}
+                        </motion.dl>
+                    </div>
                 </div>
             </div>
         </section>
