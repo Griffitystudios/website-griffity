@@ -107,7 +107,7 @@ export default function Testimonial() {
 
   useEffect(() => {
     if (!isHovered) {
-      autoplayTimerRef.current = setInterval(nextSlide, 7000);
+      autoplayTimerRef.current = setInterval(nextSlide, 5000);
     }
     return () => {
       if (autoplayTimerRef.current) clearInterval(autoplayTimerRef.current);
