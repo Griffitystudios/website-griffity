@@ -3,13 +3,16 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { generateLiquidGlassMap } from "@/utils/liquidGlassFilter";
+import Image from "next/image";
 
 interface TestimonialData {
   quote: string;
   author: string;
   role: string;
   company: string;
-  logoText: string;
+  avatarSrc: string;       // client photo
+  logoName: string;        // maps to /logos/{logoName}.svg
+  logoFileType?: "svg" | "png";
 }
 
 const testimonials: TestimonialData[] = [
@@ -18,32 +21,35 @@ const testimonials: TestimonialData[] = [
     author: "Prabin Shrestha",
     role: "Marketing Lead",
     company: "Ncell Axiata",
-    logoText: "Ncell",
+    avatarSrc: "/images/avatars/ncell.jpeg",   // replace with actual paths
+    logoName: "ncell",
   },
   {
     quote: "Griffity's web development and design team brought our vision to life with precision and modern aesthetics. Highly responsive, professional, and uncompromising quality.",
     author: "Elena Shakya",
     role: "Product Owner",
     company: "Veda Studios",
-    logoText: "Veda",
+    avatarSrc: "/images/avatars/veda.jpeg",
+    logoName: "veda",
   },
   {
     quote: "The branding and visual identity designed by Griffity captures the exact essence of our brand. Outstanding attention to detail and creative concepts that speak volumes.",
     author: "Rohan Chaudhary",
     role: "Founder",
     company: "Cafe Boh",
-    logoText: "Cafe Boh",
+    avatarSrc: "/images/avatars/cafeboh.jpeg",
+    logoName: "cafe",
   },
   {
     quote: "Professional, creative, and highly responsive. Their digital branding strategy was executed flawlessly, making our regional events stand out remarkably.",
     author: "Samyak Bajracharya",
     role: "Program Coordinator",
     company: "Hult Prize Nepal",
-    logoText: "Hult Prize",
+    avatarSrc: "/images/avatars/samrat.jpeg",
+    logoName: "hult",
   },
 ];
 
-// Shared glass style for all buttons — no liquid glass filter needed at small sizes
 const glassButtonStyle: React.CSSProperties = {
   position: "relative",
   overflow: "hidden",
@@ -78,7 +84,6 @@ export default function Testimonial() {
       const url = generateLiquidGlassMap(Math.round(width), Math.round(height), 16, 60, 1);
       setCardMapUrl(url);
     };
-
     generate();
     const ro = new ResizeObserver(generate);
     if (cardRef.current) ro.observe(cardRef.current);
@@ -132,19 +137,8 @@ export default function Testimonial() {
     }),
   };
 
-  const ChevronLeft = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-      strokeWidth={2} stroke="currentColor" className="w-6 h-6">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-    </svg>
-  );
-
-  const ChevronRight = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-      strokeWidth={2} stroke="currentColor" className="w-6 h-6">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-    </svg>
-  );
+  const t = testimonials[currentIndex];
+  const logoSrc = `/images/clientLogo/${t.logoName}.${t.logoFileType ?? "svg"}`;
 
   return (
     <section
@@ -152,32 +146,15 @@ export default function Testimonial() {
       aria-label="Client Testimonials"
       className="relative w-full mt-24 sm:mt-32 md:mt-52 z-10 text-white"
     >
-      {/* SVG filter — hidden */}
       <svg style={{ display: "none" }} xmlns="http://www.w3.org/2000/svg">
         <defs>
-          <filter
-            id={filterId}
-            x="-2%" y="-2%"
-            width="104%" height="104%"
-            colorInterpolationFilters="sRGB"
-          >
+          <filter id={filterId} x="-2%" y="-2%" width="104%" height="104%" colorInterpolationFilters="sRGB">
             {cardMapUrl && (
-              <feImage
-                href={cardMapUrl}
-                x="0" y="0"
-                width="100%" height="100%"
-                result="dispMap"
-                preserveAspectRatio="none"
-              />
+              <feImage href={cardMapUrl} x="0" y="0" width="100%" height="100%"
+                result="dispMap" preserveAspectRatio="none" />
             )}
-            <feDisplacementMap
-              in="SourceGraphic"
-              in2="dispMap"
-              scale="50"
-              xChannelSelector="R"
-              yChannelSelector="G"
-              result="displaced"
-            />
+            <feDisplacementMap in="SourceGraphic" in2="dispMap"
+              scale="50" xChannelSelector="R" yChannelSelector="G" result="displaced" />
             <feComposite in="displaced" in2="SourceGraphic" operator="in" />
           </filter>
         </defs>
@@ -197,23 +174,20 @@ export default function Testimonial() {
             </h2>
           </div>
 
-          {/* Desktop nav buttons */}
           <div className="hidden md:flex gap-4">
-            <button
-              onClick={prevSlide}
-              aria-label="Previous Testimonial"
+            <button onClick={prevSlide} aria-label="Previous Testimonial"
               style={glassButtonStyle}
-              className="p-4 rounded-full text-white hover:brightness-125 transition-all duration-300 cursor-pointer"
-            >
-              <ChevronLeft />
+              className="p-4 rounded-full text-white hover:brightness-125 transition-all duration-300 cursor-pointer">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+              </svg>
             </button>
-            <button
-              onClick={nextSlide}
-              aria-label="Next Testimonial"
+            <button onClick={nextSlide} aria-label="Next Testimonial"
               style={glassButtonStyle}
-              className="p-4 rounded-full text-white hover:brightness-125 transition-all duration-300 cursor-pointer"
-            >
-              <ChevronRight />
+              className="p-4 rounded-full text-white hover:brightness-125 transition-all duration-300 cursor-pointer">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+              </svg>
             </button>
           </div>
         </div>
@@ -252,61 +226,79 @@ export default function Testimonial() {
                 className="relative w-full flex flex-col md:flex-row md:items-center justify-between gap-8 md:gap-16 rounded-2xl p-8 sm:p-12 md:p-16 select-none overflow-hidden"
                 ref={cardRef}
               >
-                {/* Layer 1: Liquid glass distortion + blur */}
-                <div
-                  aria-hidden="true"
-                  style={{
-                    position: "absolute",
-                    inset: 0,
-                    zIndex: 0,
-                    filter: cardMapUrl ? `url(#${filterId})` : undefined,
-                    backdropFilter: "blur(1px)",
-                    WebkitBackdropFilter: "blur(2px)",
-                    background: "rgba(5, 16, 22, 0.18)",
-                    borderRadius: "inherit",
-                    overflow: "hidden",
-                    pointerEvents: "none",
-                  }}
-                />
+                {/* Layer 1: Liquid glass */}
+                <div aria-hidden="true" style={{
+                  position: "absolute", inset: 0, zIndex: 0,
+                  filter: cardMapUrl ? `url(#${filterId})` : undefined,
+                  backdropFilter: "blur(1px)", WebkitBackdropFilter: "blur(2px)",
+                  background: "rgba(5, 16, 22, 0.18)",
+                  borderRadius: "inherit", overflow: "hidden", pointerEvents: "none",
+                }} />
 
-                {/* Layer 2: Inner glow border — above the filter, never distorted */}
-                <div
-                  aria-hidden="true"
-                  style={{
-                    position: "absolute",
-                    inset: 0,
-                    zIndex: 1,
-                    borderRadius: "inherit",
-                    pointerEvents: "none",
-                    border: "1px solid rgba(255, 255, 255, 0.12)",
-                    boxShadow: `
-                      inset 0 1px 0 0 rgba(255, 255, 255, 0.25),
-                      inset 0 -1px 0 0 rgba(255, 255, 255, 0.06),
-                      inset 1px 0 0 0 rgba(255, 255, 255, 0.15),
-                      inset -1px 0 0 0 rgba(255, 255, 255, 0.08),
-                      inset 0 2px 12px 0 rgba(255, 255, 255, 0.06)
-                    `,
-                  }}
-                />
+                {/* Layer 2: Inner glow border */}
+                <div aria-hidden="true" style={{
+                  position: "absolute", inset: 0, zIndex: 1,
+                  borderRadius: "inherit", pointerEvents: "none",
+                  border: "1px solid rgba(255, 255, 255, 0.12)",
+                  boxShadow: `
+                    inset 0 1px 0 0 rgba(255, 255, 255, 0.25),
+                    inset 0 -1px 0 0 rgba(255, 255, 255, 0.06),
+                    inset 1px 0 0 0 rgba(255, 255, 255, 0.15),
+                    inset -1px 0 0 0 rgba(255, 255, 255, 0.08),
+                    inset 0 2px 12px 0 rgba(255, 255, 255, 0.06)
+                  `,
+                }} />
 
                 {/* Layer 3: Content */}
-                <div className="relative z-10 flex-1">
-                  <p className="text-white text-base xs:text-lg sm:text-xl md:text-2xl lg:text-3xl font-light italic leading-relaxed md:leading-loose">
-                    "{testimonials[currentIndex].quote}"
-                  </p>
-                  <div className="mt-8 flex flex-col">
-                    <span className="text-white font-semibold text-base sm:text-lg">
-                      {testimonials[currentIndex].author}
-                    </span>
-                    <span className="text-primary/80 font-light text-sm sm:text-base mt-1">
-                      {testimonials[currentIndex].role}, {testimonials[currentIndex].company}
-                    </span>
+                <div className="relative z-10 flex flex-col md:flex-row md:items-center gap-8 md:gap-12 flex-1">
+
+                  {/* Avatar */}
+                  <div className="flex-shrink-0">
+                    <div className="relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-full overflow-hidden"
+                      style={{
+                        border: "1px solid rgba(255, 255, 255, 0.15)",
+                        boxShadow: `
+                          inset 0 1px 0 0 rgba(255, 255, 255, 0.3),
+                          0 0 0 1px rgba(255, 255, 255, 0.05),
+                          0 8px 32px rgba(0, 0, 0, 0.4)
+                        `,
+                      }}>
+                      <Image
+                        src={t.avatarSrc}
+                        alt={t.author}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 640px) 80px, (max-width: 768px) 96px, 112px"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Quote + author */}
+                  <div className="flex flex-col flex-1">
+                    <p className="text-white text-base xs:text-lg sm:text-xl md:text-2xl lg:text-3xl font-light italic leading-relaxed md:leading-loose">
+                      "{t.quote}"
+                    </p>
+                    <div className="mt-6 flex flex-col">
+                      <span className="text-white font-semibold text-base sm:text-lg">
+                        {t.author}
+                      </span>
+                      <span className="text-primary/80 font-light text-sm sm:text-base mt-1">
+                        {t.role}, {t.company}
+                      </span>
+                    </div>
                   </div>
                 </div>
 
-                <div className="relative z-10 flex-shrink-0 flex items-center justify-center min-w-[150px] h-[120px] md:h-[180px] border-t md:border-t-0 md:border-l border-white/10 pt-6 md:pt-0 md:pl-16">
-                  <div className="text-2xl sm:text-3xl md:text-4xl font-bold uppercase tracking-widest text-white/20 text-center select-none">
-                    {testimonials[currentIndex].logoText}
+                {/* Right: Company logo */}
+                <div className="relative z-10 flex-shrink-0 flex items-center justify-center min-w-[120px] md:min-w-[160px] h-[80px] md:h-[120px] border-t md:border-t-0 md:border-l border-white/10 pt-6 md:pt-0 md:pl-12">
+                  <div className="relative w-full h-full flex items-center justify-center">
+                    <Image
+                      src={logoSrc}
+                      alt={t.company}
+                      fill
+                      className="object-contain opacity-60 brightness-0 invert"
+                      sizes="160px"
+                    />
                   </div>
                 </div>
               </motion.div>
@@ -331,27 +323,18 @@ export default function Testimonial() {
             ))}
           </div>
 
-          {/* Mobile nav buttons */}
           <div className="flex md:hidden gap-3">
-            <button
-              onClick={prevSlide}
-              aria-label="Previous Testimonial"
+            <button onClick={prevSlide} aria-label="Previous Testimonial"
               style={glassButtonStyle}
-              className="p-3 rounded-full text-white active:brightness-75 transition-all duration-150 cursor-pointer"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                strokeWidth={2} stroke="currentColor" className="w-5 h-5">
+              className="p-3 rounded-full text-white active:brightness-75 transition-all duration-150 cursor-pointer">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
               </svg>
             </button>
-            <button
-              onClick={nextSlide}
-              aria-label="Next Testimonial"
+            <button onClick={nextSlide} aria-label="Next Testimonial"
               style={glassButtonStyle}
-              className="p-3 rounded-full text-white active:brightness-75 transition-all duration-150 cursor-pointer"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                strokeWidth={2} stroke="currentColor" className="w-5 h-5">
+              className="p-3 rounded-full text-white active:brightness-75 transition-all duration-150 cursor-pointer">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
               </svg>
             </button>
