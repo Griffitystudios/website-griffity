@@ -140,9 +140,9 @@ export default function About() {
         {isHighlighted ? (
           <motion.span
             className="font-light"
-            // style={{
-            //   textShadow: glowEffect,
-            // }}
+          // style={{
+          //   textShadow: glowEffect,
+          // }}
           >
             {word}
           </motion.span>

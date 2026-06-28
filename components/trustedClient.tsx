@@ -9,7 +9,6 @@ const TrustedClients = () => {
     "hidden" | "visible" | "exitingBottom"
   >("hidden");
 
-  // Text to animate
   const TEXT = "TRUSTED CLIENTS";
   const TEXT_BLOCKS = ["COMPANIES WE HAVE", "WORKED WITH"];
 
@@ -19,18 +18,28 @@ const TrustedClients = () => {
       const windowHeight = window.innerHeight;
       const fullHeight = document.documentElement.scrollHeight;
 
-      const aboutSection = document.querySelector(
-        ".about"
-      ) as HTMLElement | null;
-      const joinUsSection = document.querySelector(
-        ".join-us"
-      ) as HTMLElement | null;
-      const aboutHeight = aboutSection ? aboutSection.offsetHeight : 0;
+      const aboutSection = document.querySelector(".about") as HTMLElement | null;
+      const joinUsSection = document.querySelector(".join-us") as HTMLElement | null;
+      // ✅ Add testimonials section
+      const testimonialsSection = document.querySelector("#testimonials") as HTMLElement | null;
+
+
       const joinUsHeight = joinUsSection ? joinUsSection.offsetHeight : 0;
 
+      // ✅ Exit when the testimonials section is about to scroll into the sticky offset (200px)
+      if (testimonialsSection) {
+        const testimonialsTop = testimonialsSection.getBoundingClientRect().top;
+        // Start exiting when testimonials section is 200px from top (matching sticky top value)
+        if (testimonialsTop <= 900) {
+          setAnimationState("exitingBottom");
+          return;
+        }
+      }
+
+      // Fallback: also exit near the bottom of the page (for about/join-us)
       if (
         scrollTop + windowHeight >=
-        fullHeight - (aboutHeight + joinUsHeight)
+        fullHeight - (joinUsHeight)
       ) {
         setAnimationState("exitingBottom");
         return;
@@ -45,7 +54,6 @@ const TrustedClients = () => {
 
     window.addEventListener("scroll", handleScroll);
     handleScroll();
-
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -97,11 +105,10 @@ const TrustedClients = () => {
                     duration: 0.4,
                     ease: "easeOut",
                   }}
-                  className={`inline-block mx-1 ${
-                    lineIndex === 0
-                      ? "font-semibold tracking-widest"
-                      : "font-semibold"
-                  }`}
+                  className={`inline-block mx-1 ${lineIndex === 0
+                    ? "font-semibold tracking-widest"
+                    : "font-semibold"
+                    }`}
                 >
                   {word}
                 </motion.span>

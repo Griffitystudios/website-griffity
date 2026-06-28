@@ -4,6 +4,7 @@ import Hero from "../components/hero";
 import Loader from "../components/loader";
 import Services from "@/components/services";
 import Client from "@/components/clients";
+import Testimonial from "@/components/testimonial";
 import Footer from "@/components/footer";
 import TrustedClient from "@/components/trustedClient";
 import Reels from "@/components/reels";
@@ -137,7 +138,7 @@ const Page = () => {
         <p className="sr-only">
           Creative branding, web design, and web development agency in Nepal delivering award-winning solutions.
         </p>
-        <Loader />
+        {/* <Loader /> */}
         <Hero />
         <div className="relative overflow-hidden">
           {/* <GradientRec /> */}
@@ -152,6 +153,7 @@ const Page = () => {
         <TrustedClient />
 
         <Client />
+        <Testimonial />
         <div className="relative overflow-hidden max-w-screen-3xl mx-auto">
           <GriffityBg />
           <JoinUs />

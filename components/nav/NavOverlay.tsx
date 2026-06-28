@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { usePathname } from "next/navigation";
-import {  montserrat } from "@/fonts";
+import { montserrat } from "@/fonts";
 import { generateLiquidGlassMap } from "@/utils/liquidGlassFilter";
 
 import type { NavLink, NavContact, NavSocials } from "./Nav";
@@ -27,19 +27,19 @@ const panelVariants = {
     left: {
         hidden: { x: "-100%", opacity: 0 },
         visible: { x: "0%", opacity: 1, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
-        exit:   { x: "-100%", opacity: 0, transition: { duration: 0.45, ease: [0.55, 0, 0.84, 0] } },
+        exit: { x: "-100%", opacity: 0, transition: { duration: 0.45, ease: [0.55, 0, 0.84, 0] } },
     },
     right: {
         hidden: { x: "100%", opacity: 0 },
         visible: { x: "0%", opacity: 1, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
-        exit:   { x: "100%", opacity: 0, transition: { duration: 0.45, ease: [0.55, 0, 0.84, 0] } },
+        exit: { x: "100%", opacity: 0, transition: { duration: 0.45, ease: [0.55, 0, 0.84, 0] } },
     },
 };
 
 const illustrationVariants = {
-    hidden:  { opacity: 0, scale: 0.92 },
+    hidden: { opacity: 0, scale: 0.92 },
     visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 0.4 } },
-    exit:    { opacity: 0, scale: 0.95, transition: { duration: 0.25 } },
+    exit: { opacity: 0, scale: 0.95, transition: { duration: 0.25 } },
 };
 
 const linkContainerVariants = {
@@ -52,21 +52,21 @@ const linkContainerVariants = {
 };
 
 const linkItemVariants = {
-    hidden:  { y: 24, opacity: 0 },
+    hidden: { y: 24, opacity: 0 },
     visible: { y: 0, opacity: 1, transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] } },
-    exit:    { y: -16, opacity: 0, transition: { duration: 0.25, ease: [0.55, 0, 0.84, 0] } },
+    exit: { y: -16, opacity: 0, transition: { duration: 0.25, ease: [0.55, 0, 0.84, 0] } },
 };
 
 const bottomVariants = {
-    hidden:  { y: 16, opacity: 0 },
+    hidden: { y: 16, opacity: 0 },
     visible: { y: 0, opacity: 1, transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1], delay: 0.5 } },
-    exit:    { y: 12, opacity: 0, transition: { duration: 0.2, ease: [0.55, 0, 0.84, 0] } },
+    exit: { y: 12, opacity: 0, transition: { duration: 0.2, ease: [0.55, 0, 0.84, 0] } },
 };
 
 export default function NavOverlay({
     brandName,
     illustrationSrc,
-     griffityLogo,
+    griffityLogo,
     awards,
     links,
     contact,
@@ -75,19 +75,19 @@ export default function NavOverlay({
     const [open, setOpen] = useState(false);
     const [openDropdown, setOpenDropdown] = useState<string | null>(null);
     const [scrolled, setScrolled] = useState(false);
-// Instead of empty string + useEffect, compute immediately:
-const [panelMapUrl] = useState<string>(() => {
-  if (typeof window === "undefined") return ""; // SSR guard
-  const pw = Math.round(window.innerWidth * 0.4);
-  const ph = window.innerHeight;
-  return generateLiquidGlassMap(pw, ph, 0, 60, 1);
-});
+    // Instead of empty string + useEffect, compute immediately:
+    const [panelMapUrl] = useState<string>(() => {
+        if (typeof window === "undefined") return ""; // SSR guard
+        const pw = Math.round(window.innerWidth * 0.4);
+        const ph = window.innerHeight;
+        return generateLiquidGlassMap(pw, ph, 0, 60, 1);
+    });
 
-const [navMapUrl] = useState<string>(() => {
-  if (typeof window === "undefined") return "";
-  const nw = window.innerWidth;
-  return generateLiquidGlassMap(nw, 80, 10, 100, 1);
-});
+    const [navMapUrl] = useState<string>(() => {
+        if (typeof window === "undefined") return "";
+        const nw = window.innerWidth;
+        return generateLiquidGlassMap(nw, 80, 10, 100, 1);
+    });
 
     useEffect(() => {
         const handleScroll = () => setScrolled(window.scrollY > 80);
@@ -98,30 +98,30 @@ const [navMapUrl] = useState<string>(() => {
 
     return (
         <div className={`relative z-30`}>
- {/* ── SVG Filter Definitions ── */}
-<svg style={{ display: 'none' }} xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <filter id="lg-nav" x="-5%" y="-20%" width="110%" height="140%" color-interpolation-filters="sRGB">
-      {navMapUrl && (
-        <feImage href={navMapUrl} x="0" y="0" width="100%" height="100%"
-          result="dispMap" preserveAspectRatio="none" />
-      )}
-      <feDisplacementMap in="SourceGraphic" in2="dispMap"
-        scale="20" xChannelSelector="R" yChannelSelector="G" result="displaced" />
-      <feComposite in="displaced" in2="SourceGraphic" operator="in" />
-    </filter>
+            {/* ── SVG Filter Definitions ── */}
+            <svg style={{ display: 'none' }} xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <filter id="lg-nav" x="-5%" y="-20%" width="110%" height="140%" color-interpolation-filters="sRGB">
+                        {navMapUrl && (
+                            <feImage href={navMapUrl} x="0" y="0" width="100%" height="100%"
+                                result="dispMap" preserveAspectRatio="none" />
+                        )}
+                        <feDisplacementMap in="SourceGraphic" in2="dispMap"
+                            scale="20" xChannelSelector="R" yChannelSelector="G" result="displaced" />
+                        <feComposite in="displaced" in2="SourceGraphic" operator="in" />
+                    </filter>
 
-    <filter id="lg-panel" x="-5%" y="-2%" width="110%" height="104%" color-interpolation-filters="sRGB">
-      {panelMapUrl && (
-        <feImage href={panelMapUrl} x="0" y="0" width="100%" height="100%"
-          result="dispMap" preserveAspectRatio="none" />
-      )}
-      <feDisplacementMap in="SourceGraphic" in2="dispMap"
-        scale="32" xChannelSelector="R" yChannelSelector="G" result="displaced" />
-      <feComposite in="displaced" in2="SourceGraphic" operator="in" />
-    </filter>
-  </defs>
-</svg>
+                    <filter id="lg-panel" x="-5%" y="-2%" width="110%" height="104%" color-interpolation-filters="sRGB">
+                        {panelMapUrl && (
+                            <feImage href={panelMapUrl} x="0" y="0" width="100%" height="100%"
+                                result="dispMap" preserveAspectRatio="none" />
+                        )}
+                        <feDisplacementMap in="SourceGraphic" in2="dispMap"
+                            scale="32" xChannelSelector="R" yChannelSelector="G" result="displaced" />
+                        <feComposite in="displaced" in2="SourceGraphic" operator="in" />
+                    </filter>
+                </defs>
+            </svg>
             {/* ── Single hamburger instance — fixed, always on top ── */}
             <button
                 onClick={() => setOpen(!open)}
@@ -145,44 +145,66 @@ const [navMapUrl] = useState<string>(() => {
             </button>
 
             {/* ── Sticky navbar — slides in after scroll ── */}
+            {/* ── Sticky navbar — slides in after scroll ── */}
             <div
-                className={`fixed top-0 left-0 right-0 z-30 flex items-center justify-between pl-6 md:pl-12 pr-15 pb-10 pt-10 transition-all duration-300 ${
-                    scrolled && !open
-                        ? "opacity-100 translate-y-0"
-                        : "opacity-0 -translate-y-full pointer-events-none"
-                }`}
-               style={{
-  background: "rgba(5, 16, 22, 0.12)",
-  // remove backdropFilter and WebkitBackdropFilter entirely
-  
-}}
-            ><div style={{
-    position: "absolute",
-    inset: 0,
-    zIndex: -1,
-    filter: "url(#lg-nav)",
-    backdropFilter: "blur(3px)",
-    WebkitBackdropFilter: "blur(3px)",
-    overflow: "hidden",
-  }} />
-                {griffityLogo && (
-                    <Link href="/">
-                       <p className={`font-semibold text-xl md:text-3xl uppercase text-center text-white shrink-0 ${montserrat.className}`}>
-                                    {brandName.split(" ")[0]}<span className="font-light">{brandName.split(" ")[1]}</span>
-                                </p>
-                    </Link>
-                )}
-                {/* spacer — hamburger is fixed so no button needed here */}
-                <div className="w-8" />
+                className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between pl-6 md:pl-12 pr-15 pb-10 pt-10 transition-all duration-300 ${scrolled && !open
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 -translate-y-full pointer-events-none"
+                    }`}
+                style={{ background: "rgba(5, 16, 22, 0.12)" }}
+            >
+                {/* Layer 1: Liquid glass distortion + blur */}
+                <div
+                    style={{
+                        position: "absolute",
+                        inset: 0,
+                        zIndex: -1,
+                        filter: "url(#lg-nav)",
+                        backdropFilter: "blur(3px)",
+                        WebkitBackdropFilter: "blur(3px)",
+                        overflow: "hidden",
+                    }}
+                />
+
+                {/* Layer 2: Inner glow border — above the filter, never distorted */}
+                <div
+                    aria-hidden="true"
+                    style={{
+                        position: "absolute",
+                        inset: 0,
+                        zIndex: 0,
+                        pointerEvents: "none",
+                        // Only bottom edge border — navbar has no top edge (flush with viewport)
+                        borderBottom: "1px solid rgba(255, 255, 255, 0.10",
+                        boxShadow: `
+        inset 0 -1px 0 0 rgba(255, 255, 255, 0.06),
+        inset 1px 0 0 0 rgba(255, 255, 255, 0.08),
+        inset -1px 0 0 0 rgba(255, 255, 255, 0.05),
+        inset 0 -2px 16px 0 rgba(255, 255, 255, 0.04)
+      `,
+                    }}
+                />
+
+                {/* Content — sits above both layers */}
+                <div className="relative z-10 flex w-full items-center justify-between">
+                    {griffityLogo && (
+                        <Link href="/">
+                            <p className={`font-semibold text-xl md:text-3xl uppercase text-center text-white shrink-0 ${montserrat.className}`}>
+                                {brandName.split(" ")[0]}
+                                <span className="font-light">{brandName.split(" ")[1]}</span>
+                            </p>
+                        </Link>
+                    )}
+                    <div className="w-8" />
+                </div>
             </div>
 
             {/* ── Top Left Logo ── */}
             {griffityLogo && (
                 <Link
                     href="/"
-                    className={`top-5 left-6 md:top-10 relative md:left-12 transition-opacity block duration-300 ${
-                        scrolled && !open ? "opacity-0 pointer-events-none" : "opacity-100"
-                    }`}
+                    className={`top-5 left-6 md:top-10 relative md:left-12 transition-opacity block duration-300 ${scrolled && !open ? "opacity-0 pointer-events-none" : "opacity-100"
+                        }`}
                 >
                     <img
                         src="/logos/griffity.png"
@@ -241,27 +263,27 @@ const [navMapUrl] = useState<string>(() => {
 
                             {/* RIGHT */}
                             <motion.div
-  variants={panelVariants.right}
-  initial="hidden"
-  animate="visible"
-  exit="exit"
-  className="flex flex-col h-full overflow-y-auto p-8 md:p-10 pt-20 md:pt-25 relative"
-  style={{
-    background: "rgba(5, 16, 22, 0.12)",
-    
-    // no backdropFilter here
-  }}
->
-                              <div style={{
-    position: "absolute",
-    inset: 0,
-    zIndex: 0,
-    filter: "url(#lg-panel)",
-    backdropFilter: "blur(3px)",
-    WebkitBackdropFilter: "blur(3px)",
-    overflow: "hidden",
-    pointerEvents: "none",
-  }} /> 
+                                variants={panelVariants.right}
+                                initial="hidden"
+                                animate="visible"
+                                exit="exit"
+                                className="flex flex-col h-full overflow-y-auto p-8 md:p-10 pt-20 md:pt-25 relative"
+                                style={{
+                                    background: "rgba(5, 16, 22, 0.12)",
+
+                                    // no backdropFilter here
+                                }}
+                            >
+                                <div style={{
+                                    position: "absolute",
+                                    inset: 0,
+                                    zIndex: 0,
+                                    filter: "url(#lg-panel)",
+                                    backdropFilter: "blur(6px)",
+                                    WebkitBackdropFilter: "blur(6px)",
+                                    overflow: "hidden",
+                                    pointerEvents: "none",
+                                }} />
                                 {/* Content */}
                                 <div className="relative z-10 flex flex-col h-full">
                                     <motion.nav
