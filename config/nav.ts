@@ -13,12 +13,12 @@ export const navConfig: NavProps = {
     ],
     links: [
         { label: "Home", href: "/" },
-        // { label: "About Us", href: "/about" },
+        //{ label: "About Us", href: "/about" },
         // { label: "Services", href: "/services" },
         // { label: "Our Works", href: "/our-works" },
         // { label: "Clients", href: "/clients" },
-        { label: "careers", href: "/careers" },
-        { label: "insights", href: "/blogs" },
+        { label: "Careers", href: "/careers" },
+        { label: "Insights", href: "/blogs" },
         // { label: "Contact Us", href: "/contact" },
     ],
     contact: {
@@ -30,9 +30,9 @@ export const navConfig: NavProps = {
         },
     },
     socials: {
-        instagram: "https://instagram.com/sattyacollective",
-        tiktok: "https://www.tiktok.com/@sattyacollective",
+        instagram: "https://instagram.com/griffitystudios",
+        tiktok: "https://www.tiktok.com/@griffitystudios",
         linkedin: "https://www.linkedin.com/company/griffitystudios",
-        whatsapp: "https://wa.me/9709119138",
+        whatsapp: "https://wa.me/9861292675",
     },
 };
