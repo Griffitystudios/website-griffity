@@ -222,45 +222,40 @@ export default function NavOverlay({
                         <div className="absolute inset-0 grid grid-cols-1 md:grid-cols-[60%_40%] h-full">
 
                             {/* LEFT */}
-                            <motion.div
-                                variants={panelVariants.left}
-                                initial="hidden"
-                                animate="visible"
-                                exit="exit"
-                                className="hidden md:flex flex-col h-full bg-white overflow-hidden p-6"
-                            >
-                                <p className={`font-semibold text-4xl uppercase text-center pt-20 text-black shrink-0 ${montserrat.className}`}>
-                                    {brandName.split(" ")[0]}<span className="font-light">{brandName.split(" ")[1]}</span>
-                                </p>
+                           <motion.div
+    variants={panelVariants.left}
+    initial="hidden"
+    animate="visible"
+    exit="exit"
+    className="hidden md:flex flex-col h-full bg-white overflow-y-auto p-6"
+>
+    <p className={`font-semibold text-3xl lg:text-4xl uppercase text-center pt-20 text-black shrink-0 ${montserrat.className}`}>
+        {brandName.split(" ")[0]}<span className="font-light">{brandName.split(" ")[1]}</span>
+    </p>
 
-                                <motion.div className="flex-1 min-h-0 flex items-center justify-center overflow-hidden">
-                                    <div className="h-full w-full flex items-center justify-center">
-                                        <Image
-                                            src={illustrationSrc}
-                                            alt="Griffity Studios illustration"
-                                            width={1292}
-                                            height={2314}
-                                            quality={100}
-                                            className="h-[85%] max-h-full w-auto object-contain"
-                                        />
-                                    </div>
-                                </motion.div>
+    <div className="flex-1 flex items-center justify-center min-h-[150px] py-4">
+        <Image
+            src={illustrationSrc}
+            alt="Griffity Studios illustration"
+            width={1292}
+            height={2314}
+            quality={100}
+            className="w-auto object-contain max-h-[60vh] min-h-[150px] h-full"
+        />
+    </div>
 
-                                <div className="flex items-center w-full gap-2">
-                                    {awards.map((logo, i) => (
-                                        <div key={i} className="flex-1 min-w-0 justify-center flex items-center">
-                                            <img
-                                                src={logo.src}
-                                                alt={logo.alt}
-                                                width={700}
-                                                height={800}
-                                                className="object-contain"
-                                            />
-                                        </div>
-                                    ))}
-                                </div>
-                            </motion.div>
-
+    <div className="flex items-center w-full gap-2 shrink-0 max-h-[100px] lg:max-h-[200px] py-2">
+        {awards.map((logo, i) => (
+            <div key={i} className="flex-1 min-w-0 flex justify-center items-center h-full">
+                <img
+                    src={logo.src}
+                    alt={logo.alt}
+                    className="object-contain w-auto max-h-[60px] xl:max-h-[100px] "
+                />
+            </div>
+        ))}
+    </div>
+</motion.div>
                             {/* RIGHT */}
                             <motion.div
                                 variants={panelVariants.right}
