@@ -54,7 +54,7 @@ export default function Services() {
 
                 <motion.h2
                     id="services-heading"
-                    className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] xl:text-6xl font-bold leading-[1.1] mb-10 sm:mb-12 lg:mb-16"
+                    className="text-5xl sm:text-6xl md:text-7xl lg:text-[4.25rem] xl:text-[4.75rem] font-bold leading-[1.05] mb-8 sm:mb-10"
                     {...fadeUp(0.1)}
                 >
                     <span className="text-white">Bringing vision to </span>
@@ -74,11 +74,10 @@ export default function Services() {
                                     key={tab.id}
                                     type="button"
                                     onClick={() => setActiveTab(tab.id)}
-                                    className={`shrink-0 text-[0.6rem] xs:text-[0.65rem] sm:text-xs md:text-sm font-medium tracking-[0.1em] uppercase whitespace-nowrap transition-colors duration-300 pb-3 border-b-2 ${
-                                        isActive
+                                    className={`shrink-0 text-[0.6rem] xs:text-[0.65rem] sm:text-xs md:text-sm font-medium tracking-[0.1em] uppercase whitespace-nowrap transition-colors duration-300 pb-3 border-b-2 ${isActive
                                             ? "text-primary border-primary"
                                             : "text-muted/50 border-transparent hover:text-muted/80"
-                                    }`}
+                                        }`}
                                     aria-selected={isActive}
                                     role="tab"
                                 >
@@ -118,11 +117,10 @@ export default function Services() {
                                                 setActiveItemImg(item.img)
                                             }
                                             aria-pressed={isSelected}
-                                            className={`group flex w-full items-center justify-between gap-4 py-4 sm:py-5 text-left text-xs sm:text-sm md:text-base font-light tracking-[0.08em] uppercase transition-colors ${
-                                                isSelected
+                                            className={`group flex w-full items-center justify-between gap-4 py-4 sm:py-5 text-left text-xs sm:text-sm md:text-base font-light tracking-[0.08em] uppercase transition-colors ${isSelected
                                                     ? "text-primary"
                                                     : "text-white/90 hover:text-white"
-                                            }`}
+                                                }`}
                                         >
                                             <span>{item.name}</span>
                                             <span
