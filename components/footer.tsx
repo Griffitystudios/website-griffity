@@ -66,7 +66,7 @@ const Footer = () => {
         </div>
 
         {/* Link columns */}
-        <div className="flex flex-wrap gap-x-40 gap-y-10">
+        <div className="flex flex-wrap gap-x-6 xsm:gap-x-10 sm:gap-x-20 md:gap-x-40  lg:gap-x-30 xl:gap-x-40 gap-y-10">
           <nav aria-label="Quick links">
             <p className="text-primary text-sm xs:text-base font-semibold tracking-wide mb-5">
               QUICK LINKS
