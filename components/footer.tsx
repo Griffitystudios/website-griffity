@@ -62,23 +62,11 @@ const Footer = () => {
             Reg. No. 351010/81/82
           </p>
 
-          <Link
-            href="https://techbehemoths.com/company/griffity-studios"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-2"
-          >
-            <Image
-              src="/images/TB-trusted-on-transparent-dark-bg.svg"
-              alt="Trusted by TechBehemoth"
-              width={120}
-              height={40}
-            />
-          </Link>
+         
         </div>
 
         {/* Link columns */}
-        <div className="flex flex-wrap gap-x-16 gap-y-10">
+        <div className="flex flex-wrap gap-x-40 gap-y-10">
           <nav aria-label="Quick links">
             <p className="text-primary text-sm xs:text-base font-semibold tracking-wide mb-5">
               QUICK LINKS
@@ -140,8 +128,21 @@ const Footer = () => {
       {/* Contact details + social icons row */}
     
       {/* Copyright */}
-      <div className="w-full text-center text-white/70 text-sm sm:text-base mt-8">
-        <p>© {new Date().getFullYear()} Griffity Studio Pvt. Ltd.</p>
+      <div className="flex w-full text-center justify-between items-center text-white/70 text-sm sm:text-base mt-8">
+        <p>© {new Date().getFullYear()} Griffity Studios Pvt. Ltd. All Rights Reserved.</p>
+         <Link
+            href="https://techbehemoths.com/company/griffity-studios"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-2"
+          >
+            <Image
+              src="/images/TB-trusted-on-transparent-dark-bg.svg"
+              alt="Trusted by TechBehemoth"
+              width={120}
+              height={40}
+            />
+          </Link>
       </div>
     </footer>
   );
