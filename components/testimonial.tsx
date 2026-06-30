@@ -168,7 +168,7 @@ export default function Testimonial() {
             <span className="text-primary text-sm sm:text-base font-semibold tracking-wider uppercase block mb-3">
               [ 05-TESTIMONIALS ]
             </span>
-            <h2 className="heading-h2 font-bold text-white leading-tight">
+            <h2 className="py-10 sm:py-14 md:py-16 text-5xl sm:text-6xl md:text-7xl lg:text-[4.25rem] xl:text-[4.75rem] font-bold text-white leading-tight">
               Words from our <br className="hidden md:inline" />
               <span className="text-primary">Clients.</span>
             </h2>
@@ -316,7 +316,7 @@ export default function Testimonial() {
                 className="relative h-2 rounded-full overflow-hidden transition-all duration-300 focus:outline-none cursor-pointer"
                 style={{
                   width: index === currentIndex ? "32px" : "8px",
-                  backgroundColor: index === currentIndex ? "#DBA039" : "rgba(255, 255, 255, 0.2)",
+                  backgroundColor: index === currentIndex ? " #DBA039" : "rgba(255, 255, 255, 0.2)",
                 }}
                 aria-label={`Go to slide ${index + 1}`}
               />
