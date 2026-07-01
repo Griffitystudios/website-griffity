@@ -1,63 +1,68 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { montserrat } from "@/fonts";
 import { motion } from "framer-motion";
 
-export default function Loader() {
-  const [isLoading, setIsLoading] = useState(true);
-  const TEXT = "GRIFFITYSTUDIOS".split("");
-  useEffect(() => {
-    // Simulate loading time and then hide the loader
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 3800);
+const BRAND_TEXT = "GRIFFITYSTUDIOS".split("");
+const BOLD_CHAR_COUNT = 8;
 
-    return () => clearTimeout(timer);
+// Single source of truth for the timeline (previously duplicated
+// as a separate, hand-synced setTimeout(3800) value).
+const REVEAL_DELAY = 2;
+const REVEAL_DURATION = 1.2;
+const FADE_DELAY = REVEAL_DELAY + REVEAL_DURATION; // 3.2s
+const FADE_DURATION = 0.5;
+
+export default function Loader() {
+  const [mounted, setMounted] = useState(true);
+
+  const prefersReducedMotion = useMemo(() => {
+    if (typeof window === "undefined") return false;
+    return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   }, []);
 
-  // If loading is complete, don't render the loader
-  if (!isLoading) return null;
+  useEffect(() => {
+    if (prefersReducedMotion) setMounted(false);
+  }, [prefersReducedMotion]);
+
+  if (!mounted) return null;
 
   return (
     <motion.div
-      className={`fixed inset-0 flex items-center justify-center ${
-        montserrat.className
-      } h-full w-full bg-[#020608] transition-z duration-500 ${
-        isLoading ? "z-50" : "-z-10"
-      }`}
+      className={`fixed inset-0 z-50 flex h-full w-full items-center justify-center ${montserrat.className} bg-[#020608]`}
+      style={{ willChange: "opacity" }}
       initial={{ opacity: 1 }}
       animate={{ opacity: 0 }}
-      exit={{ opacity: 0 }}
-      transition={{ delay: 3.2, duration: 0.5, ease: "easeInOut" }}
+      transition={{ delay: FADE_DELAY, duration: FADE_DURATION, ease: "easeInOut" }}
+      onAnimationComplete={() => setMounted(false)}
     >
-      <div className="relative ">
-        {/* Clear text that will be revealed as blur overlay moves */}
+      <div className="relative">
+        {/* Clear text, revealed as the wipe overlays pass over it */}
         <motion.div
-          className="relative z-10 flex heading-h4 md:heading-h4 lg:heading-h5 font-semibold text-white"
+          className="heading-h4 md:heading-h4 lg:heading-h5 relative z-10 flex font-semibold text-white"
+          style={{ willChange: "transform" }}
           initial={{ scale: 1 }}
-          animate={{ scale: [1, 25] }}
+          animate={{ scale: 25 }}
           transition={{
             scale: {
-              times: [0, 0.7, 1],
-              duration: 1.2,
-              delay: 2,
-              ease: "easeInOut",
+              duration: REVEAL_DURATION,
+              delay: REVEAL_DELAY,
+              ease: "easeOut",
             },
           }}
         >
-          {TEXT.map((char, i) => (
+          {BRAND_TEXT.map((char, i) => (
             <motion.span
               key={i}
-              initial={{ opacity: 0, filter: "blur(8px)" }}
-              animate={{
-                opacity: 1,
-                filter: "blur(0px)",
-              }}
-              className={`${i < 8 ? "font-semibold" : "font-light"} inline-block`}
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              className={`${
+                i < BOLD_CHAR_COUNT ? "font-semibold" : "font-light"
+              } inline-block`}
               transition={{
-                delay: 0.5 + (TEXT.length - 1 - i) * 0.08,
-                duration: 0.8,
+                delay: 0.5 + (BRAND_TEXT.length - 1 - i) * 0.08,
+                duration: 0.5,
                 ease: "easeOut",
               }}
             >
@@ -66,32 +71,36 @@ export default function Loader() {
           ))}
         </motion.div>
 
-        {/* Blur overlay that moves from right to left */}
+        {/*
+          Wipe overlays: a gradient with a baked-in soft alpha edge,
+          animated with `transform` only — instead of a live
+          `backdrop-filter: blur()` that re-samples the pixels
+          behind it on every frame it moves. This is the main fix:
+          two moving backdrop-blurs were the biggest GPU/RAM cost
+          in the original. The gradient stops approximate the same
+          "soft blurred edge" look at a fraction of the cost.
+        */}
         <motion.div
-          className="absolute inset-0 z-20 h-[100%] w-[30%]  bg-[#020608]/80"
-          initial={{ x: "250%", backdropFilter: "blur(15px)" }}
-          animate={{
-            x: "-50%",
-            opacity: 0,
-            transition: {
-              delay: 0.7,
-              duration: 1.3,
-              ease: "easeInOut",
-            },
+          className="absolute inset-0 z-20 h-full w-[30%]"
+          style={{
+            background:
+              "linear-gradient(90deg, rgba(2,6,8,0) 0%, rgba(2,6,8,0.8) 40%, rgba(2,6,8,0.8) 100%)",
+            willChange: "transform, opacity",
           }}
+          initial={{ x: "250%" }}
+          animate={{ x: "-50%", opacity: 0 }}
+          transition={{ delay: 0.7, duration: 1.3, ease: "easeInOut" }}
         />
         <motion.div
-          className="absolute inset-0 z-20 h-[100%] w-[10%]  bg-[#020608]/60"
-          initial={{ x: "1200%", backdropFilter: "blur(15px)" }}
-          animate={{
-            x: "-50%",
-            opacity: 0,
-            transition: {
-              duration: 1.3,
-              delay: 0.7,
-              ease: "easeInOut",
-            },
+          className="absolute inset-0 z-20 h-full w-[10%]"
+          style={{
+            background:
+              "linear-gradient(90deg, rgba(2,6,8,0) 0%, rgba(2,6,8,0.6) 40%, rgba(2,6,8,0.6) 100%)",
+            willChange: "transform, opacity",
           }}
+          initial={{ x: "1200%" }}
+          animate={{ x: "-50%", opacity: 0 }}
+          transition={{ delay: 0.7, duration: 1.3, ease: "easeInOut" }}
         />
       </div>
     </motion.div>
