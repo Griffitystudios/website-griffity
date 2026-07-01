@@ -1,8 +1,6 @@
 "use client";
 
 import React, { useRef, useState } from "react";
-import { motion } from "framer-motion";
-import GriffityBg from "../bg-logo";
 import { jobs } from "@/app/data/jobs-data";
 import ReCAPTCHA from "react-google-recaptcha";
 

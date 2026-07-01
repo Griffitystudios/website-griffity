@@ -1,4 +1,3 @@
-import GriffityBg from "@/components/bg-logo";
 import JobForm from "@/components/career-components/form";
 import HeroSectionCareers from "@/components/career-components/hero-section";
 import { JobOpeningsSection } from "@/components/career-components/job-opening-section";
@@ -72,7 +71,6 @@ const Page = () => {
       <StorySection />
       <JobOpeningsSection />
       <div className="relative overflow-hidden max-w-screen-3xl mx-auto">
-        <GriffityBg />
         <JobForm />
         <Footer />
       </div>

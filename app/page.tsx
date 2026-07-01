@@ -12,9 +12,7 @@ import Reels from "@/components/reels";
 import Reels2 from "@/components/reels2";
 import About from "@/components/about";
 import JoinUs from "@/components/join-us";
-import GriffityBg from "@/components/bg-logo";
-import Nav from "@/components/nav/Nav";
-import { navConfig } from "@/config/nav";
+
 
 export const metadata: Metadata = {
   title: "Griffity Studios | Creative Branding & Web Development Nepal",
@@ -139,7 +137,7 @@ const Page = () => {
         <p className="sr-only">
           Creative branding, web design, and web development agency in Nepal delivering award-winning solutions.
         </p>
-        {/* <Loader /> */}
+        <Loader />
         <Hero />
         <div className="relative overflow-hidden">
           {/* <GradientRec /> */}
@@ -157,7 +155,7 @@ const Page = () => {
         <Client />
         <Testimonial />
         <div className="relative overflow-hidden max-w-screen-3xl mx-auto">
-          <GriffityBg />
+     
           <JoinUs />
           <Footer />
         </div>
