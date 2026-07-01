@@ -9,6 +9,24 @@ import { AnimatePresence, motion, useInView } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
+function ServiceArrowIcon({ className }: { className?: string }) {
+    return (
+        <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.75"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className={className}
+            aria-hidden="true"
+        >
+            <path d="M7 17L17 7" />
+            <path d="M9 7h8v8" />
+        </svg>
+    );
+}
+
 export default function Services() {
     const [activeTab, setActiveTab] = useState(SERVICE_TABS[0].id);
     const [activeItemImg, setActiveItemImg] = useState<ServiceImageKey>(
@@ -106,29 +124,26 @@ export default function Services() {
                             {activeService.subtitle}
                         </p>
 
-                        <ul className="divide-y divide-white/10">
+                        <ul className="divide-y divide-white/10 overflow-visible">
                             {activeService.items.map((item) => {
                                 const isSelected = item.img === activeItemImg;
                                 return (
-                                    <li key={item.img}>
+                                    <li key={item.img} className="overflow-visible">
                                         <button
                                             type="button"
                                             onClick={() =>
                                                 setActiveItemImg(item.img)
                                             }
                                             aria-pressed={isSelected}
-                                            className={`group flex w-full items-center justify-between gap-4 py-4 sm:py-5 text-left text-xs sm:text-sm md:text-base font-light tracking-[0.08em] uppercase transition-colors ${isSelected
+                                            className={`group flex w-full min-w-0 items-center justify-between gap-3 py-4 sm:py-5 text-left text-xs sm:text-sm md:text-base font-light tracking-[0.08em] uppercase transition-colors ${isSelected
                                                     ? "text-primary"
                                                     : "text-white/90 hover:text-white"
                                                 }`}
                                         >
-                                            <span>{item.name}</span>
-                                            <span
-                                                className="text-primary shrink-0 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
-                                                aria-hidden="true"
-                                            >
-                                                ↗
+                                            <span className="min-w-0 flex-1 pr-2">
+                                                {item.name}
                                             </span>
+                                            <ServiceArrowIcon className="h-4 w-4 sm:h-5 sm:w-5 shrink-0 text-primary transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                                         </button>
                                     </li>
                                 );

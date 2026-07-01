@@ -3,6 +3,7 @@ import { Metadata } from "next";
 import Hero from "../components/hero";
 import Loader from "../components/loader";
 import Services from "@/components/services";
+import Portfolio from "@/components/portfolio";
 import Client from "@/components/clients";
 import Testimonial from "@/components/testimonial";
 import Footer from "@/components/footer";
@@ -145,6 +146,7 @@ const Page = () => {
           <About />
           {/* <Clientnumber /> */}
           <Services />
+          <Portfolio />
         </div>
         <div className="h-screen flex flex-col justify-center items-center overflow-hidden mb-10 sm:mb-96">
           <Reels2 />
